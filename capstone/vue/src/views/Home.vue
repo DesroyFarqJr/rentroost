@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <img alt="Vue logo" src="public\images\logo.png">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
   </div>
