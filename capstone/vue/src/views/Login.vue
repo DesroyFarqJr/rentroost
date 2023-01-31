@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    
+  <div class="item error" v-if="input&&!filteredList().length">
+     <p>No results found!</p>
+  </div>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
@@ -17,10 +21,12 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link">Login</a>
+              <router-link class="nav-link" to="/login">Login</router-link>
+              
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link"> Sign up</a>
+              <router-link class="nav-link" to="/register"> Sign up</router-link>
+              
             </li>
           </ul>
         </div>
