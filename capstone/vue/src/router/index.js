@@ -29,7 +29,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -57,7 +57,6 @@ const router = new Router({
       }
     },
     {
-<<<<<<< HEAD
       path: "/tenant",
       name: "tenant",
       component: Tenant,
@@ -68,12 +67,11 @@ const router = new Router({
     {
       path: "/landlord",
       name: "landlord",
-      component: Landlord,
-=======
+      component: Landlord},
+      {
       path: "/map",
       name: "map",
       component: MapWithPins,
->>>>>>> main
       meta: {
         requiresAuth: false
       }
