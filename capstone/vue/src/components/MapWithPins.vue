@@ -83,9 +83,9 @@
       };
     },
    
-    mounted() {
-      this.locateGeoLocation();
-    },
+    // mounted() {
+    //   this.locateGeoLocation();
+    // },
     methods: {
       toggleInfo(marker, index){
         this.infoPosition = marker.position;
