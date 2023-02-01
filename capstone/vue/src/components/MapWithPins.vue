@@ -24,6 +24,7 @@
 </template>
    
 <script>
+
 export default {
   name: "MapWithPins",
   data() {
@@ -37,12 +38,15 @@ export default {
       infoContent: null,
       infoOpened: false,
       infoCurrentKey: null,
+
       infoOptions: {
         pixelOffset: {
           width: 0,
           height: -35
       },
-        content: "null content error"
+        content: "null content error",
+        infoRent: null,
+        infoBedrooms: null
       },
       // property markers
       // TODO move property markers to a store that populates from the API
@@ -52,21 +56,27 @@ export default {
             lat: 40.44104,
             lng: -80.00221
           },
-          infoText: "<div>Rent: 2,150<br>Bedrooms: 2</div>"
+          rent: 1850,
+          bedrooms: 2,
+          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg"
         },
         {
           position: {
             lat: 40.45358,
             lng: -79.98055
           },
-          infoText: "lat: 40.45358, lng: -79.98055"
+          rent: 2125,
+          bedrooms: 1,
+          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg"
         },
         {
           position: {
             lat: 40.455,
             lng: -80
           },
-          infoText: "40.455, lng: -80"
+          rent: 2450,
+          bedrooms: 2,
+          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image105.jpg"
         }
       ]
     };
@@ -75,7 +85,32 @@ export default {
     // toggle property marker location based on click and set its values
     toggleInfo(marker, index){
       this.infoPosition = marker.position;
-      this.infoOptions.content = marker.infoText;
+      // this.infoOptions.content = marker.infoText;
+      const contentString = `<div class="info-window">
+        <div id="info"><b>Rent:</b> ${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
+        <div id="image"><img src="${marker.imageUrl}" alt="property listing preview image" width="150px"></div>
+        <div></div>
+        <div id="posting-link"><a href="www.google.com">More Details...</a></div>
+        </div>
+        <style scoped>
+          .info-window {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-areas: 
+              "image info"
+              "image posting-link";
+            gap: 10px;
+            }
+          #info {
+            text-align: left;
+          }
+          #posting-link {
+            text-align: right;
+          }
+          #image {
+          }
+          </style>`;
+      this.infoOptions.content = contentString;
 
       if (this.currentKey === index) {
         this.infoOpened = !this.infoOpened;
