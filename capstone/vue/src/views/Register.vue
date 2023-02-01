@@ -100,10 +100,11 @@
           />
           <router-link :to="{ name: 'login' }">Have an account? </router-link>
           
-          <button style="margin: 20px" class="reg" type="submit">
+
+           <button style="margin: 20px" class="reg"  type="submit">
             Join Roost!
             
-          </button>
+          </button> 
         </form>
       </div>
     </div>
@@ -133,15 +134,8 @@ export default {
   },
   methods: {
    async register() {
-     const response = await authService.post('regesiter', {
-     firstname: this.firstname,
-     lastname: this.lastname,
-     email: this.email,
-     username: this.username,
-     password: this.password,
-     confirmPassword: this.confirmPassword
-     });
-     console.log(response);
+
+     
    
 
       if (this.user.password != this.user.confirmPassword) {
@@ -339,7 +333,6 @@ button {
 
 button:hover {
   color: white;
-  width: ;
   box-shadow: 0 0 20px rgba(182, 0, 0, 0);
   background-color: rgb(240, 4, 4);
 }
