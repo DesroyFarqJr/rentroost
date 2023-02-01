@@ -204,9 +204,6 @@ html,
   height: 100%;
 }
 
-#app {
-  text-align: right;
-}
 
 .navbar-collapse {
   display: flex;
@@ -333,6 +330,7 @@ button {
 
 button:hover {
   color: white;
+  width: 200px;
   box-shadow: 0 0 20px rgba(182, 0, 0, 0);
   background-color: rgb(240, 4, 4);
 }
