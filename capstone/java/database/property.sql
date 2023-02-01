@@ -1,4 +1,4 @@
- BEGIN TRANSACTION;
+BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS property CASCADE;
 DROP TABLE IF EXISTS landlord CASCADE;
@@ -22,15 +22,15 @@ one_br_price INT,
 two_br_price INT,
 three_br_price INT,
 rented BOOLEAN,
-	url varchar(100),
+url varchar(100),
 CONSTRAINT PK_property_id PRIMARY KEY (property_id)
 );
 
 CREATE TABLE landlord (
 landlord_id serial NOT NULL,
 landlord_name VARCHAR(200) NOT NULL,
-	landlord_email VARCHAR(200),
-	  landlord_phone VARCHAR(15) NOT NULL,
+landlord_email VARCHAR(200),
+landlord_phone VARCHAR(15) NOT NULL,
 CONSTRAINT PK_landlord_id PRIMARY KEY (landlord_id)
 );
 
@@ -43,14 +43,14 @@ FOREIGN KEY (landlord_id) REFERENCES landlord(landlord_id)
 );
 
 CREATE TABLE tenant (
-  tenant_id serial NOT NULL,
-  tenant_name VARCHAR(200) NOT NULL,
-  tenant_phone VARCHAR(15) NOT NULL,
-  tenant_email VARCHAR(200) NOT NULL,
-  rent INT NOT NULL,
-  overdue INT,
-  paid BOOLEAN,
-  	CONSTRAINT PK_tenant_id PRIMARY KEY (tenant_id)
+tenant_id serial NOT NULL,
+tenant_name VARCHAR(200) NOT NULL,
+tenant_phone VARCHAR(15) NOT NULL,
+tenant_email VARCHAR(200) NOT NULL,
+rent INT NOT NULL,
+overdue INT,
+paid BOOLEAN,
+CONSTRAINT PK_tenant_id PRIMARY KEY (tenant_id)
 );
 
 CREATE TABLE tenant_unit (
@@ -61,13 +61,12 @@ FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id),
 FOREIGN KEY (property_id) REFERENCES property(property_id)
 );
 
-
 CREATE TABLE employee (
-    employee_id serial NOT NULL,
-    employee_name VARCHAR(200) NOT NULL,
-  emp_phone VARCHAR(15) NOT NULL,
-  emp_email VARCHAR(200) NOT NULL,
-  CONSTRAINT PK_employee_id PRIMARY KEY (employee_id)
+employee_id serial NOT NULL,
+employee_name VARCHAR(200) NOT NULL,
+emp_phone VARCHAR(15) NOT NULL,
+emp_email VARCHAR(200) NOT NULL,
+CONSTRAINT PK_employee_id PRIMARY KEY (employee_id)
 );
 
 CREATE TABLE maintenance (
