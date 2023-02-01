@@ -3,7 +3,7 @@
 <div id="app">
 
   <nav class="navbar navbar-expand navbar-light fixed-top">
-    <div class="container">
+    <div class="container-fluid">
       <a href="#" class="navbar-brand"><img alt="logo" src="../../public/images/logo.png"></a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
@@ -86,7 +86,7 @@
 
           />
           <router-link :to="{ name: 'login' }">Have an account? </router-link>
-          <button style="margin: 20px" class="btn btn-primary btn-danger btn-block" type="submit">
+          <button style="margin: 20px" class="reg" type="submit">
             Join Roost!
             
           </button>
@@ -196,7 +196,7 @@ html,
   width: 200px;
   padding: 0;
   margin: 0;
-  left: 0;
+  right: 0;
 }
 .navbar-brand {
   text-transform: uppercase;
@@ -204,12 +204,7 @@ html,
 }
 .navbar-light {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-items: baseline;
-  align-content: stretch;
-  border-bottom: 2px solid transparent;
+ 
 
   background-color: #ffffff;
   box-shadow: 0px 5px 5px #7f7d7e;
@@ -226,7 +221,7 @@ a:hover {
   color: white;
 }
 
-/* Presentational styles */
+
 a {
   color: #ff000f;
   font-family: "Fira Sans", sans-serif;
