@@ -150,7 +150,7 @@ html,
 }
 
 #app {
-  text-align: right;
+  text-align: left;
 }
 
 .navbar-collapse {
@@ -283,7 +283,7 @@ button {
 
 button:hover {
   color: white;
-  width: ;
+  width: 200px;
   box-shadow: 0 0 20px rgba(182, 0, 0, 0);
   background-color: rgb(240, 4, 4);
 }
