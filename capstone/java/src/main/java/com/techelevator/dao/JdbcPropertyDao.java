@@ -21,7 +21,7 @@ public class JdbcPropertyDao implements PropertyDao {
     @Override
     public Property getPropertyById(int propertyId) {
         Property property = null;
-        String sql = "SELECT property_id, prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url" +
+        String sql = "SELECT property_id, prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url " +
                 "FROM property " +
                 "WHERE property_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, propertyId);
@@ -32,12 +32,10 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
-    public List<Property> getPropertiesByLandlord(int landlordId) {
+    public List<Property> getPropertiesByLandlord(int landlord) {
         List<Property> outputList = new ArrayList<>();
-        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
-                "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id " +
-                "WHERE pl.landlord_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordId);
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id WHERE pl.landlord_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlord);
         while (results.next()) {
             Property property = mapRowToProperty(results);
             outputList.add(property);
