@@ -17,59 +17,123 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
+              <router-link class="nav-link" to="/user">Account</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/register"> Sign up</router-link>
+              <router-link class="nav-link" to="/logout">Logout</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <div id="top-row">
-      <div class="input-group">
-        <balance-information />
-        <maintenance-request-form />
-      </div>
-      <div class="submit-group">
-        <e-check />
-      </div>
-    </div>
+   <saved-homes />
+
+    <!-- <div v-bind="like in likes" @click="toggleLike(like)"> -->
+   
+    <!-- <h2>{{ like.firstname }} {{ like.lastname }}</h2> -->
+    <!-- <p>{{ like.email }}</p> -->
+  <!-- </div> -->
   </div>
 </template>
     
 
 
 <script>
+import SavedHomes from '../components/SavedHomes.vue';
+
 export default {
+  components: { SavedHomes },
+ 
+  name: "user",
   data() {
     return {
-      message: "Hello from Vue component",
-      name: "UserHeader",
-      methods: {
-
-      }
+      likes: [],
     };
-  }
+  },
+
+  methods: {
+    toggleLike(like) {
+      like.classList.toggle("like-no");
+      like.classList.toggle("like-yes");
+      if (like.classList.contains("like-yes")) {
+        console.log(" Saving Favorite");
+        this.getFavoriteData(like);
+      } else {
+        console.log(" Removing Favorite");
+        this.getFavoriteData(like);
+      }
+    },
+    getFavoriteData(like) {
+      const img = like.querySelector("img").src;
+      const name = like.querySelector("h2").textContent;
+      const email = like.querySelector("p").textContent;
+      const [firstname, lastname] = name.split(" ");
+      const faveObj = { img, firstname, lastname, email };
+
+      console.log(faveObj);
+    },
+  },
 };
 </script>
 
+
 <style>
-.tenant {
-      display: flex;
+
+.saved-homes {
+  display: flex;
     justify-content: center;
-    width: 100%
+    width: 100%;
+    background-color: lightgray;
+
+}
+main {
+  display: flex;
+  justify-content:  space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
 }
 
-  .input-group {
-    display: flex;
-    justify-content: space-between;
-  }
 
-  .input-group > * {
-  }
-    .input-group > * {
-    margin-bottom: 5%;
-  }
+article {
+  max-width: 300px;
+  margin: 20px 10pc 0;
+  border: 1px solid #000;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px #333;
+  position: relative;
+  background-color: white;
+}
+
+img {
+  display: block;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+
+}
+
+.details {
+  padding: 10px;
+
+}
+
+.like{
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+
+}
+
+.like-no {
+  background: url("../../public/images/egg-unsave-btn.svg") no-repeat;
+
+}
+
+.like{
+  background: url("../../public/images/egg-save-btn.svg") no-repeat;
+
+}
 </style>

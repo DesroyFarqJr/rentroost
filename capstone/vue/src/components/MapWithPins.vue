@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- gmap tag pulls from node_modules.vue2-google-maps and creates a window @ the specified size -->
-    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 600px" :options="{mapTypeControl: false, streetViewControl: false}">
+    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 600px" :options="{mapTypeControl: false, streetViewControl: true}">
       <!-- info windows pop out when a user clicks on a map marker -->
       <gmap-info-window
         :options="infoOptions"
@@ -24,7 +24,6 @@
 </template>
    
 <script>
-
 export default {
   name: "MapWithPins",
   data() {
@@ -87,7 +86,7 @@ export default {
       this.infoPosition = marker.position;
       // this.infoOptions.content = marker.infoText;
       const contentString = `<div class="info-window">
-        <div id="info"><b>Rent:</b> ${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
+        <div id="info"><b>Rent:</b> $${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
         <div id="image"><img src="${marker.imageUrl}" alt="property listing preview image" width="150px"></div>
         <div></div>
         <div id="posting-link"><a href="www.google.com">More Details...</a></div>

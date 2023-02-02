@@ -34,9 +34,5 @@ export default {
     justify-content: space-between;
   }
 
-  .input-group > * {
-  }
-    .input-group > * {
-    margin-bottom: 5%;
-  }
+ 
 </style>
