@@ -6,6 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Component
 public class JdbcPropertyDao implements PropertyDao {
@@ -29,6 +30,15 @@ public class JdbcPropertyDao implements PropertyDao {
         return property;
     }
 
+    @Override
+    public List<Property> getPropertiesByLandlord(int landlordId) {
+        return null;
+    }
+
+    @Override
+    public List<Property> getAllProperties() {
+        return null;
+    }
 
 
     private Property mapRowToProperty(SqlRowSet rowSet) {
