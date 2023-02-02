@@ -3,9 +3,11 @@ package com.techelevator.dao;
 import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
+@Component
 public class JdbcPropertyDao implements PropertyDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -15,9 +17,9 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
-    public Property getProperty(int propertyId) {
+    public Property getPropertyById(int propertyId) {
         Property property = null;
-        String sql = "SELECT property_id, prop_name, prop_address, studio_price, one_br_price, two_br_price, three_br_price, rented, url " +
+        String sql = "SELECT property_id, prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url" +
                 "FROM property " +
                 "WHERE property_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, propertyId);
@@ -27,17 +29,19 @@ public class JdbcPropertyDao implements PropertyDao {
         return property;
     }
 
+
+
     private Property mapRowToProperty(SqlRowSet rowSet) {
         Property property = new Property();
         property.setPropertyId(rowSet.getInt("property_id"));
         property.setPropertyName(rowSet.getString("prop_name"));
         property.setPropertyAddress(rowSet.getString("prop_address"));
-        property.setStudioPrice(rowSet.getInt("studio_price"));
-        property.setOneBedroomPrice(rowSet.getInt("one_br_price"));
-        property.setTwoBedroomPrice(rowSet.getInt("two_br_price"));
-        property.setThreeBedroomPrice(rowSet.getInt("three_br_price"));
+        property.setPropertyDescription(rowSet.getString("prop_description"));
+        property.setPropertyBedrooms(rowSet.getInt("prop_bedrooms"));
+        property.setPropertyBathrooms(rowSet.getInt("prop_bathrooms"));
+        property.setPropertyRent(rowSet.getDouble("prop_rent"));
         property.setRented(rowSet.getBoolean("rented"));
-        property.setPropertyUrl(rowSet.getString("url"));
+        property.setImageUrl(rowSet.getString("url"));
 
         return property;
     }

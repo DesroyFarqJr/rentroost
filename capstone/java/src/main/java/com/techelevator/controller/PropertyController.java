@@ -17,7 +17,7 @@ public class PropertyController {
 
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "property", method = RequestMethod.GET)
     public List<Property> getProperties() {
         return null;
     }
