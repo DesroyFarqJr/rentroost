@@ -6,6 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -32,12 +33,29 @@ public class JdbcPropertyDao implements PropertyDao {
 
     @Override
     public List<Property> getPropertiesByLandlord(int landlordId) {
-        return null;
+        List<Property> outputList = new ArrayList<>();
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
+                "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id " +
+                "WHERE pl.landlord_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordId);
+        while (results.next()) {
+            Property property = mapRowToProperty(results);
+            outputList.add(property);
+        }
+        return outputList;
     }
 
     @Override
     public List<Property> getAllProperties() {
-        return null;
+        List<Property> outputList = new ArrayList<>();
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
+                "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Property property = mapRowToProperty(results);
+            outputList.add(property);
+        }
+        return outputList;
     }
 
 
