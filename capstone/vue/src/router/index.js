@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import MapWithPins from '../components/MapWithPins.vue'
 import store from '../store/index'
+import Tenant from '../views/Tenant.vue'
+import Landlord from '../views/Landlord.vue'
 
 Vue.use(Router)
 
@@ -27,7 +29,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -55,6 +57,18 @@ const router = new Router({
       }
     },
     {
+      path: "/tenant",
+      name: "tenant",
+      component: Tenant,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/landlord",
+      name: "landlord",
+      component: Landlord},
+      {
       path: "/map",
       name: "map",
       component: MapWithPins,

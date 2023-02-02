@@ -8,11 +8,12 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link">Login</a>
+              <router-link class="nav-link" to="/login">Login</router-link>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"> Sign up</a>
+              <router-link class="nav-link" to="/register"> Sign up</router-link>
             </li>
+              
           </ul>
         </div>
     </div>
@@ -34,7 +35,7 @@
           <label for="firstname" class="sr-only">First name</label>
           <input
             type="text"
-            id="Firstname"
+            id="firstname"
             class="form-control"
             placeholder="Firstname"
             v-model="user.firstname"
@@ -45,7 +46,7 @@
           <label for="lastname" class="sr-only">Last name</label>
           <input
             type="text"
-            id="Lastname"
+            id="lastname"
             class="form-control"
             placeholder="Lastname"
             v-model="user.lastname"
@@ -53,10 +54,11 @@
             style="margin-bottom: 10px"
             autofocus
           />
+         
           <label for="email" class="sr-only">Email</label>
           <input
             type="text"
-            id="Email"
+            id="email"
             class="form-control"
             placeholder="Email"
             v-model="user.email"
@@ -65,6 +67,17 @@
             autofocus
           />
           
+            <label for="username" class="sr-only">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            style="margin-bottom: 10px"
+            autofocus
+          />
           <label for="password" class="sr-only">Password</label>
           <input
             type="password"
@@ -86,10 +99,12 @@
 
           />
           <router-link :to="{ name: 'login' }">Have an account? </router-link>
-          <button style="margin: 20px" class="reg" type="submit">
+          
+
+           <button style="margin: 20px" class="reg"  type="submit">
             Join Roost!
             
-          </button>
+          </button> 
         </form>
       </div>
     </div>
@@ -105,6 +120,9 @@ export default {
   data() {
     return {
       user: {
+        firstname: "",
+        lastname: "",
+        email: "",
         username: "",
         password: "",
         confirmPassword: "",
@@ -115,7 +133,11 @@ export default {
     };
   },
   methods: {
-    register() {
+   async register() {
+
+     
+   
+
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = "Password & Confirm Password do not match.";
@@ -146,6 +168,8 @@ export default {
   },
 };
 </script>
+
+
 <style>
 @import url("https://fonts.googleleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
@@ -180,9 +204,6 @@ html,
   height: 100%;
 }
 
-#app {
-  text-align: right;
-}
 
 .navbar-collapse {
   display: flex;
@@ -309,7 +330,7 @@ button {
 
 button:hover {
   color: white;
-  width: ;
+  width: 200px;
   box-shadow: 0 0 20px rgba(182, 0, 0, 0);
   background-color: rgb(240, 4, 4);
 }

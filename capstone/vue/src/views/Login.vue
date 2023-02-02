@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link">Login</a>
+              <router-link class="nav-link" to="/login">Login</router-link>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link"> Sign up</a>
+              <router-link class="nav-link" to="/register"> Sign up</router-link>
             </li>
           </ul>
         </div>
@@ -150,7 +150,7 @@ html,
 }
 
 #app {
-  text-align: right;
+  text-align: left;
 }
 
 .navbar-collapse {
@@ -283,7 +283,7 @@ button {
 
 button:hover {
   color: white;
-  width: 150;
+  width: 200px;
   box-shadow: 0 0 20px rgba(182, 0, 0, 0);
   background-color: rgb(240, 4, 4);
 }
