@@ -24,7 +24,6 @@
 </template>
    
 <script>
-
 export default {
   name: "MapWithPins",
   data() {
@@ -87,7 +86,7 @@ export default {
       this.infoPosition = marker.position;
       // this.infoOptions.content = marker.infoText;
       const contentString = `<div class="info-window">
-        <div id="info"><b>Rent:</b> ${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
+        <div id="info"><b>Rent:</b> $${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
         <div id="image"><img src="${marker.imageUrl}" alt="property listing preview image" width="150px"></div>
         <div></div>
         <div id="posting-link"><a href="www.google.com">More Details...</a></div>

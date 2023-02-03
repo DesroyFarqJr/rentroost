@@ -9,6 +9,7 @@ import store from '../store/index'
 import Tenant from '../views/Tenant.vue'
 import Landlord from '../views/Landlord.vue'
 import AddProperty from '../views/AddProperty.vue'
+import User from '../views/User.vue'
 
 Vue.use(Router)
 
@@ -77,6 +78,14 @@ const router = new Router({
       path: "/landlord",
       name: "landlord",
       component: Landlord},
+      {
+        path: "/user",
+        name: "user",
+        component: User,
+        meta: {
+          requiresAuth: false, //Change this after complete
+        }
+      },
       {
       path: "/map",
       name: "map",
