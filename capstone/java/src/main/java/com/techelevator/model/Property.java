@@ -4,12 +4,31 @@ public class Property {
     private int propertyId;
     private String propertyName;
     private String propertyAddress;
-    private int studioPrice;
-    private int oneBedroomPrice;
-    private int twoBedroomPrice;
-    private int threeBedroomPrice;
+    private String propertyDescription;
+    private int propertyBedrooms;
+    private int propertyBathrooms;
+    private double propertyRent;
     private boolean rented;
-    private String propertyUrl;
+    private String imageUrl;
+
+    public Property(){};
+    public Property(String propertyName, String propertyAddress, int propertyBedrooms, int propertyBathrooms, double propertyRent, boolean rented, String imageUrl) {
+        this.propertyName = propertyName;
+        this.propertyAddress = propertyAddress;
+        this.propertyBedrooms = propertyBedrooms;
+        this.propertyBathrooms = propertyBathrooms;
+        this.propertyRent = propertyRent;
+        this.rented = rented;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getPropertyDescription() {
+        return propertyDescription;
+    }
+
+    public void setPropertyDescription(String propertyDescription) {
+        this.propertyDescription = propertyDescription;
+    }
 
     public int getPropertyId() {
         return propertyId;
@@ -18,7 +37,6 @@ public class Property {
     public void setPropertyId(int propertyId) {
         this.propertyId = propertyId;
     }
-
     public String getPropertyName() {
         return propertyName;
     }
@@ -35,36 +53,28 @@ public class Property {
         this.propertyAddress = propertyAddress;
     }
 
-    public int getStudioPrice() {
-        return studioPrice;
+    public int getPropertyBedrooms() {
+        return propertyBedrooms;
     }
 
-    public void setStudioPrice(int studioPrice) {
-        this.studioPrice = studioPrice;
+    public void setPropertyBedrooms(int propertyBedrooms) {
+        this.propertyBedrooms = propertyBedrooms;
     }
 
-    public int getOneBedroomPrice() {
-        return oneBedroomPrice;
+    public int getPropertyBathrooms() {
+        return propertyBathrooms;
     }
 
-    public void setOneBedroomPrice(int oneBedroomPrice) {
-        this.oneBedroomPrice = oneBedroomPrice;
+    public void setPropertyBathrooms(int propertyBathrooms) {
+        this.propertyBathrooms = propertyBathrooms;
     }
 
-    public int getTwoBedroomPrice() {
-        return twoBedroomPrice;
+    public double getPropertyRent() {
+        return propertyRent;
     }
 
-    public void setTwoBedroomPrice(int twoBedroomPrice) {
-        this.twoBedroomPrice = twoBedroomPrice;
-    }
-
-    public int getThreeBedroomPrice() {
-        return threeBedroomPrice;
-    }
-
-    public void setThreeBedroomPrice(int threeBedroomPrice) {
-        this.threeBedroomPrice = threeBedroomPrice;
+    public void setPropertyRent(double propertyRent) {
+        this.propertyRent = propertyRent;
     }
 
     public boolean isRented() {
@@ -75,18 +85,25 @@ public class Property {
         this.rented = rented;
     }
 
-    public String getPropertyUrl() {
-        return propertyUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setPropertyUrl(String propertyUrl) {
-        this.propertyUrl = propertyUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
-
 
     @Override
     public String toString() {
-        return String.format("%s, %s (ID: %d)", getPropertyAddress(), getPropertyUrl(), getPropertyId());
-
+        return "Property{" +
+                "propertyId=" + propertyId +
+                ", propertyName='" + propertyName + '\'' +
+                ", propertyAddress='" + propertyAddress + '\'' +
+                ", propertyBedrooms=" + propertyBedrooms +
+                ", propertyBathrooms=" + propertyBathrooms +
+                ", propertyRent=" + propertyRent +
+                ", rented=" + rented +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }
