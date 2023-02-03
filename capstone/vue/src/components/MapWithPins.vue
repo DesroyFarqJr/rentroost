@@ -1,7 +1,7 @@
 <template>
   <div >
     <!-- gmap tag pulls from node_modules.vue2-google-maps and creates a window @ the specified size -->
-    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 100vh;" :options="{mapTypeControl: false, streetViewControl: false}">
+    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 95vh;" :options="{mapTypeControl: false, streetViewControl: false}">
       <!-- info windows pop out when a user clicks on a map marker -->
       <gmap-info-window
         :options="infoOptions"
@@ -13,8 +13,8 @@
       <!-- place map markers for each marker object in the store -->
       <gmap-marker
         :key="index"
-        v-for="(m, index) in propertyLocationMarkers"
-        :position="m.position"
+        v-for="(m, index) in $store.state.propertiesList"
+        :position="m.propertyPosition"
         :clickable="true"
         :draggable:="false"
         @click="toggleInfo(m, index)"
@@ -24,6 +24,8 @@
 </template>
    
 <script>
+import propertyService from "../services/PropertyService";
+
 export default {
   name: "MapWithPins",
   data() {
@@ -80,14 +82,27 @@ export default {
       ]
     };
   },
+  created() {
+    console.log(`called created() in MapWithPins`);
+      propertyService.getAllProperties().then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("SET_PROPERTIES", response.data)
+        }
+      }).catch((error) => {
+        const response = error.response;
+        if (response.status == 401) {
+          this.invalidCredentials = true;
+        }
+      });
+  },
   methods: {
     // toggle property marker location based on click and set its values
     toggleInfo(marker, index){
-      this.infoPosition = marker.position;
+      this.infoPosition = marker.propertyPosition;
       // this.infoOptions.content = marker.infoText;
       const contentString = `<div class="info-window">
-        <div id="info"><b>Rent:</b> $${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
-        <div id="image"><img src="${marker.imageUrl}" alt="property listing preview image" width="150px"></div>
+        <div id="info"><b>Rent:</b> $${marker.propertyRent}<br><b>Bedrooms: </b>${marker.propertyBedrooms}</div>
+        <div id="image"><img src="${marker.imageUrl}" alt="Image Not Available" width="150px"></div>
         <div></div>
         <div id="posting-link"><a href="www.google.com">More Details...</a></div>
         </div>
@@ -107,6 +122,9 @@ export default {
             text-align: right;
           }
           #image {
+          }
+          img {
+            width:125px;
           }
           </style>`;
       this.infoOptions.content = contentString;

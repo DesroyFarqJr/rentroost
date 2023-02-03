@@ -1,25 +1,47 @@
 package com.techelevator.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Property {
     private int propertyId;
     private String propertyName;
     private String propertyAddress;
+    private double propertyLat;
+    private double propertyLng;
     private String propertyDescription;
     private int propertyBedrooms;
     private int propertyBathrooms;
     private double propertyRent;
     private boolean rented;
     private String imageUrl;
+    private Map<String, Double> propertyPosition;
 
     public Property(){};
-    public Property(String propertyName, String propertyAddress, int propertyBedrooms, int propertyBathrooms, double propertyRent, boolean rented, String imageUrl) {
+    public Property(String propertyName, String propertyAddress, double propertyLat, double propertyLng, int propertyBedrooms, int propertyBathrooms, double propertyRent, boolean rented, String imageUrl) {
         this.propertyName = propertyName;
         this.propertyAddress = propertyAddress;
+        this.propertyLat = propertyLat;
+        this.propertyLng = propertyLng;
         this.propertyBedrooms = propertyBedrooms;
         this.propertyBathrooms = propertyBathrooms;
         this.propertyRent = propertyRent;
         this.rented = rented;
         this.imageUrl = imageUrl;
+        this.propertyPosition.put("lat: ", propertyLat);
+        this.propertyPosition.put("lng: ", propertyLng);
+    }
+
+    public Map getPropertyPosition() {
+        this.propertyPosition = new HashMap<>();
+        this.propertyPosition.put("lat", propertyLat);
+        this.propertyPosition.put("lng", propertyLng);
+
+        return this.propertyPosition;
+    }
+
+    public void setPropertyPosition(Map propertyPosition) {
+        this.propertyPosition = propertyPosition;
     }
 
     public String getPropertyDescription() {
@@ -28,6 +50,22 @@ public class Property {
 
     public void setPropertyDescription(String propertyDescription) {
         this.propertyDescription = propertyDescription;
+    }
+
+    public double getPropertyLat() {
+        return propertyLat;
+    }
+
+    public void setPropertyLat(double propertyLat) {
+        this.propertyLat = propertyLat;
+    }
+
+    public double getPropertyLng() {
+        return propertyLng;
+    }
+
+    public void setPropertyLng(double propertyLng) {
+        this.propertyLng = propertyLng;
     }
 
     public int getPropertyId() {

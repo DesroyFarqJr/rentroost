@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    propertiesList: null,
     properties: [
       {
         id: 10,
@@ -89,6 +90,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_PROPERTIES(state, propertiesList) {
+      state.propertiesList = propertiesList;
     }
   }
 
