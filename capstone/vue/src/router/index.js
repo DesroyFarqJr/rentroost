@@ -10,6 +10,7 @@ import Tenant from '../views/Tenant.vue'
 import Landlord from '../views/Landlord.vue'
 import AddProperty from '../views/AddProperty.vue'
 import User from '../views/User.vue'
+import CloudinaryComp from "../components/CloudinaryComp.vue"
 
 Vue.use(Router)
 
@@ -93,7 +94,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+      {
+        path: "/cloudinary",
+        name: "cloudinary",
+        component: CloudinaryComp,
+        meta: {
+          requiresAuth: false
+        }
+      }
+    
   ]
 })
 
