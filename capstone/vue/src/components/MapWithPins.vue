@@ -11,17 +11,24 @@
         @closeclick="infoOpened = false"
       ></gmap-info-window>
       <!-- place map markers for each marker object in the store -->
-      <gmap-marker
+      <gmap-cluster :zoomOnClick="true">
+        <gmap-marker
         :key="index"
         v-for="(m, index) in $store.state.propertiesList"
         :position="m.propertyPosition"
         :clickable="true"
         :draggable:="false"
         @click="toggleInfo(m, index)"
+        :icon="{url:'https://img.icons8.com/emoji/256/red-circle-emoji.png', scaledSize: {width: 20, height: 20}}"
       ></gmap-marker>
+      </gmap-cluster>
     </gmap-map>
   </div>
 </template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.0/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markerclustererplus/2.1.4/markerclusterer.js"></script>
+<script src="vue-google-maps.js"></script>
    
 <script>
 import propertyService from "../services/PropertyService";
@@ -48,42 +55,10 @@ export default {
         content: "null content error",
         infoRent: null,
         infoBedrooms: null
-      },
-      // property markers
-      // TODO move property markers to a store that populates from the API
-      propertyLocationMarkers: [
-        {
-          position: {
-            lat: 40.44104,
-            lng: -80.00221
-          },
-          rent: 1850,
-          bedrooms: 2,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg"
-        },
-        {
-          position: {
-            lat: 40.45358,
-            lng: -79.98055
-          },
-          rent: 2125,
-          bedrooms: 1,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg"
-        },
-        {
-          position: {
-            lat: 40.455,
-            lng: -80
-          },
-          rent: 2450,
-          bedrooms: 2,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image105.jpg"
-        }
-      ]
+      }
     };
   },
   created() {
-    console.log(`called created() in MapWithPins`);
       propertyService.getAllProperties().then((response) => {
         if (response.status == 200) {
           this.$store.commit("SET_PROPERTIES", response.data)
@@ -123,7 +98,7 @@ export default {
           }
           #image {
           }
-          img {
+          #image > img {
             width:125px;
           }
           </style>`;
