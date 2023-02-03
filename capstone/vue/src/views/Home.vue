@@ -20,48 +20,39 @@
               <router-link class="nav-link" to="/user">Username</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout">
-                Log out</router-link
-              >
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <map-filter />
     <div id="maps">
-      <map-with-pins id="map"> </map-with-pins> 
-      <div class="light-grey-box">
-        <div class="rectangular-box"></div>
-        <div class="rectangular-box"></div>
-        <div class="price-scale-widget">
-          <select id="price-scale">
-      <option value="high-to-low">High to Low</option>
-      <option value="low-to-high">Low to High</option>
-    </select>
+      <map-with-pins id="map"> </map-with-pins>
     </div>
   </div>
-</div>
-  </div>
-
-
 </template>
 
 <script>
+import MapFilter from "../components/MapFilter.vue";
 import MapWithPins from "../components/MapWithPins.vue";
 
 export default {
   name: "home",
   components: {
     MapWithPins,
+    MapFilter,
   },
 };
-
 </script>
 
 <style scoped>
-.navbar-collapse {
+
+.home {
+  display: flex;
+  margin-top: 40px;;
+}
+ .navbar-collapse {
   display: flex;
   justify-content: flex-end;
 }
@@ -89,47 +80,40 @@ export default {
   justify-content: flex-end;
   align-items: baseline;
   align-content: stretch;
-  border-bottom: 2px solid transparent;
+
 
   background-color: #ffffff;
-  box-shadow: 0px 5px 5px #7f7d7e;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-
-
-
 #maps {
-  
-  height: 60vh;
-  width: 70%;
+  height: 100vh;
+  width: 100%;
   background-color: grey;
   float: left;
 }
-  
 
-  
-  .light-grey-box {
-    width: 30%;
-    height: auto;
-    background-color: #D3D3D3;
-    float: right;
-    padding: 20px;
-  }
-  
-  .rectangular-box {
-    width: 45%;
-    height: 100px;
-    background-color: white;
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .price-scale-widget {
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    clear: both;
-    margin-top: 20px;
-  }
+.light-grey-box {
+  width: 30%;
+  height: auto;
+  background-color: #d3d3d3;
+  float: right;
+  padding: 20px;
+}
 
+.rectangular-box {
+  width: 45%;
+  height: 100px;
+  background-color: white;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.price-scale-widget {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  clear: both;
+  margin-top: 20px;
+}
 </style>
