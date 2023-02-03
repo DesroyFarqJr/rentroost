@@ -8,6 +8,7 @@ import MapWithPins from '../components/MapWithPins.vue'
 import store from '../store/index'
 import Tenant from '../views/Tenant.vue'
 import Landlord from '../views/Landlord.vue'
+import AddProperty from '../views/AddProperty.vue'
 import User from '../views/User.vue'
 
 Vue.use(Router)
@@ -45,6 +46,14 @@ const router = new Router({
       path: "/logout",
       name: "logout",
       component: Logout,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/AddProperty",
+      name: "AddProperty",
+      component: AddProperty,
       meta: {
         requiresAuth: false
       }

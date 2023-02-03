@@ -12,14 +12,66 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    properties: [
+      {
+        id: 10,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
+        address: "246 Main St.",
+        bedrooms: 3,
+        price: 1800
+      },
+      {
+        id: 20,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
+        address: "488 South St.",
+        bedrooms: 2,
+        price: 1500
+      },
+      {
+        id: 40,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
+        address: "246 Main St.",
+        bedrooms: 3,
+        price: 1800
+      },
+      {
+        id: 50,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
+        address: "246 Main St.",
+        bedrooms: 3,
+        price: 1800
+      },
+      {
+        id: 60,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
+        address: "488 South St.",
+        bedrooms: 2,
+        price: 1500
+      },
+      {
+        id: 80,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
+        address: "246 Main St.",
+        bedrooms: 3,
+        price: 1800
+      },
+      {
+        id: 900,
+        image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
+        address: "246 Main St.",
+        bedrooms: 3,
+        price: 1800
+      }
+    ]
+
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -29,7 +81,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -39,4 +91,5 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     }
   }
+
 })

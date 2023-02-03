@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div >
     <!-- gmap tag pulls from node_modules.vue2-google-maps and creates a window @ the specified size -->
-    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 600px" :options="{mapTypeControl: false, streetViewControl: true}">
+    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 100vh;" :options="{mapTypeControl: false, streetViewControl: false}">
       <!-- info windows pop out when a user clicks on a map marker -->
       <gmap-info-window
         :options="infoOptions"
