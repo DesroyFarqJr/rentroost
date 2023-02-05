@@ -58,6 +58,21 @@ public class JdbcPropertyDao implements PropertyDao {
         return outputList;
     }
 
+    @Override
+    public List<Property> searchProperties(int bedrooms, int bathrooms, double minRent, double maxRent) {
+        List<Property> outputList = new ArrayList<>();
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_lat, p.prop_lng, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
+                "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id " +
+                "WHERE p.prop_bedrooms >= ? AND p.prop_bathrooms >= ? AND p.prop_rent BETWEEN ? AND ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bedrooms, bathrooms, minRent, maxRent);
+        while (results.next()) {
+            Property property = mapRowToProperty(results);
+            outputList.add(property);
+        }
+        return outputList;
+    }
+
 
     private Property mapRowToProperty(SqlRowSet rowSet) {
         Property property = new Property();
