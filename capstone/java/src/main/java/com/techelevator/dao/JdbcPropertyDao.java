@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Property;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,23 @@ public class JdbcPropertyDao implements PropertyDao {
     public JdbcPropertyDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
+
+    public int createProperty(Property property) {
+        String sql ="INSERT INTO property (prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url " +
+                "VALUES (?,?,?,?,?,?,?,?) " +
+                "RETURN prop_id";
+        int newProp_id;
+        try {
+            newProp_id = jdbcTemplate.queryForObject(sql,Integer.class,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.getImageUrl());
+
+        } catch(DataAccessException e ){
+            return 0;
+
+        }
+        return newProp_id;
+
+    }
+
 
     @Override
     public Property getPropertyById(int propertyId) {
@@ -95,4 +113,5 @@ public class JdbcPropertyDao implements PropertyDao {
 
         return property;
     }
+
 }

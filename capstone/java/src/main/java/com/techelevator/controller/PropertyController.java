@@ -31,6 +31,12 @@ public class PropertyController {
     public List<Property> getPropertyByLandlord(@PathVariable int landlord) {
         return propertyDao.getPropertiesByLandlord(landlord);
     }
+    @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
+    public void addProperty(@RequestBody Property property) {
+        //Set lat and long via address --> Google API
+        propertyDao.createProperty(property);
+
+    }
 
     @RequestMapping(path="/search")
     public List<Property> searchProperties(@RequestParam(defaultValue = "0") int bedrooms, @RequestParam(defaultValue = "0") int bathrooms, @RequestParam(defaultValue = "0.00") double minrent, @RequestParam(defaultValue = "99999.00") double maxrent) {

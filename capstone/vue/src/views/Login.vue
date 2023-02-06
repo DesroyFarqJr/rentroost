@@ -154,7 +154,8 @@ html,
 }
 
 .navbar-collapse {
-  display: flex;
+  display: inline-flex;
+  width: 100%;
   justify-content: flex-end;
 }
 .navbar-brand {
