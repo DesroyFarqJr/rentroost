@@ -93,8 +93,8 @@ table {
   width: 70%;
   text-align: left;
   border-collapse: collapse;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  
+   
   font-size: 16px;
   background-color: #fafafa;
   border-radius: 3px;

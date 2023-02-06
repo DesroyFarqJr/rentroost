@@ -78,11 +78,13 @@ form {
 
 .map-filter-template {
     width: 20%;
+    height: 65vh;
     min-height: calc("100vh - 50px");
   background-color: #f5f5f5;
   align-items: center;
 }
 .rent-slider {
+  padding-top: 20px;
     display: flex;
     flex-direction: column;
 }

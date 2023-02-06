@@ -1,5 +1,33 @@
 <template>
   <div class="tenant">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img alt="logo" src="../../public/images/logo.png"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="navbarsExampleDefault"
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/user">Account</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/logout">Logout</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Nav bar ABOVE. 
+    Balance,Maintenance Request, eCheck BELOW -->
     <div id="top-row">
       <div class="input-group">
         <balance-information />
@@ -23,6 +51,9 @@ export default {
 </script>
 
 <style>
+#top-row {
+  padding-top: 100px;
+}
 .tenant {
       display: flex;
     justify-content: center;

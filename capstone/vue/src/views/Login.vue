@@ -115,7 +115,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
 * {
@@ -184,7 +184,7 @@ html,
   border-bottom: 2px solid transparent;
 
   background-color: #ffffff;
-  box-shadow: 0px 5px 5px #7f7d7e;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 a {
   box-shadow: inset 0 0 0 0 #000000;

@@ -1,8 +1,40 @@
 <template>
 
  <div class="landlord">
-    <maintenance-request-table />
-    <list-of-tenants-table />
+
+   <div class="tenant">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img alt="logo" src="../../public/images/logo.png"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="navbarsExampleDefault"
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/user">Account</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/logout">Logout</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Nav Bar Above -->
+<div id="box">
+  <div id="box2">
+  </div>
+    <maintenance-request-table id="MT" />
+    <list-of-tenants-table id="LTT" />
   
   <form @submit.prevent="submitForm">
     <input type="file" ref="fileInput" @change="uploadImage" />
@@ -11,6 +43,8 @@
     <button type="submit">Submit</button>
     
   </form>
+</div>
+ </div>
  </div>
 </template>
 
@@ -56,4 +90,34 @@ export default {
 </script>
 
 <style>
+.navbar-light {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  align-content: stretch;
+  border-bottom: 2px solid transparent;
+
+  background-color: #ffffff;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#MT {
+  /* For some reason adding on a Boc shadow results in table extenstion
+    Box shadow removed until figured out */
+}
+
+#LTT{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#box2{
+  padding: 5 5 5 5;
+}
+
+#box{
+  padding-top: 100px;
+  
+  
+}
 </style>
