@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Property;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
@@ -21,19 +22,19 @@ public class JdbcPropertyDao implements PropertyDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public int createProperty(Property property) {
-        String sql ="INSERT INTO property (prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url " +
-                "VALUES (?,?,?,?,?,?,?,?) " +
-                "RETURN prop_id";
-        int newProp_id;
+    @Override
+    public void createProperty(Property property) {
+      String sql ="INSERT INTO property (prop_name, prop_address, prop_lat, prop_lng, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url) VALUES " +
+              "(?,?,?,?,?,?,?,?,?,?)";
+     int newProp_id;
         try {
-            newProp_id = jdbcTemplate.queryForObject(sql,Integer.class,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.getImageUrl());
+            jdbcTemplate.update(sql,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyLat(), property.getPropertyLng(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.isRented(),property.getImageUrl());
 
         } catch(DataAccessException e ){
-            return 0;
+            System.out.println("Error inserting a property");
 
         }
-        return newProp_id;
+
 
     }
 

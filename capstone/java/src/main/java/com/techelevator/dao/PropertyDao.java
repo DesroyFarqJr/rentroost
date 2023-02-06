@@ -10,7 +10,7 @@ public interface PropertyDao {
     List<Property> getPropertiesByLandlord(int landlordId);
     List<Property> getAllProperties();
 
-    int createProperty(Property property);
+     void createProperty(Property property);
 
     List<Property> searchProperties(int bedrooms, int bathrooms, double minRent, double maxRent);
 //    MORE STUFF
