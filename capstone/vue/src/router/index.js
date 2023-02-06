@@ -10,6 +10,7 @@ import Tenant from '../views/Tenant.vue'
 import Landlord from '../views/Landlord.vue'
 import AddProperty from '../views/AddProperty.vue'
 import User from '../views/User.vue'
+import Employee from '../views/Employee.vue'
 
 Vue.use(Router)
 
@@ -82,6 +83,14 @@ const router = new Router({
         path: "/user",
         name: "user",
         component: User,
+        meta: {
+          requiresAuth: false, //Change this after complete
+        }
+      },
+      {
+        path: "/employee",
+        name: "employee",
+        component: Employee,
         meta: {
           requiresAuth: false, //Change this after complete
         }
