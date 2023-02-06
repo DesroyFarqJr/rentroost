@@ -39,7 +39,12 @@ public class PropertyController {
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
     public void addProperty(@RequestBody Property property) {
         //Set lat and long via address --> Google API
+        Map <String,Double> newMap = restGeocodingService.getGeocode(property.getPropertyAddress());
+        property.setPropertyLat(newMap.get("lat"));
+        property.setPropertyLng(newMap.get("lng"));
         propertyDao.createProperty(property);
+
+
 
     }
 
