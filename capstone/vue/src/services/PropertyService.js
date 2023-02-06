@@ -35,5 +35,9 @@ export default {
         }
         console.log(`property searchstring = ${searchString}`);
         return axios.get(searchString);
+    },
+    addProperty(property) {
+        console.log(property);
+        return axios.post('/property/addproperty', property);
     }
 }
