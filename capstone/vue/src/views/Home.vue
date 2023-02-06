@@ -33,35 +33,38 @@
       <map-with-pins id="map"> </map-with-pins>
     </div>
   <!-- Footer -->
-    
-    <footer class="footer" style="position: fixed; bottom: 0; width: 100%;">
-      <div class="F-Box2>">
-        <nav>
-        <ul>
-          <li>About</li>
-          <li>Research</li>
-          <li>Careers</li>
-          <li>Help</li>
-          <li>Advertise</li>
-          <li>Housing Guide</li>
-          <li>Terms of Use</li>
-          <li>Privacy</li>
-          <li>blog</li>
-        </ul>
-        </nav>
-      </div>
-
-      <div class="lower">
-        <div class="committed">
-          <p>
-            Roost Coop is committed to ensuring digital accessibility for individuals with disabilities. We are continuously working to improve the accessibility of our web experience for everyone, and we welcome feedback and accommodation requests. If you wish to report an issue or seek an accommodation, please.
-            </p>
-      </div>
-
-
-
-      </div>
-    </footer>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Payment</a></li>
+                            <li><a href="#">Rentals</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Rent Roost</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Rent Roost © 2023</p>
+                <p>Roost Coop is committed to ensuring digital accessibility for individuals with disabilities. We are continuously working to improve the accessibility of our web experience for everyone, and we welcome feedback and accommodation requests. If you wish to report an issue or seek an accommodation, please.
+                </p>
+            </div>
+        </footer>
+    </div>
   </div>
 </template>
 
@@ -172,26 +175,20 @@ li{
   position:fixed; bottom:0; left:40%;
    
 }
-footer{
-  background: rgb(243, 243, 243);
-  height: 200px;
-    max-width: 100%;
-    margin-top: -100px;
-    clear:both;
-    display: table-row;
-    
-    font-family: 'Open Sans',Gotham,gotham,Tahoma,Geneva,sans-serif;
-}
+
+
+
 p{
-  color: #54545A;
+  color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-transform: none;
-    font-family: "Open Sans","Adjusted Arial",Tahoma,Geneva,sans-serif;
-    font-weight: 400;
+ font-family: "Fira Sans", sans-serif;   font-weight: 400;
     font-size: 10px;
     line-height: 16px;
     margin: 0;
+    padding-bottom: 5px;
+    padding-top: 10px;
 }
 .commited{
   max-width: 720px;
@@ -203,5 +200,97 @@ p{
     padding: 24px 0;
     color: #666;
     text-align: center;
+}
+.footer-dark {
+  padding:100;
+  color:#ffffff;
+  width: 100%;
+  background-color:#3a3a3a;
+  position:fixed; bottom:0; 
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  padding-top: 10px;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-dark ul {
+  padding:5px;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:0.8;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom:0;
+  }
+}
+
+.footer-dark .item.text p {
+  opacity:0.88;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align:center;
+    margin-top:20px;
+  }
+}
+
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgb(255, 255, 255);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.95}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.9;
+  font-size:13px;
+  margin-bottom:0;
+  color:red
 }
 </style>
