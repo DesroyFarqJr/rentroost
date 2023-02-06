@@ -94,6 +94,7 @@ export default {
  .navbar-collapse {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 .navbar-brand {
   padding: 0;
@@ -104,21 +105,24 @@ export default {
   justify-content: flex-start;
   height: 50px;
   width: 200px;
-  padding: 0;
+  padding-left: 0;
   margin: 0;
   left: 0;
 }
 .navbar-brand {
   text-transform: uppercase;
-  color: red;
+  color: red
+  
 }
 .navbar-light {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  /* flex-direction: column; */
+  /* flex-wrap: nowrap; */
   justify-content: flex-end;
+  align-content: flex-end;
   align-items: baseline;
   align-content: stretch;
+  
 
 
   background-color: #ffffff;
@@ -168,13 +172,7 @@ li{
   margin-top: 20px;
 }
 
-.F-box2{
-  display: block;
-}
-.footBOX1{
-  position:fixed; bottom:0; left:40%;
-   
-}
+
 
 
 
@@ -184,7 +182,7 @@ p{
     -moz-osx-font-smoothing: grayscale;
     text-transform: none;
  font-family: "Fira Sans", sans-serif;   font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 16px;
     margin: 0;
     padding-bottom: 5px;
@@ -198,7 +196,7 @@ p{
 .lower{
   margin: auto;
     padding: 24px 0;
-    color: #666;
+    color: rgb(160, 160, 160);
     text-align: center;
 }
 .footer-dark {
@@ -291,6 +289,8 @@ p{
   opacity:0.9;
   font-size:13px;
   margin-bottom:0;
-  color:red
+  color:rgb(255, 45, 45);
+  font-family: "Fira Sans", sans-serif;   font-weight: 400;
+  
 }
 </style>

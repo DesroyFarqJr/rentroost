@@ -9,6 +9,7 @@
           <option value="2">2+</option>
           <option value="3">3+</option>
         </select>
+        <br>
         <label for="bathrooms">Bathrooms: </label>
         <select id="bathrooms" v-model="searchForm.bathrooms">
           <option value="1" selected>1+</option>
@@ -38,9 +39,9 @@ export default {
   data() {
     return {
       searchForm: {
-        bedrooms: null,
-        bathrooms: null,
-        minRent: null,
+        bedrooms: 0,
+        bathrooms: 1,
+        minRent: 0,
         maxRent: 10000
       },
       message: "Hello from Vue component",

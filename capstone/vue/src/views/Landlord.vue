@@ -103,10 +103,7 @@ export default {
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-#MT {
-  /* For some reason adding on a Boc shadow results in table extenstion
-    Box shadow removed until figured out */
-}
+
 
 #LTT{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
