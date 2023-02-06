@@ -4,6 +4,7 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import * as VueGoogleMaps from "vue2-google-maps" // Google Maps package
+import GmapCluster from 'vue2-google-maps/dist/components/cluster'
 import faker from "vue-faker"
 
 require('dotenv').config()
@@ -11,7 +12,7 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 
-
+Vue.component('GmapCluster', GmapCluster);
 Vue.use(VueGoogleMaps, {
   load: {
     key: process.env.VUE_APP_GMAPSAPIKEY,

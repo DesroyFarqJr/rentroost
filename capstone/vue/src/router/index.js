@@ -11,6 +11,8 @@ import Landlord from '../views/Landlord.vue'
 import AddProperty from '../views/AddProperty.vue'
 import User from '../views/User.vue'
 import Employee from '../views/Employee.vue'
+import CloudinaryComp from "../components/CloudinaryComp.vue"
+import AddPropertyFormPage from "../views/AddPropertyFormPage.vue"
 
 Vue.use(Router)
 
@@ -76,6 +78,14 @@ const router = new Router({
       }
     },
     {
+      path: "/addpropformpage",
+      name: "addpropformpage",
+      component: AddPropertyFormPage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/landlord",
       name: "landlord",
       component: Landlord},
@@ -102,7 +112,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+      {
+        path: "/cloudinary",
+        name: "cloudinary",
+        component: CloudinaryComp,
+        meta: {
+          requiresAuth: false
+        }
+      }
+    
   ]
 })
 

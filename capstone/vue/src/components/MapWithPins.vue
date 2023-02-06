@@ -1,7 +1,7 @@
 <template>
   <div >
     <!-- gmap tag pulls from node_modules.vue2-google-maps and creates a window @ the specified size -->
-    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 100vh;" :options="{mapTypeControl: false, streetViewControl: false}">
+    <gmap-map :zoom="13" :center="center" style="width: 100%; height: 65vh;" :options="{mapTypeControl: false, streetViewControl: false}">
       <!-- info windows pop out when a user clicks on a map marker -->
       <gmap-info-window
         :options="infoOptions"
@@ -11,19 +11,28 @@
         @closeclick="infoOpened = false"
       ></gmap-info-window>
       <!-- place map markers for each marker object in the store -->
-      <gmap-marker
+      <gmap-cluster :zoomOnClick="true">
+        <gmap-marker
         :key="index"
-        v-for="(m, index) in propertyLocationMarkers"
-        :position="m.position"
+        v-for="(m, index) in $store.state.propertiesList"
+        :position="m.propertyPosition"
         :clickable="true"
         :draggable:="false"
         @click="toggleInfo(m, index)"
+        :icon="{url:'https://img.icons8.com/emoji/256/red-circle-emoji.png', scaledSize: {width: 20, height: 20}}"
       ></gmap-marker>
+      </gmap-cluster>
     </gmap-map>
   </div>
 </template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.0/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markerclustererplus/2.1.4/markerclusterer.js"></script>
+<script src="vue-google-maps.js"></script>
    
 <script>
+import propertyService from "../services/PropertyService";
+
 export default {
   name: "MapWithPins",
   data() {
@@ -46,48 +55,29 @@ export default {
         content: "null content error",
         infoRent: null,
         infoBedrooms: null
-      },
-      // property markers
-      // TODO move property markers to a store that populates from the API
-      propertyLocationMarkers: [
-        {
-          position: {
-            lat: 40.44104,
-            lng: -80.00221
-          },
-          rent: 1850,
-          bedrooms: 2,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg"
-        },
-        {
-          position: {
-            lat: 40.45358,
-            lng: -79.98055
-          },
-          rent: 2125,
-          bedrooms: 1,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg"
-        },
-        {
-          position: {
-            lat: 40.455,
-            lng: -80
-          },
-          rent: 2450,
-          bedrooms: 2,
-          imageUrl: "https://rentalroost.s3.us-east-2.amazonaws.com/image105.jpg"
-        }
-      ]
+      }
     };
+  },
+  created() {
+      propertyService.getAllProperties().then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("SET_PROPERTIES", response.data)
+        }
+      }).catch((error) => {
+        const response = error.response;
+        if (response.status == 401) {
+          this.invalidCredentials = true;
+        }
+      });
   },
   methods: {
     // toggle property marker location based on click and set its values
     toggleInfo(marker, index){
-      this.infoPosition = marker.position;
+      this.infoPosition = marker.propertyPosition;
       // this.infoOptions.content = marker.infoText;
       const contentString = `<div class="info-window">
-        <div id="info"><b>Rent:</b> $${marker.rent}<br><b>Bedrooms: </b>${marker.bedrooms}</div>
-        <div id="image"><img src="${marker.imageUrl}" alt="property listing preview image" width="150px"></div>
+        <div id="info"><b>Rent:</b> $${marker.propertyRent}<br><b>Bedrooms: </b>${marker.propertyBedrooms}</div>
+        <div id="image"><img src="${marker.imageUrl}" alt="Image Not Available" width="150px"></div>
         <div></div>
         <div id="posting-link"><a href="www.google.com">More Details...</a></div>
         </div>
@@ -107,6 +97,9 @@ export default {
             text-align: right;
           }
           #image {
+          }
+          #image > img {
+            width:125px;
           }
           </style>`;
       this.infoOptions.content = contentString;

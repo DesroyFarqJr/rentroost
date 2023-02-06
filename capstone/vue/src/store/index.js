@@ -20,12 +20,14 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    propertiesList: null,
     properties: [
       {
         id: 10,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1800
       },
       {
@@ -33,6 +35,7 @@ export default new Vuex.Store({
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
         address: "488 South St.",
         bedrooms: 2,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1500
       },
       {
@@ -40,6 +43,7 @@ export default new Vuex.Store({
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1800
       },
       {
@@ -47,6 +51,7 @@ export default new Vuex.Store({
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1800
       },
       {
@@ -54,6 +59,7 @@ export default new Vuex.Store({
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
         address: "488 South St.",
         bedrooms: 2,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1500
       },
       {
@@ -61,12 +67,14 @@ export default new Vuex.Store({
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         price: 1800
       },
       {
         id: 900,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         bedrooms: 3,
         price: 1800
       }
@@ -89,6 +97,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_PROPERTIES(state, propertiesList) {
+      state.propertiesList = propertiesList;
     }
   }
 

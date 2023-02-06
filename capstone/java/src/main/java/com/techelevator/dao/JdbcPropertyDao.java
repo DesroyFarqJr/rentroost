@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class JdbcPropertyDao implements PropertyDao {
@@ -34,7 +36,7 @@ public class JdbcPropertyDao implements PropertyDao {
     @Override
     public List<Property> getPropertiesByLandlord(int landlord) {
         List<Property> outputList = new ArrayList<>();
-        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id WHERE pl.landlord_id = ?;";
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_lat, p.prop_lng, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id WHERE pl.landlord_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlord);
         while (results.next()) {
             Property property = mapRowToProperty(results);
@@ -46,9 +48,24 @@ public class JdbcPropertyDao implements PropertyDao {
     @Override
     public List<Property> getAllProperties() {
         List<Property> outputList = new ArrayList<>();
-        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_lat, p.prop_lng, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
                 "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Property property = mapRowToProperty(results);
+            outputList.add(property);
+        }
+        return outputList;
+    }
+
+    @Override
+    public List<Property> searchProperties(int bedrooms, int bathrooms, double minRent, double maxRent) {
+        List<Property> outputList = new ArrayList<>();
+        String sql = "SELECT p.property_id, p.prop_name, p.prop_address, p.prop_lat, p.prop_lng, p.prop_description, p.prop_bedrooms, p.prop_bathrooms, p.prop_rent, p.rented, p.url " +
+                "FROM property p LEFT JOIN property_landlord pl ON p.property_id = pl.property_id " +
+                "WHERE p.prop_bedrooms >= ? AND p.prop_bathrooms >= ? AND p.prop_rent BETWEEN ? AND ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bedrooms, bathrooms, minRent, maxRent);
         while (results.next()) {
             Property property = mapRowToProperty(results);
             outputList.add(property);
@@ -62,12 +79,19 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setPropertyId(rowSet.getInt("property_id"));
         property.setPropertyName(rowSet.getString("prop_name"));
         property.setPropertyAddress(rowSet.getString("prop_address"));
+        property.setPropertyLat(rowSet.getDouble("prop_lat"));
+        property.setPropertyLng(rowSet.getDouble("prop_lng"));
         property.setPropertyDescription(rowSet.getString("prop_description"));
         property.setPropertyBedrooms(rowSet.getInt("prop_bedrooms"));
         property.setPropertyBathrooms(rowSet.getInt("prop_bathrooms"));
         property.setPropertyRent(rowSet.getDouble("prop_rent"));
         property.setRented(rowSet.getBoolean("rented"));
         property.setImageUrl(rowSet.getString("url"));
+        Map<String, Double> newPosition = new HashMap<>();
+        newPosition.put("lat", rowSet.getDouble("prop_lat"));
+        newPosition.put("lng", rowSet.getDouble("prop_lng"));
+
+        property.setPropertyPosition(newPosition);
 
         return property;
     }

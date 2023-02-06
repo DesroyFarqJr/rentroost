@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/property")
+@CrossOrigin
 public class PropertyController {
     private PropertyDao propertyDao;
 
@@ -29,5 +30,10 @@ public class PropertyController {
     @RequestMapping(path = "/landlord/{landlord}", method = RequestMethod.GET)
     public List<Property> getPropertyByLandlord(@PathVariable int landlord) {
         return propertyDao.getPropertiesByLandlord(landlord);
+    }
+
+    @RequestMapping(path="/search")
+    public List<Property> searchProperties(@RequestParam(defaultValue = "0") int bedrooms, @RequestParam(defaultValue = "0") int bathrooms, @RequestParam(defaultValue = "0.00") double minrent, @RequestParam(defaultValue = "99999.00") double maxrent) {
+        return propertyDao.searchProperties(bedrooms, bathrooms, minrent, maxrent);
     }
 }
