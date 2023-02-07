@@ -167,11 +167,7 @@ export default {
 }
 .navbar-brand {
   text-transform: uppercase;
-<<<<<<< HEAD
-  color: red
-=======
   color: red;
->>>>>>> main
 }
 
 .navbar-light {
