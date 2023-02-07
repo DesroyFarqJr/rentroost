@@ -17,10 +17,12 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-               <router-link class="nav-link" to="/login">Login</router-link>
+              <router-link class="nav-link" to="/login">Login</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/register"> Sign up</router-link>
+              <router-link class="nav-link" to="/register">
+                Sign up</router-link
+              >
             </li>
           </ul>
         </div>
@@ -153,9 +155,9 @@ html,
 }
 
 .navbar-collapse {
-  display: inline-flex;
   width: 100%;
-  justify-content: flex-end;
+  /* display: inline-flex;
+  justify-content: flex-end; */
 }
 .navbar-brand {
   padding: 0;
