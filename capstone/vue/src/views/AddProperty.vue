@@ -4,8 +4,7 @@
       <div>
               <button>Add Property</button>
       </div>
-    <properties-list />
-  </div>
+    <properties-list />  </div>
 </template>
 
 <script>
