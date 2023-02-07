@@ -112,8 +112,8 @@ export default {
 .navbar-brand {
   text-transform: uppercase;
   color: red
-  
 }
+
 .navbar-light {
   display: flex;
   /* flex-direction: column; */
@@ -122,9 +122,6 @@ export default {
   align-content: flex-end;
   align-items: baseline;
   align-content: stretch;
-  
-
-
   background-color: #ffffff;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
