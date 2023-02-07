@@ -20,8 +20,6 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-
-
     @Override
     public void createMaintenanceRequest(Maintenance maintenance) {
         String sql ="INSERT INTO maintenance (property_id, request, assigned_to, repair_status) VALUES " +
@@ -29,13 +27,9 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
         int newMain_id;
         try {
             jdbcTemplate.update(sql,maintenance.getPropertyId(),maintenance.getMaintenanceRequest(),maintenance.getAssignedTo(), maintenance.getRepairStatus());
-
         } catch(DataAccessException e ){
             System.out.println("Error inserting maintenance");
-
         }
-
-
     }
 
     @Override
@@ -49,20 +43,17 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
             outputList.add(maintenance);
         }
         return outputList;
-
-
     }
+
     public boolean updateMaintenanceRequest(Maintenance maintenance) {
         String sql ="UPDATE maintenance SET request=?, assigned_to=?, repair_status=? WHERE maintenance_id=?";
         boolean success = false;
-
         int linesReturned = jdbcTemplate.update(sql,maintenance.getMaintenanceRequest(), maintenance.getAssignedTo(), maintenance.getRepairStatus());
         if (linesReturned == 1) {
             success = true;
         }
         return success;
         }
-
 
     @Override
     public Maintenance getMaintenanceRequest(int maintenanceId) {
