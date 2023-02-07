@@ -169,6 +169,7 @@ export default {
   text-transform: uppercase;
   color: red;
 }
+
 .navbar-light {
   display: flex;
   justify-content: flex-end;
