@@ -45,5 +45,8 @@ export default {
     },
     addMaintenanceRequest(request) {
         return axios.post('/newticket', request)
+    },
+    getMyProperties() {
+        return axios.get('/property/landlord/myproperties');
     }
 }

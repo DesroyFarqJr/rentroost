@@ -6,10 +6,23 @@
 
 <script>
 import PropertyCard from './PropertyCard.vue';
+import propertyService from "../services/PropertyService";
 
 export default {
   components: {PropertyCard},
   name: "propertyList",
+  created() {
+    propertyService.getMyProperties().then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("SET_MY_PROPERTIES", response.data)
+        }
+      }).catch((error) => {
+        const response = error.response;
+        if (response.status == 401) {
+          this.invalidCredentials = true;
+        }
+      });
+  }
 };
 </script>
 

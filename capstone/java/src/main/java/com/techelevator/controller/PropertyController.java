@@ -36,23 +36,33 @@ public class PropertyController {
         return propertyDao.getPropertyById(propertyId);
     }
 
+    @RequestMapping(path = "/{propertyId}", method = RequestMethod.PUT)
+    public boolean updateProperty(@PathVariable int propertyId, @RequestBody Property property) {
+        return propertyDao.updateProperty(property);
+    }
+
     @RequestMapping(path = "/landlord/{landlord}", method = RequestMethod.GET)
     public List<Property> getPropertyByLandlord(@PathVariable int landlord) {
         return propertyDao.getPropertiesByLandlord(landlord);
     }
+    @RequestMapping(path = "/landlord/myproperties", method = RequestMethod.GET)
+    public List<Property> getMyProperties(Principal principal) {
+        String principalName = principal.getName();
+        System.out.println(principalName);
+        // get landlord id from principalName
+        // TODO landlord ID from principal once we can tie a user to a landlord
+        // return propertyDao.getPropertiesByLandlord(landlordId)
+        return null;
+    }
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
     public void addProperty(@RequestBody Property property) {
-        //Set lat and long via address --> Google API
         System.out.println(property.toString());
         Map <String,Double> newMap = restGeocodingService.getGeocode(property.getPropertyAddress());
         property.setPropertyLat(newMap.get("lat"));
         property.setPropertyLng(newMap.get("lng"));
         propertyDao.createProperty(property);
 
-
     }
-
-
 
     @RequestMapping(path="/search")
     public List<Property> searchProperties(@RequestParam(defaultValue = "0") int bedrooms, @RequestParam(defaultValue = "0") int bathrooms, @RequestParam(defaultValue = "0.00") double minrent, @RequestParam(defaultValue = "99999.00") double maxrent) {
