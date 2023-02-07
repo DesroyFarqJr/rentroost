@@ -9,6 +9,7 @@ public class Tenant {
     private int rent;
     private int overdue;
     private boolean paid;
+    private int tenantLandlord;
 
     public int getTenantId() {
         return tenantId;
@@ -64,6 +65,14 @@ public class Tenant {
 
     public void setPaid(boolean paid) {
         this.paid = paid;
+    }
+
+    public int getTenantLandlord() {
+        return tenantLandlord;
+    }
+
+    public void setTenantLandlord(int tenantLandlord) {
+        this.tenantLandlord = tenantLandlord;
     }
 
     @Override

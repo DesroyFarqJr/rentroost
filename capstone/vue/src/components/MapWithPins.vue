@@ -90,7 +90,7 @@ export default {
         <div id="info"><b>Rent:</b> $${marker.propertyRent}<br><b>Bedrooms: </b>${marker.propertyBedrooms}</div>
         <div id="image"><img src="${marker.imageUrl}" alt="Image Not Available" width="150px"></div>
         <div></div>
-        <div id="posting-link"><a href="www.google.com">More Details...</a></div>
+        <div id="posting-link"><a href="PropertyDetails/${marker.propertyId}">More Details...</a></div>
         </div>
         <style scoped>
           .info-window {

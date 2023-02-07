@@ -21,54 +21,67 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     propertiesList: null,
+    myPropertiesList: null,
     properties: [
       {
         id: 10,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1800
+        price: 1800,
+        name: "name"
       },
       {
         id: 20,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
         address: "488 South St.",
         bedrooms: 2,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1500
+        price: 1500,
+        name: "name"
       },
       {
         id: 40,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1800
+        price: 1800,
+        name: "name"
       },
       {
         id: 50,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1800
+        price: 1800,
+        name: "name"
       },
       {
         id: 60,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image104.jpg",
         address: "488 South St.",
         bedrooms: 2,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1500
+        price: 1500,
+        name: "name"
       },
       {
         id: 80,
         image: "https://rentalroost.s3.us-east-2.amazonaws.com/image103.jpg",
         address: "246 Main St.",
         bedrooms: 3,
+        bathrooms: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 1800
+        price: 1800,
+        name: "name"
       },
       {
         id: 900,
@@ -76,7 +89,9 @@ export default new Vuex.Store({
         address: "246 Main St.",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         bedrooms: 3,
-        price: 1800
+        bathrooms: 1,
+        price: 1800,
+        name: "name"
       }
     ]
 
