@@ -1,12 +1,15 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.PropertyDao;
 import com.techelevator.model.Property;
+import com.techelevator.model.Tenant;
 import com.techelevator.service.GeocodingService;
 import com.techelevator.service.RestGeocodingService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +19,7 @@ import java.util.Map;
 public class PropertyController {
     private PropertyDao propertyDao;
     private RestGeocodingService restGeocodingService;
+    private LandlordDao landlordDao;
 
     public PropertyController(PropertyDao propertyDao, RestGeocodingService restGeocodingService) {
         this.propertyDao = propertyDao;
@@ -46,7 +50,6 @@ public class PropertyController {
         propertyDao.createProperty(property);
 
 
-
     }
 
 
@@ -58,6 +61,12 @@ public class PropertyController {
     @RequestMapping(path="/geocode", method = RequestMethod.GET)
     public Map<String, Double> getGeocode(@RequestParam(defaultValue = "") String address) {
         return restGeocodingService.getGeocode(address);
+    }
+
+
+    @RequestMapping(path = "/landlordstenants", method = RequestMethod.GET)
+    public List<Tenant> getLandlordsTenants(Principal principal) {
+        return landlordDao.listOfLandlordsTenants(principal);
     }
 
 }
