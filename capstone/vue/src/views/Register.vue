@@ -18,7 +18,8 @@
         </div>
     </div>
   </nav>
-  
+  <!-- Nav bar -->
+  <!-- Registraition  -->
 
   <div class="auth-wrapper">
     <div class="auth-inner">
@@ -78,6 +79,27 @@
             style="margin-bottom: 10px"
             autofocus
           />
+            <p> Select roles:  </p>
+          
+          <div class="role-checkboxes" v-for="(role, key) in selectedRoles" :key="key">
+           <label :for="key" type="checkbox">{{ role }}</label> 
+            <input 
+            type="checkbox"  @change="updateUser(role)" />
+              
+                
+             
+                <!-- <input 
+                type="checkbox"
+                v-model="selectedRoles" />  -->
+            
+          </div>
+         <br>
+         
+         
+          
+        
+         
+
           <label for="password" class="sr-only">Password</label>
           <input
             type="password"
@@ -126,13 +148,23 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role: "user",
+        role:"",
+        
       },
+      selectedRoles: ['Landlord', 'Tenant', 'ADMIN'],
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
+    updateUser(role) {
+      // method looks for change in checkbox, finds choice, then modifies
+  // the user object role property. Also makes the other checkboxes read only 
+  //so only one check box is clicked at a time OR just set the other checkboxes to false.
+      alert(role)
+        
+      this.user.role=role
+    },
    async register() {
 
      
@@ -166,6 +198,7 @@ export default {
       this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
+  
 };
 </script>
 
@@ -204,7 +237,11 @@ html,
   height: 100%;
 }
 
+.role-checkboxes {
+  display: flex;
+  justify-content: space-between;
 
+}
 .navbar-collapse {
   display: flex;
   justify-content: flex-end;
