@@ -180,12 +180,12 @@ export default {
 }
 
 #map {
-  border-radius: 40px;
-  border-radius: 25px;
+  /* adding rounded corners */
+  border-radius: 20px;
   margin: 0 auto;
-  -moz-border-radius: 25px;
-  -webkit-mask-border-radius: 25px;
-  -webkit-border-radius: 25px;
+  -moz-border-radius: 20px;
+  -webkit-mask-border-radius: 20px;
+  -webkit-border-radius: 20px;
   -webkit-transform: translate3d(0px, 0px, 0px);
   -webkit-mask-image: -webkit-radial-gradient(#d3d3d3, #d3d3d3);
   height: 100%;
@@ -194,7 +194,8 @@ export default {
 .maps {
   height: auto;
   width: 100%;
-  background-color: #d3d3d3;
+  /* here is where the background of the corners is */
+  background-color: #f5f5f5;
   float: left;
   border-radius: 4px;
 }
