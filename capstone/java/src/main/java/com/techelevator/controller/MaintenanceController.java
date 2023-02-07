@@ -5,6 +5,7 @@ import com.techelevator.model.Maintenance;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
     @RestController
@@ -23,9 +24,9 @@ import java.util.List;
         }
 
         @RequestMapping(path ="/newticket", method = RequestMethod.POST)
-        public void createMaintenanceRequest(@RequestBody Maintenance maintenance) {
+        public void createMaintenanceRequest(Principal principal, @RequestBody Maintenance maintenance) {
             System.out.println(maintenance.toString());
-            maintenanceDao.createMaintenanceRequest(maintenance);
+            maintenanceDao.createMaintenanceRequest(principal, maintenance);
         }
     }
 

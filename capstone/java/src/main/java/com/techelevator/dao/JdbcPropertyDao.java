@@ -37,7 +37,7 @@ public class JdbcPropertyDao implements PropertyDao {
     @Override
     public Property getPropertyById(int propertyId) {
         Property property = null;
-        String sql = "SELECT property_id, prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url " +
+        String sql = "SELECT * " +
                 "FROM property " +
                 "WHERE property_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, propertyId);
