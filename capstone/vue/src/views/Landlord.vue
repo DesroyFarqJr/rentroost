@@ -17,13 +17,14 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/user">Account</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout">Logout</router-link>
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
           </ul>
         </div>

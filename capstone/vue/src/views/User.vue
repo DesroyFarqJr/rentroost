@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+     <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
@@ -14,13 +14,14 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Account</router-link>
+              <router-link class="nav-link" to="/user">Acocunt</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout">Logout</router-link>
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
           </ul>
         </div>
@@ -108,7 +109,7 @@
                         </div>
                       </div>
                       <div display="flex" class="Pro-text">
-                        <strong class="strong"> Pay Rent</strong>
+                        <strong class="strong"> Pay Rent or Send Maintenance Ticket</strong>
                         <span>
                           Pay any rent due or send Maintainence Request
                         </span>
@@ -345,6 +346,7 @@ span {
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+  
 }
 .rec-container2 {
   padding: 20px;
@@ -363,12 +365,20 @@ span {
   border: none;
   padding: 8px;
 }
+
+.Fifth {
+  display: flex;
+  flex-shrink: 0;
+
+}
+
 .OG-BOX {
   background-color: rgb(249, 249, 251);
   padding: 24px 0px;
   display: flex;
   flex-direction: column;
-  min-height: 751px;
+  height: 50vh;
+  width: 100vh;
 }
 
 .saved-homes {

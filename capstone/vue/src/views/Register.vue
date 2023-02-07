@@ -1,25 +1,32 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-light fixed-top">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
         /></a>
-        <div class="collapse navbar-collapse">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="navbarsExampleDefault"
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
+              <router-link class="nav-link" to="/user">Acocunt</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/register">
-                Sign up</router-link
-              >
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
           </ul>
         </div>
-
-    </div>
-  </nav>
+      </div>
+    </nav>
   <!-- Nav bar -->
   <!-- Registraition  -->
     <div class="auth-wrapper">
