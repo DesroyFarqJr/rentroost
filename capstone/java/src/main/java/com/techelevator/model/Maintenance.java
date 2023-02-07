@@ -1,11 +1,16 @@
 package com.techelevator.model;
+import javax.validation.constraints.NotBlank;
 
 public class Maintenance {
 
     private int maintenanceId;
+    @NotBlank(message = "Field cannot be empty")
     private int propertyId;
+    @NotBlank(message = "Field cannot be empty")
     private String maintenanceRequest;
+    @NotBlank(message = "Field cannot be empty")
     private int assignedTo;
+    @NotBlank(message = "Field cannot be empty")
     private String repairStatus;
 
     public int getMaintenanceId() {

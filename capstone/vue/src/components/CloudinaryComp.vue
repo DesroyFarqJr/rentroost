@@ -36,7 +36,7 @@ export default {
         max_files: 1,
         thumbnails: "#thumbnails",
         defaultSource: "local",
-        keep_widget_open: false,
+        keep_widget_open: true,
         // to here
         styles: {
           // Make everything red to match red roost branding
