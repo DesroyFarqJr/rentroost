@@ -39,5 +39,8 @@ export default {
     addProperty(property) {
         console.log(property);
         return axios.post('/property/addproperty', property);
+    },
+    getProperty(id) {
+        return axios.get('/property/' + id);
     }
 }
