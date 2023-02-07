@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -21,12 +22,14 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
     }
 
     @Override
-    public void createMaintenanceRequest(Maintenance maintenance) {
-        String sql ="INSERT INTO maintenance (property_id, request, assigned_to, repair_status) VALUES " +
-                "(?,?,?,?)";
+    public void createMaintenanceRequest(Principal principal, Maintenance maintenance) {
+        String principalName = principal.getName();
+        System.out.println(principalName);
+        String sql ="INSERT INTO maintenance (property_id, request, assigned_to, repair_status, username) VALUES " +
+                "(?,?,?,?,?)";
         int newMain_id;
         try {
-            jdbcTemplate.update(sql,maintenance.getPropertyId(),maintenance.getMaintenanceRequest(),maintenance.getAssignedTo(), maintenance.getRepairStatus());
+            jdbcTemplate.update(sql,maintenance.getPropertyId(),maintenance.getMaintenanceRequest(),maintenance.getAssignedTo(), maintenance.getRepairStatus(), principalName);
         } catch(DataAccessException e ){
             System.out.println("Error inserting maintenance");
         }
@@ -53,7 +56,7 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
             success = true;
         }
         return success;
-        }
+    }
 
     @Override
     public Maintenance getMaintenanceRequest(int maintenanceId) {

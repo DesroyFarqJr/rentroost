@@ -1,137 +1,126 @@
 <template>
-
-<div id="app">
-
-  <nav class="navbar navbar-expand navbar-light fixed-top">
-    <div class="container-fluid">
-      <a href="#" class="navbar-brand"><img alt="logo" src="../../public/images/logo.png"></a>
+  <div id="app">
+    <nav class="navbar navbar-expand navbar-light fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img alt="logo" src="../../public/images/logo.png"
+        /></a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/login">Login</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/register"> Sign up</router-link>
+              <router-link class="nav-link" to="/register">
+                Sign up</router-link
+              >
             </li>
-              
           </ul>
         </div>
+
     </div>
   </nav>
   <!-- Nav bar -->
   <!-- Registraition  -->
+    <div class="auth-wrapper">
+      <div class="auth-inner">
+        <div id="register" class="text-center">
+          <form class="form-register" @submit.prevent="register">
+            <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+            <div
+              class="alert alert-danger"
+              role="alert"
+              v-if="registrationErrors"
+            >
+              {{ registrationErrorMsg }}
+            </div>
+            <label for="firstname" class="sr-only">First name</label>
+            <input
+              type="text"
+              id="firstname"
+              class="form-control"
+              placeholder="Firstname"
+              v-model="user.firstname"
+              required
+              style="margin-bottom: 10px"
+              autofocus
+            />
+            <label for="lastname" class="sr-only">Last name</label>
+            <input
+              type="text"
+              id="lastname"
+              class="form-control"
+              placeholder="Lastname"
+              v-model="user.lastname"
+              required
+              style="margin-bottom: 10px"
+              autofocus
+            />
 
-  <div class="auth-wrapper">
-    <div class="auth-inner">
-      <div id="register" class="text-center">
-        <form class="form-register" @submit.prevent="register">
-          <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-          <div
-            class="alert alert-danger"
-            role="alert"
-            v-if="registrationErrors"
-          >
-            {{ registrationErrorMsg }}
-          </div>
-          <label for="firstname" class="sr-only">First name</label>
-          <input
-            type="text"
-            id="firstname"
-            class="form-control"
-            placeholder="Firstname"
-            v-model="user.firstname"
-            required
-            style="margin-bottom: 10px"
-            autofocus
-          />
-          <label for="lastname" class="sr-only">Last name</label>
-          <input
-            type="text"
-            id="lastname"
-            class="form-control"
-            placeholder="Lastname"
-            v-model="user.lastname"
-            required
-            style="margin-bottom: 10px"
-            autofocus
-          />
-         
-          <label for="email" class="sr-only">Email</label>
-          <input
-            type="text"
-            id="email"
-            class="form-control"
-            placeholder="Email"
-            v-model="user.email"
-            required
-            style="margin-bottom: 10px"
-            autofocus
-          />
-          
+            <label for="email" class="sr-only">Email</label>
+            <input
+              type="text"
+              id="email"
+              class="form-control"
+              placeholder="Email"
+              v-model="user.email"
+              required
+              style="margin-bottom: 10px"
+              autofocus
+            />
+
+
             <label for="username" class="sr-only">Username</label>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            v-model="user.username"
-            required
-            style="margin-bottom: 10px"
-            autofocus
-          />
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Username"
+              v-model="user.username"
+              required
+              style="margin-bottom: 10px"
+              autofocus
+            />
+
             <p> Select roles:  </p>
           
           <div class="role-checkboxes" v-for="(role, key) in selectedRoles" :key="key">
            <label :for="key" type="checkbox">{{ role }}</label> 
             <input 
             type="checkbox"  @change="updateUser(role)" />
-              
-                
-             
-                <!-- <input 
-                type="checkbox"
-                v-model="selectedRoles" />  -->
-            
-          </div>
-         <br>
-         
-         
-          
-        
-         
+            </div>
 
-          <label for="password" class="sr-only">Password</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-            
-          />
-          <input
-            type="password"
-            id="confirmPassword"
-            class="form-control"
-            placeholder="Confirm Password"
-            v-model="user.confirmPassword"
-            required
-            style="margin-bottom: 20px"
 
-          />
-          <router-link :to="{ name: 'login' }">Have an account? </router-link>
-          
 
-           <button style="margin: 20px" class="reg"  type="submit">
-            Join Roost!
-            
-          </button> 
-        </form>
+            <label for="password" class="sr-only">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="user.password"
+              required
+            />
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              placeholder="Confirm Password"
+              v-model="user.confirmPassword"
+              required
+              style="margin-bottom: 20px"
+            />
+            <router-link :to="{ name: 'login' }">Have an account? </router-link>
+
+            <button style="margin: 20px" class="reg" type="submit">
+              Join Roost!
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
 </template>
 
 <script>
@@ -148,10 +137,9 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role:"",
-        
+        role: "",
       },
-      selectedRoles: ['Landlord', 'Tenant', 'ADMIN'],
+      selectedRoles: ["Landlord", "Tenant", "ADMIN"],
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",
     };
@@ -159,17 +147,13 @@ export default {
   methods: {
     updateUser(role) {
       // method looks for change in checkbox, finds choice, then modifies
-  // the user object role property. Also makes the other checkboxes read only 
-  //so only one check box is clicked at a time OR just set the other checkboxes to false.
-      alert(role)
-        
-      this.user.role=role
+      // the user object role property. Also makes the other checkboxes read only
+      //so only one check box is clicked at a time OR just set the other checkboxes to false.
+      alert(role);
+
+      this.user.role = role;
     },
-   async register() {
-
-     
-   
-
+    async register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = "Password & Confirm Password do not match.";
@@ -198,7 +182,6 @@ export default {
       this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
-  
 };
 </script>
 
@@ -240,8 +223,8 @@ html,
 .role-checkboxes {
   display: flex;
   justify-content: space-between;
-
 }
+
 .navbar-collapse {
   display: flex;
   justify-content: flex-end;
@@ -265,7 +248,6 @@ html,
 }
 .navbar-light {
   display: flex;
- 
 
   background-color: #ffffff;
   box-shadow: 0px 5px 5px #7f7d7e;
@@ -281,7 +263,6 @@ a:hover {
   box-shadow: inset 179px 0 0 0 #ff0000;
   color: white;
 }
-
 
 a {
   color: #ff000f;

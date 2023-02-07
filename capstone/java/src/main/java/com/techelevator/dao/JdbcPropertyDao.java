@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Maintenance;
 import com.techelevator.model.Property;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,6 @@ public class JdbcPropertyDao implements PropertyDao {
     public JdbcPropertyDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
     @Override
     public void createProperty(Property property) {
       String sql ="INSERT INTO property (prop_name, prop_address, prop_lat, prop_lng, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url) VALUES " +
@@ -29,20 +29,15 @@ public class JdbcPropertyDao implements PropertyDao {
      int newProp_id;
         try {
             jdbcTemplate.update(sql,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyLat(), property.getPropertyLng(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.isRented(),property.getImageUrl());
-
         } catch(DataAccessException e ){
             System.out.println("Error inserting a property");
-
         }
-
-
     }
-
 
     @Override
     public Property getPropertyById(int propertyId) {
         Property property = null;
-        String sql = "SELECT property_id, prop_name, prop_address, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url " +
+        String sql = "SELECT * " +
                 "FROM property " +
                 "WHERE property_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, propertyId);
@@ -92,6 +87,16 @@ public class JdbcPropertyDao implements PropertyDao {
         return outputList;
     }
 
+    public boolean updateProperty(Property property) {
+        // address price bedrooms bathrooms description
+        String sql ="UPDATE property SET prop_name=?, prop_address=?, prop_description=?, prop_bedrooms=?, prop_bathrooms=?, prop_rent=? WHERE property_id = ?;";
+        boolean outcome = false;
+        int linesReturned = jdbcTemplate.update(sql, property.getPropertyName(), property.getPropertyAddress(), property.getPropertyDescription(), property.getPropertyBedrooms(), property.getPropertyBathrooms(), property.getPropertyRent(), property.getPropertyId());
+        if (linesReturned == 1) {
+            outcome = true;
+        }
+        return outcome;
+    }
 
     private Property mapRowToProperty(SqlRowSet rowSet) {
         Property property = new Property();

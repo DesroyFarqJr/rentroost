@@ -21,7 +21,6 @@ public class RestGeocodingService implements GeocodingService{
         String paramString = inputAddress.replace(" ", "%20");
         paramString = paramString.replace("#", "%23");
         paramString += "&key=" + googleMapsApiKey;
-        System.out.println("URL REQUEST TO: " + API_BASE_URL + paramString);
 
         Geocode geocode = restTemplate.getForObject(API_BASE_URL + paramString, Geocode.class);
         Map<String, Double> outputLocation = new HashMap<>();
