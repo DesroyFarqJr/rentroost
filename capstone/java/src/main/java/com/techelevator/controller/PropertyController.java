@@ -28,7 +28,9 @@ public class PropertyController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Property> getProperties() {
-        return propertyDao.getAllProperties();
+        List<Property> newList = propertyDao.getAllProperties();
+        System.out.println("SIZE OF RETURNING LIST: " + newList.size());
+        return newList;
     }
 
     @RequestMapping(path = "/{propertyId}", method = RequestMethod.GET)
@@ -66,7 +68,9 @@ public class PropertyController {
 
     @RequestMapping(path="/search")
     public List<Property> searchProperties(@RequestParam(defaultValue = "0") int bedrooms, @RequestParam(defaultValue = "0") int bathrooms, @RequestParam(defaultValue = "0.00") double minrent, @RequestParam(defaultValue = "99999.00") double maxrent) {
-        return propertyDao.searchProperties(bedrooms, bathrooms, minrent, maxrent);
+        List<Property> newList = propertyDao.searchProperties(bedrooms, bathrooms, minrent, maxrent);
+        System.out.println("SIZE OF RETURNING SEARCH LIST: " + newList.size());
+        return newList;
     }
     @RequestMapping(path="/geocode", method = RequestMethod.GET)
     public Map<String, Double> getGeocode(@RequestParam(defaultValue = "") String address) {

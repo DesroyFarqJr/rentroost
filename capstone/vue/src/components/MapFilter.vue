@@ -4,10 +4,10 @@
       <div class="select-group">
         <label for="bedrooms">Bedrooms: </label>
         <select id="bedrooms" v-model="searchForm.bedrooms">
-          <option value="0" selected>Studio</option>
-          <option value="1">1+</option>
-          <option value="2">2+</option>
-          <option value="3">3+</option>
+          <option value=0 selected>Studio</option>
+          <option value=1>1+</option>
+          <option value=2>2+</option>
+          <option value=3>3+</option>
         </select>
         <br />
         <label for="bathrooms">Bathrooms: </label>
