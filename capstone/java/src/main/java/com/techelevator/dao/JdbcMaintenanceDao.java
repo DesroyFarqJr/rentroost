@@ -53,7 +53,7 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
             success = true;
         }
         return success;
-        }
+    }
 
     @Override
     public Maintenance getMaintenanceRequest(int maintenanceId) {

@@ -26,13 +26,19 @@ public class JdbcLandlordDao implements LandlordDao {
         return landlord;
     }
 
-        private Landlord mapRowToLandlord(SqlRowSet rowSet) {
-            Landlord landlord = new Landlord();
-            landlord.setLandlordId(rowSet.getInt("landlord_id"));
-            landlord.setLandlordName(rowSet.getString("landlord_name"));
-            landlord.setLandlordPhone(rowSet.getString("landlord_phone"));
-            landlord.setLandlordEmail(rowSet.getString("landlord_email"));
+    public Landlord getLandlordByName(String principalName) {
+        // TODO implement get landlord from name after models have been updated
+        return null;
+    }
 
-            return landlord;
-        }
+
+    private Landlord mapRowToLandlord(SqlRowSet rowSet) {
+        Landlord landlord = new Landlord();
+        landlord.setLandlordId(rowSet.getInt("landlord_id"));
+        landlord.setLandlordName(rowSet.getString("landlord_name"));
+        landlord.setLandlordPhone(rowSet.getString("landlord_phone"));
+        landlord.setLandlordEmail(rowSet.getString("landlord_email"));
+
+        return landlord;
+    }
     }
