@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.PropertyDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Landlord;
 import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 import com.techelevator.model.User;
@@ -65,10 +66,13 @@ public class PropertyController {
         System.out.println(property.toString());
         System.out.println(principal.getName());
         System.out.println(principal);
+        User user = userDao.findByUsername(principal.getName());
+        Landlord landlord = landlordDao.getLandlord(user.getId());
+        landlord.getLandlordId();
         Map <String,Double> newMap = restGeocodingService.getGeocode(property.getPropertyAddress());
         property.setPropertyLat(newMap.get("lat"));
         property.setPropertyLng(newMap.get("lng"));
-        propertyDao.createProperty(property, principal.getName());
+        propertyDao.createProperty(property, landlord.getLandlordId());
 
     }
 

@@ -24,11 +24,11 @@ public class JdbcPropertyDao implements PropertyDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     @Override
-    public void createProperty(Property property, String username) {
+    public void createProperty(Property property, int landlordId) {
       String sql ="INSERT INTO property (prop_name, prop_address, prop_lat, prop_lng, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url) VALUES " +
               "(?,?,?,?,?,?,?,?,?,?)";
         String sqlToAssignProperty = "INSERT INTO property_landlord (property_id, landlord_id) " +
-                "VALUES ((SELECT property_id FROM property WHERE prop_address = ?), (SELECT landlord_id FROM landlord WHERE landlord_name = ?))";
+                "VALUES ((SELECT property_id FROM property WHERE prop_address = ?), ?)";
      int newProp_id;
         try {
             jdbcTemplate.update(sql,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyLat(), property.getPropertyLng(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.isRented(),property.getImageUrl());
@@ -36,8 +36,8 @@ public class JdbcPropertyDao implements PropertyDao {
         } catch(DataAccessException e ){
             System.out.println("Error inserting a property");
         } finally {
-            jdbcTemplate.update(sqlToAssignProperty, property.getPropertyAddress(), username);
-            System.out.println(property.getPropertyAddress() + username);
+            jdbcTemplate.update(sqlToAssignProperty, property.getPropertyAddress(), landlordId);
+            System.out.println(property.getPropertyAddress() + landlordId);
         }
     }
 
