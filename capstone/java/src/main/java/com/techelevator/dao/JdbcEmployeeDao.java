@@ -14,6 +14,11 @@ public class JdbcEmployeeDao implements EmployeeDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    @Override
+    public boolean addEmployee(String firstname, String lastname, String phone, String email, int userId) {
+        String insertUserSql = "INSERT INTO employee (employee_name, emp_phone, emp_email,  employee_user_id) values (?,?,?,?)";
+        return jdbcTemplate.update(insertUserSql, "" + firstname + " " + lastname, phone, email, userId) == 1;
+    }
 
     @Override
     public Employee getEmployee(int employeeId) {
