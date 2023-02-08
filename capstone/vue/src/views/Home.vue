@@ -429,7 +429,7 @@ input {
     outline-color: none;
     background-color: transparent;
     border:none;
-    width: 20%;
+    width: 30%;
     flex-grow:1;
     font-size: 15px;
 }
@@ -447,7 +447,7 @@ input:focus {
   margin: 0px 5px;
 }
 .wrapper {
-    width: 21%;
+    width: 24%;
     height: 100%;
     padding: 2px;
     border-radius: 10px;

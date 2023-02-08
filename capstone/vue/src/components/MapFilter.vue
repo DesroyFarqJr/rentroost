@@ -16,7 +16,12 @@
           <option value="2">2+</option>
           <option value="3">3+</option>
         </select>
+        
         <div class="rent-slider" data-min="500" data-max="10000">
+          <div class="slider-container">
+            <div class="value-container">
+              <span id="demo">{{ sliderValue }}</span>
+            </div>
           <label for="rent-range">Rent Maximum: </label>
           <input
             type="range"
@@ -29,8 +34,9 @@
             
             onchange="updateTextInput(this.value);"
           />
-          
+          </div>
         </div>
+      
       </div>
     </form>
   </div>
@@ -42,11 +48,11 @@ export default {
   data() {
     return {
       searchForm: {
-        
         bedrooms: 0,
         bathrooms: 1,
         minRent: 0,
         maxRent: 10000,
+        sliderValue: 0
       },
       message: "Hello from Vue component",
       name: "mapFilter",
@@ -78,40 +84,69 @@ export default {
         });
     },
   },
-  watch: {
-    rangeValue(val) {
-      this.textValue = val;
-    },
-  },
+  computed: {
+    sliderPercentage(){
+      return (this.searchForm.maxRent - this.min) / (this.max - this.min) * 100;
+    }
+  }
 };
 </script>
 
 <style scoped>
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+/* @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="range"] {
     overflow: hidden;
     width: 100;
     -webkit-appearance: none;
 
     background-color: rgba(197, 197, 197, 0.445);
-  }
+  } */
 
-  input[type="range"]::-webkit-slider-runnable-track {
+  /* input[type="range"]::-webkit-slider-runnable-track {
     height: 100%;
     -webkit-appearance: none;
     color: #ff0000;
     margin-top: -5px;
-  }
+  } */
 
-  input[type="range"]::-webkit-slider-thumb {
+  /* input[type="range"]::-webkit-slider-thumb {
     width: 10px;
     -webkit-appearance: none;
     height: 10px;
     cursor: pointer;
     background: rgb(255, 16, 16);
     box-shadow: -85px 0 0 80px #ff0000;
-  }
+  } */
+
+
+.slider::-webkit-slider-thumb{
+  cursor: pointer;
+  appearance: none;
+  height: 35px;
+  width: 35px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 2px 8px 13px -3px rgba(204, 204, 204, 0.685);
+  -webkit-box-box-shadow: 2px 8px 13px -3px rgba(116, 114,114,0.75);
+  -moz-box-shadow: 2px 8px 13px -3px rgba(216, 216, 216, 0.75);
+
 }
+
+
+.slider {
+  width: 60%;
+  background: linear-gradient(to right, #fc1100 0%, #ff3232 0%, rgba(255, 255, 255, 0.712));
+  height: 20px;
+  background: 450ms ease-in;
+  -webkit-appearance: none;
+  border-radius: 25px;
+  box-shadow: 2px 8px 13px -3px rgba(196, 196, 196, 0.75);
+  -webkit-box-box-shadow: 2px 8px 13px -3px rgba(216, 0, 0, 0.75);
+  -moz-bozx-shadow: 2px 8px 13px -3px rgba(179, 179, 179, 0.75);
+}
+
+
 
 form {
   display: flex;
@@ -120,7 +155,7 @@ form {
 }
 
 .select-group {
-  width: 300px;
+  width: 300%px;
 }
 
 select {
@@ -131,11 +166,27 @@ select {
   border-radius: 6px;
   background-color: #f00;
   font-weight: 600;
-  color: white;
+  color: rgb(255, 255, 255);
 }
+body {
+  padding: 0;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  background-color:transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+#demo{
+  color: rgb(143, 134, 180);
+  font-size: 15vh;
+  font-family: sans,-serif;
 
+}
 .map-filter-template {
-  width: 20%;
+  width: 30%;
   height: inherit;
   /* min-height: calc("100vh - 50px"); */
   background-color: #f5f5f5;
@@ -143,29 +194,29 @@ select {
   justify-content: center;
   align-items: center;
 }
-.rent-slider {
+
+.slider-container {
   padding-top: -20px;
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   width: 100%;
   align-items: center;
   margin: 20px 0;
   justify-content: center;
-  flex-direction: column;
+  
   border-radius: 8px;
   height: 65px;
-  color: rgba(255, 255, 255, 0.08);
+  
 }
 
-.slider {
-  background-color: tomato;
-}
-.value {
-  display: flex;
-  justify-content: flex-end;
+.value-container {
+  margin-bottom: 25px;
 
-  width: 40px;
 }
+
+
+
+
 /*  */
 .container {
   position: fixed;
@@ -180,7 +231,7 @@ select {
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  min-width: 20%;
+  /* min-width: 50%; */
   border: 0;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(black, 0.1);
