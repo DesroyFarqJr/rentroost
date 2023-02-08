@@ -10,6 +10,7 @@ public class Tenant {
     private int overdue;
     private boolean paid;
     private int tenantLandlord;
+    private String tenantAddress;
 
     public int getTenantId() {
         return tenantId;
@@ -74,6 +75,15 @@ public class Tenant {
     public void setTenantLandlord(int tenantLandlord) {
         this.tenantLandlord = tenantLandlord;
     }
+
+    public String getTenantAddress() {
+        return tenantAddress;
+    }
+
+    public void setTenantAddress(String tenantAddress) {
+        this.tenantAddress = tenantAddress;
+    }
+
 
     @Override
     public String toString() {

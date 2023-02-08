@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landlord;
+import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 
 import java.security.Principal;
@@ -12,6 +13,10 @@ public interface LandlordDao {
 
     ArrayList<Tenant> listOfLandlordsTenants(Principal principal) ;
 //    MORE STUFF SOON!
+
+    boolean changeTenantAddress(String address, int id);
+
+    ArrayList<Property> getLandlordsProperties(Principal principal);
 
 
 }

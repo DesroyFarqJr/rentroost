@@ -48,5 +48,11 @@ export default {
     },
     getMyProperties() {
         return axios.get('/property/landlord/myproperties');
+    },
+    getPrincipalTenantsList() {
+        return axios.get('property/landlordstenants')
+    },
+    getPrincipalPropertyList() {
+        return axios.get('property/landlordsproperties')
     }
 }

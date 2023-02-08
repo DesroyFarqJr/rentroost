@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 
 
 public class JdbcEmployeeDao implements EmployeeDao {
@@ -27,6 +28,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
         }
         return employee;
     }
+
+    @Override
+    public ArrayList<Employee> listOfEmployeees() {
+        ArrayList<Employee> employees = new ArrayList<>();
+        String sql = "SELECT * FROM employee";
+        return null;
+    }
+
 
     private Employee mapRowToEmployee(SqlRowSet rowSet) {
         Employee employee = new Employee();

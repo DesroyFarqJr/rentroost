@@ -21,9 +21,10 @@ public class PropertyController {
     private RestGeocodingService restGeocodingService;
     private LandlordDao landlordDao;
 
-    public PropertyController(PropertyDao propertyDao, RestGeocodingService restGeocodingService) {
+    public PropertyController(PropertyDao propertyDao, RestGeocodingService restGeocodingService, LandlordDao landlordDao) {
         this.propertyDao = propertyDao;
         this.restGeocodingService = restGeocodingService;
+        this.landlordDao = landlordDao;
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -73,10 +74,24 @@ public class PropertyController {
         return restGeocodingService.getGeocode(address);
     }
 
+    @RequestMapping(path = "/updateTenantUnit/{propertyName}/{tenantId}", method = RequestMethod.PUT)
+    public boolean updateTenantUnit(@PathVariable String propertyName, @PathVariable int tenantId) {
+
+        return landlordDao.changeTenantAddress(propertyName, tenantId);
+    }
+
 
     @RequestMapping(path = "/landlordstenants", method = RequestMethod.GET)
     public List<Tenant> getLandlordsTenants(Principal principal) {
+        System.out.println("Search Performed On: " + principal.getName());
         return landlordDao.listOfLandlordsTenants(principal);
     }
+
+    @RequestMapping(path = "/landlordsproperties", method = RequestMethod.GET)
+    public List<Property> getLandlordsProperties(Principal principal) {
+        System.out.println("Search Performed On: " + principal.getName());
+        return landlordDao.getLandlordsProperties(principal);
+    }
+
 
 }
