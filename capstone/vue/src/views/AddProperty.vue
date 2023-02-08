@@ -27,9 +27,12 @@
         </div>
       </div>
     </nav>
+    <!--  -->
+
+
         <h1>Your Properties</h1>
       <div>
-              <button>Add Property</button>
+              <button >Add Property</button>
       </div>
     <properties-list />  </div>
 </template>

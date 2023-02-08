@@ -2,13 +2,14 @@
   <div class="home">
     <!-- <input type="text" v-model="searchQuery">
     <button @click="search">Search</button> -->
-    <form>
-      <input type="text" placeholder="Find your Coup" v-model="searchQuery" />
-      <button @click="search" type="submit">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
+    <form id=search-form>
+      <div class="wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
           <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
         </svg>
-      </button>
+      <input class="nav-search-bar" type="text" placeholder="Find your Coup" v-model="searchQuery" />
+      
+      </div>
     </form>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
@@ -377,5 +378,110 @@ p {
   .collapse {
     display: unset !important;
   }
+}
+
+/* .nav-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 128, 0, 0);
+  padding: 10px 20px;
+  outline-style: ;
+  background-color: red;
+  width: 30%;
+  margin: 0.4rem 0;
+  box-shadow:  0.3px 0.5px 0.6px lightgray) / 0.39),
+    0.9px 1.9px 2.1px -1.7px lightgray) / 0.32),
+    4px 8px 8.8px -3.4px black) / 0.25);
+
+} */
+
+input[type="text"] {
+  outline-color: tomato;
+  
+  background-color: rgba(255, 255, 255, 0);
+
+}
+input::placeholder {
+  color: rgba(255, 54, 54, 0.442);
+}
+
+.search-btn{
+  display: flex;
+  max-width: 15px;
+  justify-content: center;
+  box-shadow: none;
+  background-color: white;
+
+}
+
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+input {
+  
+    outline-color: none;
+    background-color: transparent;
+    border:none;
+    width: 20%;
+    flex-grow:1;
+    font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+}
+.voice {
+  height:20px;
+  margin: 0px 5px;
+}
+
+.search-icon {
+  color: red;
+  margin: 0px 5px;
+}
+.wrapper {
+    width: 21%;
+    height: 100%;
+    padding: 2px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    outline-color: #FF00;
+    cursor: text;
+    background-color: transparent;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper:hover{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  outline-color: red;
+}
+
+input.nav-search-bar {
+  width: 40%;
+  margin-right:10px;
+
+}
+button.search-btn {
+  display: flex;
+  align-items: center;
+  
+}
+
+svg {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  align-self: center;
+
 }
 </style>
