@@ -135,4 +135,8 @@ CONSTRAINT PK_property_id PRIMARY KEY (property_id)
   display: flex;
   flex-direction: column;
 }
+
+.textarea {
+  height: 100px;
+}
 </style>

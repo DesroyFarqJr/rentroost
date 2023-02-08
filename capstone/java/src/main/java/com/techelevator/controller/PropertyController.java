@@ -58,12 +58,14 @@ public class PropertyController {
         return null;
     }
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
-    public void addProperty(@RequestBody Property property) {
+    public void addProperty(@RequestBody Property property, Principal principal) {
         System.out.println(property.toString());
+        System.out.println(principal.getName());
+        System.out.println(principal);
         Map <String,Double> newMap = restGeocodingService.getGeocode(property.getPropertyAddress());
         property.setPropertyLat(newMap.get("lat"));
         property.setPropertyLng(newMap.get("lng"));
-        propertyDao.createProperty(property);
+        propertyDao.createProperty(property, principal.getName());
 
     }
 
