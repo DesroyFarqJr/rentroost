@@ -59,7 +59,7 @@ const router = new Router({
       name: "AddProperty",
       component: AddProperty,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -75,7 +75,7 @@ const router = new Router({
       name: "tenant",
       component: Tenant,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -89,7 +89,12 @@ const router = new Router({
     {
       path: "/landlord",
       name: "landlord",
-      component: Landlord},
+      component: Landlord,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
       {
         path: "/user",
         name: "user",
@@ -103,7 +108,7 @@ const router = new Router({
         name: "employee",
         component: Employee,
         meta: {
-          requiresAuth: false, //Change this after complete
+          requiresAuth: true, //Change this after complete
         }
       },
       {

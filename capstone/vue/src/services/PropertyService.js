@@ -40,14 +40,14 @@ export default {
         console.log(property);
         return axios.post('/property/addproperty', property);
     },
+    getMyProperties() {
+        return axios.get('/property/landlord/myproperties');
+    },
     getProperty(id) {
         return axios.get('/property/' + id);
     },
     addMaintenanceRequest(request) {
         return axios.post('/newticket', request)
-    },
-    getMyProperties() {
-        return axios.get('/property/landlord/myproperties');
     },
     getPrincipalTenantsList() {
         return axios.get('property/landlordstenants')

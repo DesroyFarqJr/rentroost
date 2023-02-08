@@ -1,7 +1,35 @@
 <template>
-  <div>
+  <div class="upload" >
+      <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img alt="logo" src="../../public/images/logo.png"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="navbarsExampleDefault"
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/user">Username</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--  -->
     <h2></h2>
-    <button v-on:click="upload">Upload</button><br />
+    <button v-on:click="upload">Upload Image</button><br />
     <span id="fileResponse"></span>
     <p>{{ message }}</p>
   </div>
@@ -14,11 +42,12 @@ export default {
     return {
       myWidget: {},
       message: "",
-    };
+      img_url: ""
+    }
   },
   methods: {
     upload() {
-      this.myWidget.open();
+      this.myWidget.open()
     },
   },
   mounted() {
@@ -27,13 +56,13 @@ export default {
         // Our RentRoost cloudname and upload preset
         cloudName: "du2zsmghw",
         uploadPreset: "alhrryca",
-        sources: ["camera", "local"],
-        googleApiKey: "<image_search_google_api_key>",
-        showAdvancedOptions: false,
-        cropping: false,
-        multiple: false,
+        // sources: ["camera", "local"],
+        // googleApiKey: "<image_search_google_api_key>",
+        // showAdvancedOptions: false,
+        // cropping: false,
+        // multiple: false,
         // new stuff added below
-        max_files: 1,
+        max_files: 3,
         thumbnails: "#thumbnails",
         defaultSource: "local",
         keep_widget_open: true,
@@ -72,6 +101,7 @@ export default {
           //                             ^^ THIS IS THE URL,
           // WHICH NEEDS TO BE PUSHED TO THE PROPERTY SPREADSHEET WITH FORM DATA FROM LANDLORD
           this.message = "Image upload successful !!";
+          this.newPost.img_url = result.info.url
         }
       }
     );
@@ -97,5 +127,10 @@ li {
 a {
   color: #42b983;
 }
+.upload{
+  display: flex;
+  justify-content: center;
+  padding-top: 100px
+  
+}
 </style>
-

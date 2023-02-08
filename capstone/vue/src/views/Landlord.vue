@@ -17,13 +17,14 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/user">Account</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout">Logout</router-link>
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
           </ul>
         </div>
@@ -36,20 +37,18 @@
     <maintenance-request-table id="MT" />
     <list-of-tenants-table id="LTT" />
   
-  <form @submit.prevent="submitForm">
-    <input type="file" ref="fileInput" @change="uploadImage" />
-    <textarea v-model="description"></textarea>
-    <button class="reg" type="submit">uploadImage</button>
+ <!-- <form>
+    
     <button type="submit">Submit</button>
     
-  </form>
+  </form> -->
 </div>
  </div>
  </div>
 </template>
 
 <script>
-import AWS from "aws-sdk";
+
 import ListOfTenantsTable from "../components/ListOfTenantsTable.vue";
 import MaintenanceRequestTable from "../components/MaintenanceRequestTable.vue";
 export default {
@@ -62,29 +61,10 @@ export default {
     };
   },
   methods: {
-    uploadImage() {
-      const s3 = new AWS.S3({
-        accessKeyId: "AKIA2RQODBA7E5HWSEXS",
-        secretAccessKey: "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",
-      });
-      const file = this.$refs.fileInput.files[0];
-      const params = {
-        Bucket: "rent-roost",
-        Key: file.name,
-        Body: file,
-      };
-      s3.upload(params, (err, data) => {
-        if (err) {
-          console.error(err);
-        } else {
-          this.imageUrl = data.Location;
-        }
-      });
-    },
-    submitForm() {
-      // send the property information, including the image URL, to the database
-      console.log(this.description, this.imageUrl);
-    },
+    
+    
+    //  removed AWS upload -Dez     
+    
   },
 };
 </script>
