@@ -432,27 +432,27 @@ INSERT INTO property (prop_name, prop_address, prop_lat, prop_lng, prop_descript
         ('', '986 E Warrington Ave #1, Pittsburgh, PA 15210', '40.421719', '-79.988357', 'Luxury 2-bedroom apartment with a spacious living area, modern kitchen, and private rooftop terrace. Ideal for entertainers and those who appreciate luxury living.', '2', '1', '1250', FALSE,  'https://res.cloudinary.com/du2zsmghw/image/upload/v1675450397/image195.jpg'),
         ('Holden Street Apartments', '5500 Walnut St Suite 200, Pittsburgh, PA 15232', '40.45096626', '-79.933552358', 'Chic 3-bedroom apartment with high-end appliances, large windows, and a fantastic location in the heart of the city. Ideal for urbanites and those seeking a modern lifestyle.', '3', '2', '2590', FALSE,  'https://res.cloudinary.com/du2zsmghw/image/upload/v1675450397/image073.jpg');
 
-INSERT INTO landlord (landlord_name, landlord_email, landlord_phone) VALUES
-		('John Smith', 'johnsmith@rentalsusa.com', '412-334-3932'),
-		('Maria Hernandez', 'mariahernandez@pittsburghrentals.com', '412-345-9872'),
-		('James Brown', 'james.brown@rentalpropertyholdings.com', '412-391-6732'),
-		('Sarah Lee', 'sarah.lee@rentalpropertyholdings.com', '412-304-5892'),
-		('Michael Davis', 'michael.davis@propertyrentalenterprises.com', '412-364-7232'),
-		('Emily Wilson', 'emily.wilson@propertyrentalenterprises.com', '412-365-4321'),
-		('David Johnson', 'david.johnson@rentalpropertyinvestments.com', '412-318-7589'),
-		('Jessica Taylor', 'jessica.taylor@rentalpropertyinvestments.com', '412-338-5672'),
-		('Matthew Robinson', 'matthew.robinson@propertyrentalgroup.com', '412-398-3092'),
-		('Lauren Anderson', 'lauren.anderson@propertyrentalgroup.com', '412-328-6452'),
-		('Christopher Martinez', 'christopher.martinez@rentalpropertyservices.com', '412-316-7982'),
-		('Amanda Clark', 'amanda.clark@rentalpropertyservices.com', '412-396-0392'),
-		('Thomas Garcia', 'thomas.garcia@propertyrentalco.com', '412-309-4827'),
-		('Elizabeth Rodriguez', 'elizabeth.rodriguez@propertyrentalco.com', '412-366-5932'),
-		('Robert Nguyen', 'robert.nguyen@rentalpropertymgmt.com', '412-304-7213'),
-		('Catherine Kim', 'catherine.kim@rentalpropertymgmt.com', '412-342-9861'),
-		('Joseph Adams', 'joseph.adams@propertyrentalcorp.com', '412-307-1258'),
-		('Stephanie Young', 'stephanie.young@propertyrentalcorp.com', '412-306-8652'),
-		('Brian King', 'brian.king@rentalpropertyassociates.com', '412-381-0392'),
-		('Jennifer Green', 'jennifer.green@rentalpropertyassociates.com', '412-379-3892');
+INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) VALUES
+		('John Smith', 'johnsmith@rentalsusa.com', '412-334-3932', 3),
+		('Maria Hernandez', 'mariahernandez@pittsburghrentals.com', '412-345-9872', null),
+		('James Brown', 'james.brown@rentalpropertyholdings.com', '412-391-6732', null),
+		('Sarah Lee', 'sarah.lee@rentalpropertyholdings.com', '412-304-5892', null),
+		('Michael Davis', 'michael.davis@propertyrentalenterprises.com', '412-364-7232', null),
+		('Emily Wilson', 'emily.wilson@propertyrentalenterprises.com', '412-365-4321', null),
+		('David Johnson', 'david.johnson@rentalpropertyinvestments.com', '412-318-7589', null),
+		('Jessica Taylor', 'jessica.taylor@rentalpropertyinvestments.com', '412-338-5672', null),
+		('Matthew Robinson', 'matthew.robinson@propertyrentalgroup.com', '412-398-3092', null),
+		('Lauren Anderson', 'lauren.anderson@propertyrentalgroup.com', '412-328-6452', null),
+		('Christopher Martinez', 'christopher.martinez@rentalpropertyservices.com', '412-316-7982', null),
+		('Amanda Clark', 'amanda.clark@rentalpropertyservices.com', '412-396-0392', null),
+		('Thomas Garcia', 'thomas.garcia@propertyrentalco.com', '412-309-4827', null),
+		('Elizabeth Rodriguez', 'elizabeth.rodriguez@propertyrentalco.com', '412-366-5932', null),
+		('Robert Nguyen', 'robert.nguyen@rentalpropertymgmt.com', '412-304-7213', null),
+		('Catherine Kim', 'catherine.kim@rentalpropertymgmt.com', '412-342-9861', null),
+		('Joseph Adams', 'joseph.adams@propertyrentalcorp.com', '412-307-1258', null),
+		('Stephanie Young', 'stephanie.young@propertyrentalcorp.com', '412-306-8652', null),
+		('Brian King', 'brian.king@rentalpropertyassociates.com', '412-381-0392', null),
+		('Jennifer Green', 'jennifer.green@rentalpropertyassociates.com', '412-379-3892', null);
 
 INSERT INTO property_landlord (property_id, landlord_id) VALUES
         (1, 1),
