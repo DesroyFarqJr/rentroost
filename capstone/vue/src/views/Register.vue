@@ -75,6 +75,17 @@
               style="margin-bottom: 10px"
               autofocus
             />
+            <label for="phone" class="sr-only">Phone</label>
+            <input
+              type="text"
+              id="phone"
+              class="form-control"
+              placeholder="Phone"
+              v-model="user.phone"
+              required
+              style="margin-bottom: 10px"
+              autofocus
+            />
 
 
             <label for="username" class="sr-only">Username</label>
@@ -141,12 +152,13 @@ export default {
         firstname: "",
         lastname: "",
         email: "",
+        phone: "",
         username: "",
         password: "",
         confirmPassword: "",
-        role: "",
+        role: ""
       },
-      selectedRoles: ["Landlord", "Tenant", "ADMIN"],
+      selectedRoles: ["Landlord", "Tenant", "Employee"],
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",
     };
