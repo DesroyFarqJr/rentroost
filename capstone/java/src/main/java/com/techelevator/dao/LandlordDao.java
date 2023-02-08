@@ -9,10 +9,8 @@ import java.util.ArrayList;
 public interface LandlordDao {
 
     Landlord getLandlord(int landlordId);
-Landlord addLandlord(int landlord_id);
+    boolean addLandlord(String firstname, String lastname, String email, String phone, int userId);
 
     ArrayList<Tenant> listOfLandlordsTenants(Principal principal) ;
-//    MORE STUFF SOON!
-
 
 }

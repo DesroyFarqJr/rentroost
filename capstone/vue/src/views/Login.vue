@@ -36,7 +36,7 @@
             <div
               class="alert alert-danger"
               role="alert"
-              v-if="invalidCredentials"
+              v-if="invalidCredentials" 
             >
               Invalid username and password!
             </div>
@@ -46,6 +46,14 @@
               v-if="this.$route.query.registration"
             >
               Thank you for registering, please sign in.
+            </div>
+            <!-- Please log in to see Account -->
+            <div 
+            class="alert alert-danger"
+            role="alert"
+            v-if="notLoggedIn" @click="userNotLoggedIn">
+            You're leaving the Nest too Soon!
+            Please sign in
             </div>
             <label for="username" class="sr-only">Username</label>
             <input
@@ -74,6 +82,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -87,8 +96,8 @@ export default {
       user: {
         username: "",
         password: "",
-      },
-
+      }, 
+      notLoggedIn: false,
       invalidCredentials: false,
     };
   },
@@ -111,8 +120,14 @@ export default {
           }
         });
     },
+
+    userNotLoggedIn() {
+      if(this.user
+      }
   },
-};
+  };
+
+
 </script>
 
 <style >

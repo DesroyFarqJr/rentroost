@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -10,11 +11,18 @@ public class User {
 
    private int id;
    private String username;
+   private String firstname;
+   private String lastname;
+   private String email;
+   private String phone;
+   private String role;
    @JsonIgnore
    private String password;
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+
+
 
    public User() { }
 
@@ -86,6 +94,46 @@ public class User {
               Objects.equals(authorities, user.authorities);
    }
 
+   public String getFirstname() {
+      return firstname;
+   }
+
+   public void setFirstname(String firstname) {
+      this.firstname = firstname;
+   }
+
+   public String getLastname() {
+      return lastname;
+   }
+
+   public void setLastname(String lastname) {
+      this.lastname = lastname;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String getPhone() {
+      return phone;
+   }
+
+   public void setPhone(String phone) {
+      this.phone = phone;
+   }
+
+   public String getRole() {
+      return role;
+   }
+
+   public void setRole(String role) {
+      this.role = role;
+   }
+
    @Override
    public int hashCode() {
       return Objects.hash(id, username, password, activated, authorities);
@@ -96,6 +144,12 @@ public class User {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
+              ", firstname='" + firstname + '\'' +
+              ", lastname='" + lastname + '\'' +
+              ", email='" + email + '\'' +
+              ", phone='" + phone + '\'' +
+              ", role='" + role + '\'' +
+              ", password='" + password + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
               '}';

@@ -32,7 +32,7 @@
               <router-link class="nav-link" to="/user">Account</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout"> Log out</router-link>
+              <router-link class="nav-link" to="/login"> Log in</router-link>
             </li>
           </ul>
         </div>
