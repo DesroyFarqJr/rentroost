@@ -33,6 +33,7 @@ landlord_id serial NOT NULL,
 landlord_name VARCHAR(200) NOT NULL,
 landlord_email VARCHAR(200),
 landlord_phone VARCHAR(15) NOT NULL,
+landlord_user_id INT,
 CONSTRAINT PK_landlord_id PRIMARY KEY (landlord_id)
 );
 
@@ -49,6 +50,7 @@ tenant_id serial NOT NULL,
 tenant_name VARCHAR(200) NOT NULL,
 tenant_phone VARCHAR(15) NOT NULL,
 tenant_email VARCHAR(200) NOT NULL,
+tenant_user_id INT,
 rent INT,
 overdue INT,
 paid BOOLEAN,

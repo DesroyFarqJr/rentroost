@@ -4,11 +4,14 @@ import com.techelevator.model.Landlord;
 import com.techelevator.model.Tenant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.security.Principal;
 import java.util.ArrayList;
 
+@Component
 public class JdbcLandlordDao implements LandlordDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -27,6 +30,13 @@ public class JdbcLandlordDao implements LandlordDao {
             landlord = mapRowToLandlord(results);
         }
         return landlord;
+    }
+
+    @Override
+    public boolean addLandlord(String firstname, String lastname, String email, String phone, int userId) {
+        String insertUserSql = "INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) values (?,?,?,?)";
+
+        return jdbcTemplate.update(insertUserSql, "" + firstname + lastname, email, phone, userId) == 1;
     }
 
     public Landlord getLandlordByName(String principalName) {
