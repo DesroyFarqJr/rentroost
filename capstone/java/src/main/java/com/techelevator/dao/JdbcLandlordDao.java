@@ -29,6 +29,11 @@ public class JdbcLandlordDao implements LandlordDao {
         return landlord;
     }
 
+    @Override
+    public Landlord addLandlord(int landlord_id) {
+        return null;
+    }
+
     public Landlord getLandlordByName(String principalName) {
         // TODO implement get landlord from name after models have been updated
         return null;

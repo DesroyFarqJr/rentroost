@@ -28,6 +28,8 @@
       </div>
     </nav>
     <!-- Nav bar ABOVE. 
+
+    
     Balance,Maintenance Request, eCheck BELOW -->
     <div id="top-row">
       <div class="input-group">
@@ -49,6 +51,9 @@ export default {
   components: { BalanceInformation, MaintenanceRequestForm, ECheck },
   name: "tenant"
 };
+
+
+
 </script>
 
 <style>

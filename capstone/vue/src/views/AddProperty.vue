@@ -32,16 +32,53 @@
 
         <h1>Your Properties</h1>
       <div>
-              <button >Add Property</button>
+        <CloudinaryComp />
+            
+              <add-property-form-page />
       </div>
     <properties-list />  </div>
 </template>
 
 <script>
 import PropertiesList from "../components/PropertiesList.vue";
+import AddPropertyFormPage from '../views/AddPropertyFormPage.vue';
+
 export default {
-  components: { PropertiesList },
+  components: { PropertiesList, AddPropertyFormPage },
   name: "addproperty",
+
+  // Needs Methods for Adding properties
+
+data(){
+  return{
+    newProp: {
+      title: "",
+      body: "",
+      img_url: ""
+    },
+    
+  }
+},
+
+
+methods: {
+  uploadImage() {
+    this.imageWidget.open()
+  },
+
+// submitPost() {
+//   PostsService.createPost(this.newPost).then(response) => {
+//     if (response.status === 201) {
+//       this.$router.push{
+
+//       }
+//     }
+//   }
+// }
+
+
+},
+
 };
 </script>
 
