@@ -55,25 +55,20 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDto newUser) {
-        System.out.println(newUser.toString());
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Already Exists.");
 
         } catch (UsernameNotFoundException e) {
-            // username, password_hash, ssRole, firstName, lastName, email, phone
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole(), newUser.getFirstname(), newUser.getLastname(), newUser.getEmail(), newUser.getPhone());
             User createdUser = userDao.findByUsername(newUser.getUsername());
-            System.out.println("NEWLY CREATED USER: " + createdUser.toString());
+
             if (createdUser.getRole().equals("ROLE_LANDLORD")) {
                 landlordDao.addLandlord(createdUser.getFirstname(), createdUser.getLastname(), createdUser.getEmail(), createdUser.getPhone(), createdUser.getId());
             }
-
             // if newUser.getRole tenant
-
             // if newUser.getRole maintenance
         }
     }
-
 }
 
