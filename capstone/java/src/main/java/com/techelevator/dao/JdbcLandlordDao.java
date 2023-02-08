@@ -35,8 +35,7 @@ public class JdbcLandlordDao implements LandlordDao {
     @Override
     public boolean addLandlord(String firstname, String lastname, String email, String phone, int userId) {
         String insertUserSql = "INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) values (?,?,?,?)";
-
-        return jdbcTemplate.update(insertUserSql, "" + firstname + lastname, email, phone, userId) == 1;
+        return jdbcTemplate.update(insertUserSql, "" + firstname + " " + lastname, email, phone, userId) == 1;
     }
 
     public Landlord getLandlordByName(String principalName) {

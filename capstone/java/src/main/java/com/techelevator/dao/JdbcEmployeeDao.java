@@ -3,10 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Employee;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
 
+@Component
 public class JdbcEmployeeDao implements EmployeeDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -14,6 +16,11 @@ public class JdbcEmployeeDao implements EmployeeDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    @Override
+    public boolean addEmployee(String firstname, String lastname, String phone, String email, int userId) {
+        String insertUserSql = "INSERT INTO employee (employee_name, emp_phone, emp_email,  employee_user_id) values (?,?,?,?)";
+        return jdbcTemplate.update(insertUserSql, "" + firstname + " " + lastname, phone, email, userId) == 1;
+    }
 
     @Override
     public Employee getEmployee(int employeeId) {

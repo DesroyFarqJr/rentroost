@@ -2,7 +2,9 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.EmployeeDao;
 import com.techelevator.dao.LandlordDao;
+import com.techelevator.dao.TenantDao;
 import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -27,12 +29,16 @@ public class AuthenticationController {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
     private LandlordDao landlordDao;
+    private TenantDao tenantDao;
+    private EmployeeDao employeeDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, LandlordDao landlordDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, LandlordDao landlordDao, TenantDao tenantDao, EmployeeDao employeeDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
         this.landlordDao = landlordDao;
+        this.tenantDao = tenantDao;
+        this.employeeDao = employeeDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -67,7 +73,14 @@ public class AuthenticationController {
                 landlordDao.addLandlord(createdUser.getFirstname(), createdUser.getLastname(), createdUser.getEmail(), createdUser.getPhone(), createdUser.getId());
             }
             // if newUser.getRole tenant
+             if (createdUser.getRole().equals("ROLE_TENANT")) {
+                tenantDao.addTenant(createdUser.getFirstname(), createdUser.getLastname(), createdUser.getEmail(), createdUser.getPhone(), createdUser.getId());
+            }
+
             // if newUser.getRole maintenance
+            if (createdUser.getRole().equals("ROLE_EMPLOYEE")) {
+                employeeDao.addEmployee(createdUser.getFirstname(), createdUser.getLastname(), createdUser.getEmail(), createdUser.getPhone(), createdUser.getId());
+            }
         }
     }
 }

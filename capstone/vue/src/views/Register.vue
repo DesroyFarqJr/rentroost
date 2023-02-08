@@ -28,7 +28,7 @@
       </div>
     </nav>
   <!-- Nav bar -->
-  <!-- Registraition  -->
+  <!-- Registration  -->
     <div class="auth-wrapper">
       <div class="auth-inner">
         <div id="register" class="text-center">
@@ -107,7 +107,6 @@
             <input 
             type="checkbox"  @change="updateUser(role)" />
             </div>
-
 
 
             <label for="password" class="sr-only">Password</label>
