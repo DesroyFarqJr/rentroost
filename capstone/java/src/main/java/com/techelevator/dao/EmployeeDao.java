@@ -7,11 +7,15 @@ import java.util.List;
 
 public interface EmployeeDao {
 
-        Employee getEmployee(int employeeId);
+
 
         ArrayList<Employee> listOfEmployeees();
 
 //    MORE STUFF SOON!
 
 
+    Employee getEmployee(int employeeId);
+    boolean addEmployee(String firstname, String lastname, String email, String phone, int userId);
+    
     }
+

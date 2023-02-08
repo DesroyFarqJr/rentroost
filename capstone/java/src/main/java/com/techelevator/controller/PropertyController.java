@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.PropertyDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
+import com.techelevator.model.User;
 import com.techelevator.service.GeocodingService;
 import com.techelevator.service.RestGeocodingService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,13 +22,15 @@ public class PropertyController {
     private PropertyDao propertyDao;
     private RestGeocodingService restGeocodingService;
     private LandlordDao landlordDao;
+    private UserDao userDao;
 
-    public PropertyController(PropertyDao propertyDao, RestGeocodingService restGeocodingService, LandlordDao landlordDao) {
+
+    public PropertyController(PropertyDao propertyDao, RestGeocodingService restGeocodingService, LandlordDao landlordDao, UserDao userDao) {
         this.propertyDao = propertyDao;
         this.restGeocodingService = restGeocodingService;
         this.landlordDao = landlordDao;
+        this.userDao = userDao;
     }
-
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Property> getProperties() {
         List<Property> newList = propertyDao.getAllProperties();
@@ -53,9 +57,8 @@ public class PropertyController {
         String principalName = principal.getName();
         System.out.println(principalName);
         // get landlord id from principalName
-        // TODO landlord ID from principal once we can tie a user to a landlord
-        // return propertyDao.getPropertiesByLandlord(landlordId)
-        return null;
+        User authenticatedUser = userDao.findByUsername(principalName);
+        return propertyDao.getPropertiesByLandlord(authenticatedUser.getId());
     }
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
     public void addProperty(@RequestBody Property property, Principal principal) {
