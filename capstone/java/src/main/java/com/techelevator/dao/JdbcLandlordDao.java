@@ -5,19 +5,16 @@ import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-<<<<<<< HEAD
-=======
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
->>>>>>> main
+
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.security.Principal;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 
->>>>>>> main
+
 @Component
 public class JdbcLandlordDao implements LandlordDao {
 
@@ -39,8 +36,7 @@ public class JdbcLandlordDao implements LandlordDao {
         return landlord;
     }
 
-<<<<<<< HEAD
-=======
+
     @Override
     public boolean addLandlord(String firstname, String lastname, String email, String phone, int userId) {
         String insertUserSql = "INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) values (?,?,?,?)";
@@ -52,7 +48,6 @@ public class JdbcLandlordDao implements LandlordDao {
         // TODO implement get landlord from name after models have been updated
         return null;
     }
->>>>>>> main
 
 
 
@@ -121,13 +116,7 @@ public class JdbcLandlordDao implements LandlordDao {
         property.setPropertyId(rowSet.getInt("property_id"));
         return property;
     }
-<<<<<<< HEAD
 
-
-    public Landlord getLandlordByName(String principalName) {
-        // TODO implement get landlord from name after models have been updated
-        return null;
-    }
 
 
     private Landlord mapRowToLandlord(SqlRowSet rowSet) {
@@ -140,6 +129,3 @@ public class JdbcLandlordDao implements LandlordDao {
         return landlord;
     }
     }
-
-=======
->>>>>>> main
