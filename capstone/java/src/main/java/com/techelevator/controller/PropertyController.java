@@ -56,9 +56,9 @@ public class PropertyController {
     @RequestMapping(path = "/landlord/myproperties", method = RequestMethod.GET)
     public List<Property> getMyProperties(Principal principal) {
         String principalName = principal.getName();
-        System.out.println(principalName);
         // get landlord id from principalName
         User authenticatedUser = userDao.findByUsername(principalName);
+        Landlord landlord = landlordDao.getLandlordByUserId(authenticatedUser.getId());
         return propertyDao.getPropertiesByLandlord(authenticatedUser.getId());
     }
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)

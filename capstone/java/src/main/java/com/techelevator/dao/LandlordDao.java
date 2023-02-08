@@ -14,10 +14,9 @@ public interface LandlordDao {
 
     ArrayList<Tenant> listOfLandlordsTenants(Principal principal) ;
 
-//    MORE STUFF SOON!
-
     boolean changeTenantAddress(String address, int id);
 
     ArrayList<Property> getLandlordsProperties(Principal principal);
+    Landlord getLandlordByUserId(int landlordUserId);
 
 }

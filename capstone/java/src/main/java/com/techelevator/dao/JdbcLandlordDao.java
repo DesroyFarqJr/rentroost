@@ -43,9 +43,15 @@ public class JdbcLandlordDao implements LandlordDao {
         return jdbcTemplate.update(insertUserSql, "" + firstname + " " + lastname, email, phone, userId) == 1;
     }
 
-    public Landlord getLandlordByName(String principalName) {
-        // TODO implement get landlord from name after models have been updated
-        return null;
+    @Override
+    public Landlord getLandlordByUserId(int landlordUserId) {
+        Landlord landlord = null;
+        String sql = "SELECT * FROM landlord WHERE landlord_user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordUserId);
+        if (results.next()) {
+            landlord = mapRowToLandlord(results);
+        }
+        return landlord;
     }
 
 
