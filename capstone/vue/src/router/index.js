@@ -15,6 +15,7 @@ import CloudinaryComp from "../components/CloudinaryComp.vue"
 import AddPropertyFormPage from "../views/AddPropertyFormPage.vue"
 import PropertyDetails from "../views/PropertyDetails.vue"
 import AboutUs from "../views/AboutUs.vue"
+import ContactUs from "../views/ContactUs.vue"
 
 Vue.use(Router)
 
@@ -124,6 +125,14 @@ const router = new Router({
       path: "/aboutus",
       name: "aboutus",
       component: AboutUs,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/contactus",
+      name: "contactus",
+      component: ContactUs,
       meta: {
         requiresAuth: false
       }
