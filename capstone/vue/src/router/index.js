@@ -14,6 +14,7 @@ import Employee from '../views/Employee.vue'
 import CloudinaryComp from "../components/CloudinaryComp.vue"
 import AddPropertyFormPage from "../views/AddPropertyFormPage.vue"
 import PropertyDetails from "../views/PropertyDetails.vue"
+import AboutUs from "../views/AboutUs.vue"
 
 
 
@@ -117,6 +118,14 @@ const router = new Router({
       path: "/map",
       name: "map",
       component: MapWithPins,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/aboutus",
+      name: "aboutus",
+      component: AboutUs,
       meta: {
         requiresAuth: false
       }
