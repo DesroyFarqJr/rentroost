@@ -2,9 +2,7 @@
 
   <section class="dropDownMenuWrapper">
 
-   <button class="dropDownMenuButton" ref="menu" @click="openClose"> Rent Roost Menu
-
-    </button>
+   <button class="dropDownMenuButton" ref="menu" @click="openClose"></button>
 
     <div class="iconWrapper">
       <div class="bar1" :class="{ 'bar1--open' : isOpen }" />
@@ -42,7 +40,6 @@
 <script>
 
 export default {
-
   props: ["darkMode", "menuTitle"],
   data() {
     return {
@@ -84,10 +81,10 @@ export default {
 <style scoped>
 .dropDownMenuWrapper {
   position: relative;
-  width: 500px;
+  width: 100px;
   height: 30px;
   border-radius: 8px;
-  background: rgb(255, 0, 0);
+  background: rgb(0, 0, 0);
   border: 1px solid #eee;
   box-shadow: 10px 10px 0 0 rgba(black,.03);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -98,6 +95,7 @@ export default {
   }
 
   .dropDownMenuButton {
+    color:#333;
     display: flex;
     align-content: space-between;
     border: none;
@@ -120,7 +118,7 @@ export default {
   }
 
   .dropDownMenuButton--dark {
-    color: #eee;
+    color: #333;
   }
 
   .iconWrapper {
@@ -221,7 +219,7 @@ export default {
     border-radius: 8px;
     border: 1px solid #eee;
     box-shadow: 10px 10px 0 0 rgba(black,.03);
-    background: rgb(255, 0, 0);
+    background: rgb(255, 255, 255);
     padding: 10px 30px;
     animation: menu 0.3s ease forwards;
   }
@@ -286,7 +284,7 @@ export default {
     }
 
     * {
-      color: #eee;
+      color:#333;
     }
 
   
