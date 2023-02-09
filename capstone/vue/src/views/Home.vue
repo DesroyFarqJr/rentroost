@@ -415,6 +415,7 @@ input::placeholder {
 }
 
 .search-btn{
+  
   display: flex;
   max-width: 15px;
   justify-content: center;
@@ -428,6 +429,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 25px;
 }
 input {
   

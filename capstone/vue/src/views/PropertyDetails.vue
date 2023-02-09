@@ -11,14 +11,15 @@
           data-bs-toggle="collapse"
           data-bs-target="navbarsExampleDefault"
           label="Toggle navigation"
-        >
+          
+        ><a href="/user">Home page</a>
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="_collapse _navbar-collapse">
           <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Account</router-link>
+              <router-link class="nav-link" to="/">Home</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>

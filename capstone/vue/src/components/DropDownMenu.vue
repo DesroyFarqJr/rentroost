@@ -23,13 +23,13 @@
   </section>
 
   <section class="option">
-   <router-link to="/user">Account page</router-link>
-   <span class="desc">See your account.</span>
+   <router-link to="/aboutus">About us</router-link>
+   <span class="desc">About Rent Roost.</span>
   </section>
 
   <section class="option">
-    <router-link to="/AddProperty">View Property Page</router-link>
-    <span class="desc">Clicking this takes you somewhere else.</span>
+    <router-link to="/AddProperty">Add a Property</router-link>
+    <span class="desc">Here you can upload a property.</span>
   </section>
 
 </dropdown-menu>
@@ -273,6 +273,8 @@ export default {
       font-size: 14px;
       margin: 3px 0 0 0;
       cursor: default;
+      color: white;
+      font-weight: bold;
     }
 
   

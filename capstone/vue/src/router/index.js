@@ -15,6 +15,8 @@ import CloudinaryComp from "../components/CloudinaryComp.vue"
 import AddPropertyFormPage from "../views/AddPropertyFormPage.vue"
 import PropertyDetails from "../views/PropertyDetails.vue"
 
+
+
 Vue.use(Router)
 
 /**
@@ -127,6 +129,8 @@ const router = new Router({
           requiresAuth: false
         }
       },
+
+    
       {
         path: "/PropertyDetails/:id",
         name: "PropertyDetails",
