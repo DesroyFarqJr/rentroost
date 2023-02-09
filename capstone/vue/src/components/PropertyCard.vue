@@ -17,13 +17,13 @@
 <template>
   <div class="property-card">
     <!-- DISPLAY MODE -->
-    <img v-bind:src="property.image" />
-    <h3 v-if="!editMode">{{ property.name }}</h3>
-    <h3 v-if="!editMode">{{ property.address }}</h3>
+    <img v-bind:src="property.imageUrl" />
+    <h3 v-if="!editMode">{{ property.propertyName }}</h3>
+    <h5 v-if="!editMode">{{ property.propertyAddress }}</h5>
     <h5 v-if="!editMode">
-      ${{ property.price }} | Beds: {{ property.bedrooms }} | Baths: {{ property.bathrooms }}
+      ${{ property.propertyRent }} | Beds: {{ property.propertyBedrooms }} | Baths: {{ property.propertyBathrooms }}
     </h5>
-    <h5 class="propDescription" v-if="!editMode">{{ property.description }}</h5>
+    <h5 class="propDescription" v-if="!editMode">{{ property.propertyDescription }}</h5>
     <button v-if="!editMode" v-on:click="editProperty">Edit Property</button>
     <!-- EDIT MODE -->
     <label v-if="editMode">Name: </label><input type="text" v-model="tempProperty.name" v-if="editMode" />

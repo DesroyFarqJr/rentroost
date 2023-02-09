@@ -9,49 +9,57 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="tenant in tenants" v-bind:key="tenant.id">
-        <td>{{ tenant.name }}</td>
-        <td>{{ tenant.phone }}</td>
-        <td>{{ tenant.payment }}</td>
+      <tr v-for="tenant in tenants" v-bind:key="tenant.tenantId">
+        <td>{{ tenant.tenantName }}</td>
+        <td>{{ tenant.tenantPhone }}</td>
+        <td>${{ tenant.rent }}</td>
         <td>
-          <span v-if="tenant.address">{{ tenant.address.address }}</span>
-          <select v-else @change="changeAddress(tenant)" v-model="tenant.address">
-            <option v-for="address in addresses" :value="address" v-bind:key="address.id">{{ address.address }}</option>
-          </select>
+          <template v-if="tenant.tenantAddress">
+            {{ tenant.tenantAddress }}
+          </template>
+          <template v-else>
+            <select>
+              <option v-for="address in addresses" v-bind:key="address.id">{{ address }}</option>
+            </select>
+          </template>
         </td>
       </tr>
     </tbody>
   </table>
 </template>
-
 <script>
+import propertyService from "../services/PropertyService";
+
 export default {
   data() {
-  return {
-  tenants: [
-  { id: 10, name: 'John Doe', phone: '123-456-7890', payment: '$1000', address: '' },
-  { id: 20, name: 'Jane Doe', phone: '123-456-7890', payment: '$1200', address: '' },
-  { id: 30, name: 'Billy Bob', phone: '123-456-7890', payment: '$1500', address: '123 Main St.' }
-  ],
-  addresses: [
-      {id: 1,
-      address: '123 Main St.'},
-      {id: 2,
-      address: '456 Elm St.'},
-  ]
-  }
+    return {
+      tenants: [],
+      addresses: [],
+    };
   },
   methods: {
-  assignAddress(tenant) {
-  tenant.address = this.addresses[0];
-  },
-  changeAddress(tenant) {
-  tenant.addrss = event.target.value;
-  }
-  }
-}
-</script>
+    fillTenantsTable() {
+      propertyService
+        .getPrincipalTenantsList()
+        .then((response) => (this.tenants = response.data));
+    },
 
+    fillProperties() {
+      propertyService
+        .getPrincipalPropertyList()
+        .then((response) => (this.addresses = response.data));
+    },
+
+    changeAddress(tenant) {
+      tenant.tenantAddress = event.target.value;
+    },
+  },
+  created() {
+    this.fillTenantsTable();
+    this.fillProperties();
+  },
+};
+</script>
 <style scoped>
 table {
   width: 70%;

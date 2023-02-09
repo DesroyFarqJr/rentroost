@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,14 +24,20 @@ public class JdbcPropertyDao implements PropertyDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     @Override
-    public void createProperty(Property property) {
+    public void createProperty(Property property, int landlordId) {
       String sql ="INSERT INTO property (prop_name, prop_address, prop_lat, prop_lng, prop_description, prop_bedrooms, prop_bathrooms, prop_rent, rented, url) VALUES " +
               "(?,?,?,?,?,?,?,?,?,?)";
+        String sqlToAssignProperty = "INSERT INTO property_landlord (property_id, landlord_id) " +
+                "VALUES ((SELECT property_id FROM property WHERE prop_address = ?), ?)";
      int newProp_id;
         try {
             jdbcTemplate.update(sql,property.getPropertyName(),property.getPropertyAddress(),property.getPropertyLat(), property.getPropertyLng(),property.getPropertyDescription(),property.getPropertyBedrooms(),property.getPropertyBathrooms(),property.getPropertyRent(),property.isRented(),property.getImageUrl());
+
         } catch(DataAccessException e ){
             System.out.println("Error inserting a property");
+        } finally {
+            jdbcTemplate.update(sqlToAssignProperty, property.getPropertyAddress(), landlordId);
+            System.out.println(property.getPropertyAddress() + landlordId);
         }
     }
 
