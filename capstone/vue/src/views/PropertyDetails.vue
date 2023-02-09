@@ -105,10 +105,10 @@
           style="margin-bottom: 10px"
           autofocus
         />
-
+        
         <label for="username" class="sr-only">Move-In Date</label>
         <input
-          type="text"
+          type="date"
           id="username"
           class="form-control"
           placeholder="Move-In Date"
