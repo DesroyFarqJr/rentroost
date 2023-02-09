@@ -16,6 +16,8 @@ public class Property {
     private boolean rented;
     private String imageUrl;
     private Map<String, Double> propertyPosition;
+    private int landlordId;
+
 
     public Property(){};
     public Property(String propertyName, String propertyAddress, double propertyLat, double propertyLng, int propertyBedrooms, int propertyBathrooms, double propertyRent, boolean rented, String imageUrl) {
@@ -129,6 +131,15 @@ public class Property {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+
+    public int getLandlordId() {
+        return landlordId;
+    }
+
+    public void setLandlordId(int landlordId) {
+        this.landlordId = landlordId;
     }
 
     @Override

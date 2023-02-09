@@ -125,9 +125,9 @@ export default new Vuex.Store({
     SET_PROPERTIES(state, propertiesList) {
       state.propertiesList = propertiesList;
     },
-    // SET_MY_PROPERTIES(state, propertiesList) {
-    //   // state.myPropertiesList = propertiesList;
-    // }
+    SET_MY_PROPERTIES(state, propertiesList) {
+      state.myPropertiesList = propertiesList;
+    }
   }
 
 })

@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #main-container {
   border-top: solid 10px #ff0000;
   width: 45%;

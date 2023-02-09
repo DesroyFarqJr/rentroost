@@ -16,7 +16,7 @@
           <td>{{ tenant.address }}</td>
           <td>
             <button
-              v-if="!tenant.assignedEmployee && !tenant.isAssigning"
+              v-if="!tenant.assignedEmployee"
               @click="assign(tenant)"
             >
               Assign
@@ -44,7 +44,6 @@
     </table>
   </div>
 </template>
-
 <script>
 export default {
   data() {
@@ -80,8 +79,10 @@ export default {
     onSelectionChange(tenant) {
       tenant.isAssigning = false;
     },
-  },
+  }
 };
+
+
 </script>
 
 <style scoped>

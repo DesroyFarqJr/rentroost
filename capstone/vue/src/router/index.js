@@ -100,7 +100,7 @@ const router = new Router({
         name: "user",
         component: User,
         meta: {
-          requiresAuth: false, //Change this after complete
+          requiresAuth: true, //Change this after complete
         }
       },
       {

@@ -1,6 +1,6 @@
  <template>
     <div>
-      <property-card  v-bind:property="property" v-for="property in $store.state.properties" v-bind:key="property.id" />
+      <property-card  v-bind:property="property" v-for="property in $store.state.myPropertiesList" v-bind:key="property.id" />
     </div>
 </template>
 

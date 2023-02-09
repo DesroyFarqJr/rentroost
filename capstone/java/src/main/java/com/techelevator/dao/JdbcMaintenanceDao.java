@@ -25,11 +25,12 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
     public void createMaintenanceRequest(Principal principal, Maintenance maintenance) {
         String principalName = principal.getName();
         System.out.println(principalName);
+
         String sql ="INSERT INTO maintenance (property_id, request, assigned_to, repair_status, username) VALUES " +
-                "(?,?,?,?,?)";
+                "(SELECT property_id FROM tenant_unit WHERE tenant_id = (SELECT tenant_id FROM tenant WHERE tenant_name = ? ),?,null,'incomplete',?)";
         int newMain_id;
         try {
-            jdbcTemplate.update(sql,maintenance.getPropertyId(),maintenance.getMaintenanceRequest(),maintenance.getAssignedTo(), maintenance.getRepairStatus(), principalName);
+            jdbcTemplate.update(sql,principalName,maintenance.getMaintenanceRequest(), principalName);
         } catch(DataAccessException e ){
             System.out.println("Error inserting maintenance");
         }

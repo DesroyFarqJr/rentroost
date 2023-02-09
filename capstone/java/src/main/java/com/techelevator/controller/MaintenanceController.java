@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.MaintenanceDao;
 import com.techelevator.model.Maintenance;
 
+import com.techelevator.model.Tenant;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -12,9 +14,12 @@ import java.util.List;
     @RequestMapping("/maintenance")
     @CrossOrigin
     public class MaintenanceController {
-        private MaintenanceDao maintenanceDao;
 
-        public MaintenanceController(MaintenanceDao maintenanceDao) {
+
+        private MaintenanceDao maintenanceDao;
+        private LandlordDao landlordDao;
+
+        public MaintenanceController(MaintenanceDao maintenanceDao, LandlordDao landlordDao) {
             this.maintenanceDao = maintenanceDao;
         }
 

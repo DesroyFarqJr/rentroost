@@ -17,26 +17,28 @@
 <template>
   <div class="property-card">
     <!-- DISPLAY MODE -->
-    <img v-bind:src="property.image" />
-    <h3 v-if="!editMode">{{ property.name }}</h3>
-    <h3 v-if="!editMode">{{ property.address }}</h3>
+    <img v-bind:src="property.imageUrl" />
+    <h3 v-if="!editMode">{{ property.propertyName }}</h3>
+    <h5 v-if="!editMode">{{ property.propertyAddress }}</h5>
     <h5 v-if="!editMode">
-      ${{ property.price }} | Beds: {{ property.bedrooms }} | Baths: {{ property.bathrooms }}
+      ${{ property.propertyRent }} | Beds: {{ property.propertyBedrooms }} | Baths: {{ property.propertyBathrooms }}
     </h5>
-    <h5 class="propDescription" v-if="!editMode">{{ property.description }}</h5>
+    <h5 class="propDescription" v-if="!editMode">{{ property.propertyDescription }}</h5>
     <button v-if="!editMode" v-on:click="editProperty">Edit Property</button>
     <!-- EDIT MODE -->
-    <label v-if="editMode">Name: </label><input type="text" v-model="tempProperty.name" v-if="editMode" />
-    <label v-if="editMode">Address: </label><input type="text" v-model="tempProperty.address" v-if="editMode" />
-    <label v-if="editMode">Price: </label><input type="text" v-model="tempProperty.price" v-if="editMode" />
-    <label v-if="editMode">Bedrooms: </label><input type="text" v-model="tempProperty.bedrooms" v-if="editMode" />
-    <label v-if="editMode">Bathrooms: </label><input type="text" v-model="tempProperty.bathrooms" v-if="editMode" />
-    <label v-if="editMode">Description: </label><textarea v-model="tempProperty.description" v-if="editMode"></textarea>
+    <label v-if="editMode">Name: </label><input type="text" v-model="tempProperty.propertyName" v-if="editMode" />
+    <label v-if="editMode">Address: </label><input type="text" v-model="tempProperty.propertyAddress" v-if="editMode" />
+    <label v-if="editMode">Price: </label><input type="text" v-model="tempProperty.propertyRent" v-if="editMode" />
+    <label v-if="editMode">Bedrooms: </label><input type="text" v-model="tempProperty.propertyBedrooms" v-if="editMode" />
+    <label v-if="editMode">Bathrooms: </label><input type="text" v-model="tempProperty.propertyBathrooms" v-if="editMode" />
+    <label v-if="editMode">Description: </label><textarea v-model="tempProperty.propertyDescription" v-if="editMode"></textarea>
     <button v-if="editMode" @click="updateProperty()">Done</button>
     <button id="cancel-button" v-if="editMode" @click="cancelEdit()">Cancel</button>
   </div>
 </template>
 <script>
+import propertyService from "../services/PropertyService";
+
 export default {
   data() {
     return {
@@ -50,16 +52,34 @@ export default {
     updateProperty() {
       this.editMode = false;
       this.$emit("update-property", this.tempProperty);
+
+      propertyService
+      .updateProperty(this.tempProperty.propertyId, this.tempProperty)
+      .then((response) => {
+          if (response === 201) {
+            console.log("success");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+          if (response.status == 401) {
+            this.invalidCredentials = true;
+          }
+        });
     },
     editProperty() {
       console.log("edit property clicked");
       // take all property details and add to edit cache
-      this.editCache.name = this.tempProperty.name;
-      this.editCache.address = this.tempProperty.address;
-      this.editCache.price = this.tempProperty.price;
-      this.editCache.bedrooms = this.tempProperty.bedrooms;
-      this.editCache.bathrooms = this.tempProperty.bathrooms;
-      this.editCache.description = this.tempProperty.description;
+      this.editCache.propertyName = this.tempProperty.propertyName;
+      this.editCache.propertyAddress = this.tempProperty.propertyAddress;
+      this.editCache.propertyRent = this.tempProperty.propertyRent;
+      this.editCache.propertyBedrooms = this.tempProperty.propertyBedrooms;
+      this.editCache.propertyBathrooms = this.tempProperty.propertyBathrooms;
+      this.editCache.propertyDescription = this.tempProperty.propertyDescription;
+      console.log("edit cache:")
+      console.log(this.editCache);
+      console.log("temp property:")
+      console.log(this.tempProperty);
       this.editMode = true;
     },
     cancelEdit() {
