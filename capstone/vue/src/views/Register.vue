@@ -17,9 +17,9 @@
         <div class="_collapse _navbar-collapse">
           <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link class="nav-link" to="/user">Acocunt</router-link>
-            </li>
+            </li> -->
             <li class="nav-item">
               <router-link class="nav-link" to="/login"> Log in</router-link>
             </li>

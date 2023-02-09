@@ -17,13 +17,15 @@
         </button>
         <div class="_collapse _navbar-collapse">
           <!-- ^^ class name changed...rename if needed -->
-          <ul class="navbar-nav mr-auto">
+           <ul class="navbar-nav mr-auto">
+            <li><drop-down-menu /></li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
+              <router-link class="nav-link" to="/account">Account</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
+            
           </ul>
         </div>
       </div>
