@@ -17,6 +17,8 @@ import PropertyDetails from "../views/PropertyDetails.vue"
 import AboutUs from "../views/AboutUs.vue"
 import ContactUs from "../views/ContactUs.vue"
 
+
+
 Vue.use(Router)
 
 /**
@@ -145,6 +147,8 @@ const router = new Router({
           requiresAuth: false
         }
       },
+
+    
       {
         path: "/PropertyDetails/:id",
         name: "PropertyDetails",

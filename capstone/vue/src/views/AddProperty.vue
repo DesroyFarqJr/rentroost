@@ -1,6 +1,6 @@
 <template>
   <div id="add-property">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+   <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
@@ -14,15 +14,18 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        
+        
         <div class="_collapse _navbar-collapse">
-          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
+            <li><drop-down-menu /></li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Username</router-link>
+              <router-link class="nav-link" to="/account">Account</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
+            
           </ul>
         </div>
       </div>
