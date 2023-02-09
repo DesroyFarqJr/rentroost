@@ -36,7 +36,6 @@ public class JdbcLandlordDao implements LandlordDao {
         return landlord;
     }
 
-
     @Override
     public boolean addLandlord(String firstname, String lastname, String email, String phone, int userId) {
         String insertUserSql = "INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) values (?,?,?,?)";
@@ -53,9 +52,6 @@ public class JdbcLandlordDao implements LandlordDao {
         }
         return landlord;
     }
-
-
-
 
     @Override
     public ArrayList<Tenant> listOfLandlordsTenants(Principal principal) {
@@ -98,7 +94,6 @@ public class JdbcLandlordDao implements LandlordDao {
         return properties;
     }
 
-
     private Tenant mapRowToTenantWithAddress(SqlRowSet rowSet) {
         Tenant tenant = new Tenant();
         tenant.setTenantId(rowSet.getInt("tenant_id"));
@@ -133,4 +128,4 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return landlord;
     }
-    }
+}
