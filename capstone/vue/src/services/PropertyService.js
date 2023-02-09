@@ -47,12 +47,15 @@ export default {
         return axios.get('/property/' + id);
     },
     addMaintenanceRequest(request) {
-        return axios.post('/newticket', request)
+        return axios.post('/newticket', request);
     },
     getPrincipalTenantsList() {
-        return axios.get('property/landlordstenants')
+        return axios.get('property/landlordstenants');
     },
     getPrincipalPropertyList() {
-        return axios.get('property/landlordsproperties')
+        return axios.get('property/landlordsproperties');
+    },
+    updateProperty(propertyId, property) {
+        return axios.put(`property/${propertyId}`, property);
     }
 }
