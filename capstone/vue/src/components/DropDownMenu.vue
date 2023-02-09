@@ -2,19 +2,37 @@
 
   <section class="dropDownMenuWrapper">
 
-   <button class="dropDownMenuButton" ref="menu" @click="openClose">{{menuTitle}}</button>
+   <button class="dropDownMenuButton" ref="menu" @click="openClose"> Rent Roost Menu
 
     </button>
 
     <div class="iconWrapper">
-      <div class="bar1" />
-      <div class="bar2" />
-      <div class="bar3" />
+      <div class="bar1" :class="{ 'bar1--open' : isOpen }" />
+      <div class="bar2" :class="{ 'bar2--open' : isOpen }" />
+      <div class="bar3" :class="{ 'bar3--open' : isOpen }" />
     </div>
 
-    <section class="dropdownMenu">
+    <section class="dropdownMenu" v-if="isOpen" >
       <div class="menuArrow" />
       <slot/>
+      <dropdown-menu menu-title="Vue Dropdown Menu" dark-mode="auto">
+
+  <section class="option">
+    <router-link to="/user">Account</router-link>
+    <span class="desc"> Check balance or Pay rent.</span>
+  </section>
+
+  <section class="option">
+   <router-link to="/user">Account page</router-link>
+   <span class="desc">See your account.</span>
+  </section>
+
+  <section class="option">
+    <router-link to="/AddProperty">View Property Page</router-link>
+    <span class="desc">Clicking this takes you somewhere else.</span>
+  </section>
+
+</dropdown-menu>
     </section>
 
   </section>
@@ -24,34 +42,52 @@
 <script>
 
 export default {
-//   props: [ "menuTitle" ], // Menu title from the parent
-//   data() {
-//     return {
-//       isOpen: false // Variable if the menu is open or closed
-//   },
-//   };
-  
-//   methods: {
 
-//     openClose() {
+  props: ["darkMode", "menuTitle"],
+  data() {
+    return {
+      isOpen: false,
+      isDarkMode: false,
+    };
+  },
 
-//       // Toggle between open or closed ( true || false )
-//       isOpen = !isOpen
+  methods: {
+    openClose() {
+      var _this = this;
 
-//     }
+      const closeListerner = (e) => {
+        // Check if user clicks outside of the menu
+        // true — close the menu and remove EventListener
+        if (_this.catchOutsideClick(e, _this.$refs.menu))
+          window.removeEventListener("click", closeListerner),
+            (_this.isOpen = false);
+      };
 
-//   }
+      // Add event listener to watch clicks outside the menu
+      window.addEventListener("click", closeListerner);
+
+      // Close if open and vice versa
+      this.isOpen = !this.isOpen;
+    },
+
+    catchOutsideClick(event, dropdown) {
+      // When user clicks menu — do nothing
+      if (dropdown == event.target) return false;
+
+      // When user clicks outside of the menu — close the menu
+      if (this.isOpen && dropdown != event.target) return true;
+    },
+  },
 }
-
 </script>
 
 <style scoped>
 .dropDownMenuWrapper {
   position: relative;
   width: 500px;
-  height: 80px;
+  height: 30px;
   border-radius: 8px;
-  background: white;
+  background: rgb(255, 0, 0);
   border: 1px solid #eee;
   box-shadow: 10px 10px 0 0 rgba(black,.03);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -62,6 +98,8 @@ export default {
   }
 
   .dropDownMenuButton {
+    display: flex;
+    align-content: space-between;
     border: none;
     font-size: inherit;
     background: none;
@@ -98,7 +136,7 @@ export default {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: blue;
+      background: rgb(255, 255, 255);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -114,14 +152,14 @@ export default {
     .bar1--open {
       transform: translate(-50%, -50%) rotate(45deg);
       margin-top: 0;
-      background: red;
+      background: rgb(255, 255, 255);
     }
 
     .bar2 {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: blue;
+      background: rgb(255, 255, 255);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -143,7 +181,7 @@ export default {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: blue;
+      background: rgb(255, 255, 255);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -159,7 +197,7 @@ export default {
     .bar3--open {
       top: 50%;
       transform: translate(-50%, -50% ) rotate(-45deg);
-      background: red;
+      background: rgb(252, 252, 252);
     }
 
   
@@ -183,7 +221,7 @@ export default {
     border-radius: 8px;
     border: 1px solid #eee;
     box-shadow: 10px 10px 0 0 rgba(black,.03);
-    background: white;
+    background: rgb(255, 0, 0);
     padding: 10px 30px;
     animation: menu 0.3s ease forwards;
   }
@@ -207,11 +245,12 @@ export default {
 
     .option {
       width: 100%;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid rgb(238, 238, 238);
       padding: 20px 0;
       cursor: pointer;
       position: relative;
       z-index: 2;
+      color: black
     }
     
 
