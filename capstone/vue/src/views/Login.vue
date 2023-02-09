@@ -18,7 +18,7 @@
           <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Username</router-link>
+              <button class="nav-link" v-on:click="alert()" style="" >Account</button>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
@@ -44,17 +44,9 @@
               class="alert alert-success"
               role="alert"
               v-if="this.$route.query.registration"
-            >
+            
               Thank you for registering, please sign in.
-            </div>
-            <!-- Please log in to see Account -->
-            <div 
-            class="alert alert-danger"
-            role="alert"
-            v-if="notLoggedIn" @click="userNotLoggedIn">
-            You're leaving the Nest too Soon!
-            Please sign in
-            </div>
+            />
             <label for="username" class="sr-only">Username</label>
             <input
               type="text"
@@ -81,6 +73,10 @@
         </div>
       </div>
     </div>
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Warning!</strong> You've left the Nest too soon! Please Sign in.
+</div>
   </div>
 
 </template>
@@ -120,10 +116,11 @@ export default {
           }
         });
     },
+    alert(){
+      alert("You've left the Nest too soon! Please Sign in")
+    },
 
-    userNotLoggedIn() {
-      if(this.user
-      }
+   
   },
   };
 
@@ -133,6 +130,32 @@ export default {
 <style >
 @import url("https://fonts.googleleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
+/* The alert message box */
+/* .alert {
+  padding: 20px;
+  background-color: #ffffff; /* Red */
+  /* color: rgb(255, 0, 0);
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px #7f7d7e;
+} */
+
+/* The close button */
+/* .closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+} */
+
+/* When moving the mouse over the close button */
+/* .closebtn:hover {
+  color: black;
+} */ */
 * {
   box-sizing: border-box;
 }
@@ -258,6 +281,9 @@ a {
 }
 .navbar-nav .nav-link {
   border-bottom: 2px solid transparent;
+  box-shadow: none;
+  background-color: transparent;
+  
 }
 
 .forgot-password,
