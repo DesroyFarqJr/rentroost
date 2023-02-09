@@ -37,7 +37,7 @@
         <div class="Four">
           <div class="rec-container1">
             <div class="rec-container2">
-              <a href="../myProfile">
+              <a href="../tenant">
                 <div class="flex-div">
                   <div display="flex" class="Profile-box">
                     <div display="flex" class="inner-probox">

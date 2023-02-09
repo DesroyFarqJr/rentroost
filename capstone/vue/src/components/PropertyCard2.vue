@@ -1,3 +1,19 @@
+<!-- <template>
+  <div class="property-card">
+    <img v-bind:src="property.image" />
+    <h3 v-if="!editMode">{{ property.address }}</h3>
+    <input type="text" v-model="tempProperty.address" v-if="editMode" />
+    <h5 v-if="!editMode">
+      ${{ property.price }} | BR: {{ property.bedrooms }}
+    </h5>
+    <input type="text" v-model="tempProperty.price" v-if="editMode" />
+    <h5 class="propDescription" v-if="!editMode">{{ property.description }}</h5>
+    <textarea v-model="tempProperty.description" v-if="editMode"></textarea>
+    <button v-if="!editMode" @click="editMode = true">Edit Property</button>
+    <button v-if="editMode" @click="updateProperty()">Done</button>
+  </div>
+</template> -->
+
 <template>
   <div class="property-card">
     <!-- DISPLAY MODE -->
@@ -8,7 +24,7 @@
       ${{ property.propertyRent }} | Beds: {{ property.propertyBedrooms }} | Baths: {{ property.propertyBathrooms }}
     </h5>
     <h5 class="propDescription" v-if="!editMode">{{ property.propertyDescription }}</h5>
-    <button v-if="!editMode" v-on:click="editProperty">Edit Property</button>
+    <!-- <button v-if="!editMode" v-on:click="editProperty">Edit Property</button> -->
     <!-- EDIT MODE -->
     <label v-if="editMode">Name: </label><input type="text" v-model="tempProperty.propertyName" v-if="editMode" />
     <label v-if="editMode">Address: </label><input type="text" v-model="tempProperty.propertyAddress" v-if="editMode" />
@@ -16,8 +32,8 @@
     <label v-if="editMode">Bedrooms: </label><input type="text" v-model="tempProperty.propertyBedrooms" v-if="editMode" />
     <label v-if="editMode">Bathrooms: </label><input type="text" v-model="tempProperty.propertyBathrooms" v-if="editMode" />
     <label v-if="editMode">Description: </label><textarea v-model="tempProperty.propertyDescription" v-if="editMode"></textarea>
-    <button v-if="editMode" @click="updateProperty()">Done</button>
-    <button id="cancel-button" v-if="editMode" @click="cancelEdit()">Cancel</button>
+    <!-- <button v-if="editMode" @click="updateProperty()">Done</button> -->
+    <!-- <button id="cancel-button" v-if="editMode" @click="cancelEdit()">Cancel</button> -->
   </div>
 </template>
 <script>
@@ -131,6 +147,8 @@ button {
   max-height: 120px;
   overflow: hidden;
   max-width: 75%;
-  text-align: center;
+  text-align: left;
+  padding-top: 5px;
+  
 }
 </style>

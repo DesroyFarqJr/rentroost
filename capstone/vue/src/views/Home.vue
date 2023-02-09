@@ -25,6 +25,8 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        <drop-down-menu />
+        
         <div class="_collapse _navbar-collapse">
           <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
@@ -46,6 +48,7 @@
         <map-with-pins id="map"> </map-with-pins>
       </div>
     </div>
+    
 
  
     <div class="footer-dark">
@@ -100,6 +103,7 @@
 </template>
 
 <script>
+import DropDownMenu from '../components/DropDownMenu.vue';
 import MapFilter from "../components/MapFilter.vue";
 import MapWithPins from "../components/MapWithPins.vue";
 
@@ -108,6 +112,7 @@ export default {
   components: {
     MapWithPins,
     MapFilter,
+    DropDownMenu,
   },
 };
 </script>
