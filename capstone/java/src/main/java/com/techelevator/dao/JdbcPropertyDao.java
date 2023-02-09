@@ -96,9 +96,9 @@ public class JdbcPropertyDao implements PropertyDao {
 
     public boolean updateProperty(Property property) {
         // address price bedrooms bathrooms description
-        String sql ="UPDATE property SET prop_name=?, prop_address=?, prop_description=?, prop_bedrooms=?, prop_bathrooms=?, prop_rent=? WHERE property_id = ?;";
+        String sql ="UPDATE property SET prop_name=?, prop_address=?, prop_lat=?, prop_lng=?, prop_description=?, prop_bedrooms=?, prop_bathrooms=?, prop_rent=? WHERE property_id = ?;";
         boolean outcome = false;
-        int linesReturned = jdbcTemplate.update(sql, property.getPropertyName(), property.getPropertyAddress(), property.getPropertyDescription(), property.getPropertyBedrooms(), property.getPropertyBathrooms(), property.getPropertyRent(), property.getPropertyId());
+        int linesReturned = jdbcTemplate.update(sql, property.getPropertyName(), property.getPropertyAddress(), property.getPropertyLat(), property.getPropertyLng(), property.getPropertyDescription(), property.getPropertyBedrooms(), property.getPropertyBathrooms(), property.getPropertyRent(), property.getPropertyId());
         if (linesReturned == 1) {
             outcome = true;
         }
