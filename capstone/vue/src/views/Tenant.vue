@@ -29,7 +29,6 @@
     </nav>
     <!-- Nav bar ABOVE. 
 
-    
     Balance,Maintenance Request, eCheck BELOW -->
     <div id="top-row">
       <div class="input-group">
@@ -37,6 +36,7 @@
         <maintenance-request-form />
       </div>
       <div class="submit-group">
+        <br>
         <e-check />
       </div>
     </div>

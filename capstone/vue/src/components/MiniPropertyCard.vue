@@ -47,13 +47,18 @@ export default {
   margin: 10px;
   height: 100px;
   width: 95%;
+  max-width: inherit;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   /* padding-bottom: 10px; */
+}
+
+.prop-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 button {
@@ -80,23 +85,30 @@ button {
 .propAddress {
   font-size: 13px;
   max-height: 120px;
-  overflow: hidden;
-  max-width: 75%;
-  text-align: left;
+  word-break: break-all;
+  overflow-wrap: break-word; 
+  max-width: 100%;
+  text-align: right;
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 .propDescription {
   font-size: 10px;
   max-height: 120px;
-  overflow: hidden;
-  max-width: 75%;
-  text-align: left;
+  max-width: inherit;
+  overflow: clip;
+  /* max-width: 75%; */
+  text-align: right;
   padding-left: 5px;
+  padding-right: 5px;
+  word-break: break-all;
+  overflow-wrap: break-word; 
 }
 .more-details-link {
   justify-content: end;
-  margin-top: 10px;
+  text-align: right;
+  margin-top: 35px;
 }
 
 a {
