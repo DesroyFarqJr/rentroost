@@ -25,10 +25,9 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <drop-down-menu />
+        
         
         <div class="_collapse _navbar-collapse">
-          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/user">Account</router-link>
@@ -36,6 +35,7 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/login"> Log in</router-link>
             </li>
+            <li><drop-down-menu /></li>
           </ul>
         </div>
       </div>
@@ -49,8 +49,6 @@
       </div>
     </div>
     
-
- 
     <div class="footer-dark">
       <footer>
         <div class="footer-container">
