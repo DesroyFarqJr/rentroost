@@ -1,19 +1,3 @@
-<!-- <template>
-  <div class="property-card">
-    <img v-bind:src="property.image" />
-    <h3 v-if="!editMode">{{ property.address }}</h3>
-    <input type="text" v-model="tempProperty.address" v-if="editMode" />
-    <h5 v-if="!editMode">
-      ${{ property.price }} | BR: {{ property.bedrooms }}
-    </h5>
-    <input type="text" v-model="tempProperty.price" v-if="editMode" />
-    <h5 class="propDescription" v-if="!editMode">{{ property.description }}</h5>
-    <textarea v-model="tempProperty.description" v-if="editMode"></textarea>
-    <button v-if="!editMode" @click="editMode = true">Edit Property</button>
-    <button v-if="editMode" @click="updateProperty()">Done</button>
-  </div>
-</template> -->
-
 <template>
   <div class="property-card">
     <!-- DISPLAY MODE -->
