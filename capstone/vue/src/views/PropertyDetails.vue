@@ -1,5 +1,33 @@
 <template>
   <div class="main-container">
+     <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img alt="logo" src="../../public/images/logo.png"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="navbarsExampleDefault"
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="_collapse _navbar-collapse">
+          <!-- ^^ class name changed...rename if needed -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/user">Account</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/logout"> Log out</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="left-side">
         <img :src="property.imageUrl" alt="Main Image" />
@@ -16,8 +44,12 @@
         </div>
       </div>
     </div>
+    
     <div class="container-similar">
       <h2>Similar Properties</h2>
+      
+
+
       <div class="property-cards">
         <div v-for="prop in similarProperties" :key="prop.id">
           <img :src="prop.imageUrl">
@@ -31,14 +63,19 @@
         </div>
       </div>
     </div>
+    
+    <properties-list-2 />  
   </div>
 </template>
 
 
 
 <script>
+import PropertiesList2 from "../components/PropertiesList2.vue";
 import propertyService from "../services/PropertyService";
 export default {
+   components: { PropertiesList2,},
+  
   name: "PropertyDetails",
   methods: {
     getPropertyDetails() {
@@ -84,6 +121,7 @@ div {
 }
 .container {
   display: flex;
+  padding-top: 50px;
 }
 .container-similar {
   display: flex;
