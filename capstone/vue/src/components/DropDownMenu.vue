@@ -22,12 +22,12 @@
 
   <section class="option">
    <router-link to="/aboutus">About us</router-link>
-   <span class="desc">About Rent Roost.</span>
+   <span class="desc">About RentRoost.</span>
   </section>
 
   <section class="option">
     <router-link to="/AddProperty">Add a Property</router-link>
-    <span class="desc">Here you can upload a property.</span>
+    <span class="desc">Upload your Roost.</span>
   </section>
 
 </dropdown-menu>
@@ -81,13 +81,13 @@ export default {
 <style scoped>
 .dropDownMenuWrapper {
   position: relative;
-  width: 100px;
+  width: 90px;
   height: 30px;
   border-radius: 8px;
-  background: rgb(0, 0, 0);
-  border: 1px solid #eee;
-  box-shadow: 10px 10px 0 0 rgba(black,.03);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: rgba(216, 216, 216, 0);
+  border: 0px solid rgba(238, 238, 238, 0);
+  box-shadow: rgba(255, 255, 255, 0) 0px 1px 4px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
   * {
     box-sizing: border-box;
@@ -95,12 +95,13 @@ export default {
   }
 
   .dropDownMenuButton {
-    color:#333;
+    color:rgba(255, 255, 255, 0);
     display: flex;
     align-content: space-between;
     border: none;
     font-size: inherit;
     background: none;
+    border: none;
     outline: none;
     border-radius: 4px;
     position: absolute;
@@ -115,6 +116,7 @@ export default {
     height: 100%;
     z-index: 2;
     cursor: pointer;
+    box-shadow: none;
   }
 
   .dropDownMenuButton--dark {
@@ -134,8 +136,9 @@ export default {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: rgb(255, 255, 255);
+      background: rgba(116, 116, 116, 0.74);
       position: absolute;
+      margin-top: 5px;
       top: 50%;
       left: 50%;
       border-radius: 9999px;
@@ -150,15 +153,16 @@ export default {
     .bar1--open {
       transform: translate(-50%, -50%) rotate(45deg);
       margin-top: 0;
-      background: rgb(255, 255, 255);
+      background: rgb(255, 0, 0);
     }
 
     .bar2 {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: rgb(255, 255, 255);
+      background:  rgba(116, 116, 116, 0.74);
       position: absolute;
+      margin-top: 5px;
       top: 50%;
       left: 50%;
       border-radius: 9999px;
@@ -179,8 +183,9 @@ export default {
       width: 100%;
       max-width: 28px;
       height: 3px;
-      background: rgb(255, 255, 255);
+      background:  rgba(116, 116, 116, 0.74);
       position: absolute;
+      margin-top: 5px;
       top: 50%;
       left: 50%;
       border-radius: 9999px;
@@ -195,7 +200,7 @@ export default {
     .bar3--open {
       top: 50%;
       transform: translate(-50%, -50% ) rotate(-45deg);
-      background: rgb(252, 252, 252);
+      background: rgb(255, 0, 0);
     }
 
   
@@ -218,7 +223,7 @@ export default {
     min-height: 10px;
     border-radius: 8px;
     border: 1px solid #eee;
-    box-shadow: 10px 10px 0 0 rgba(black,.03);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background: rgb(255, 255, 255);
     padding: 10px 30px;
     animation: menu 0.3s ease forwards;
@@ -248,7 +253,7 @@ export default {
       cursor: pointer;
       position: relative;
       z-index: 2;
-      color: black
+      color: rgb(255, 15, 15)
     }
     
 
@@ -271,7 +276,7 @@ export default {
       font-size: 14px;
       margin: 3px 0 0 0;
       cursor: default;
-      color: white;
+      color: rgba(0, 0, 0, 0.651);
       font-weight: bold;
     }
 
@@ -286,7 +291,7 @@ export default {
     }
 
     * {
-      color:#333;
+      color:rgba(255, 0, 0, 0.596);
     }
 
   
