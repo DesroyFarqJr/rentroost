@@ -169,7 +169,7 @@ body {
 }
 
 .blurredImg {
-  background-image: url(../../public/images/loginImage.jpg);
+  background-image: url(../../public/images/keys.jpg);
   filter: blur(4px);
   height: 100vh;
   width: 100vw;
