@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="blurredImg"></div>
+    <div class="blurredImg1"></div>
    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
@@ -168,14 +168,16 @@ body {
   font-family: "Fira Sans", sans-serif;
 }
 
-.blurredImg {
-  background-image: url(../../public/images/keys.jpg);
+.blurredImg1 {
+  background-image: url(../../public/images/Houseroof.jpg
+);
   filter: blur(4px);
-  height: 100vh;
+  height: 180vh;
   width: 100vw;
-  background-size: cover;
+  background-size:auto;
   position: fixed;
   top: 0px;
+  left: 0px;
   z-index: -1;
 }
 
