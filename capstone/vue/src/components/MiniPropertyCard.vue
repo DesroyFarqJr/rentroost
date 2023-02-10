@@ -46,7 +46,7 @@ export default {
   background-color: white;
   margin: 10px;
   height: 100px;
-  width: 400px;
+  width: 450px;
   max-width: inherit;
   border-radius: 3px;
   display: flex;
