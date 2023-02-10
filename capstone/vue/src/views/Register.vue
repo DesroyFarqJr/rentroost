@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="blurredImg"></div>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
@@ -296,6 +297,16 @@ body {
   display: flex;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
+}
+.blurredImg {
+  background-image: url(../../public/images/coupleMoving.jpg);
+  filter: blur(4px);
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  z-index: -1;
 }
 
 h1,
