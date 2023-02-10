@@ -63,7 +63,7 @@
           required
         />
       </div>
-      <div class="formGroup">
+      <div class="formGroup1">
         <label for="currentlRented">Currently rented?</label>
         <input
           v-model="formEntry.currentlyRented"
@@ -74,11 +74,15 @@
       </div>
       <div class="formGroup">
         <img :src="image" alt="" />
+        <div class="uploadPic">
         <cloudinary-comp />
+        </div>
         <!-- <label for="photoUrl">Photo Url</label>
         <input v-model="formEntry.imagUrl" id="photoUrl" type="text" /> -->
       </div>
-      <input type="submit" />
+      <div class="sub">
+      <input class="submiit" type="submit" />
+      </div>
     </form>
   </div>
 </template>
@@ -159,15 +163,34 @@ CONSTRAINT PK_property_id PRIMARY KEY (property_id)
 
 <style>
 .form {
-  width: 80%;
+  width: 100%;
   background-color: #fafafa;
   display: flex;
   justify-content: center;
   height: 60%;
+  padding-bottom: 20px;
 }
 .formGroup {
   display: flex;
+  padding-bottom: 1px;
   flex-direction: column;
+  align-content: center;
+  
 }
+.formGroup1{
+  padding-top: 15px;
+   display: flex;
+  flex-direction: column;
+  padding-right: 285px;
+  align-content: flex-start;
+}
+.sub{
+ display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
 
 </style>

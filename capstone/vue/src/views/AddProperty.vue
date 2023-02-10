@@ -90,6 +90,7 @@ methods: {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 button {
