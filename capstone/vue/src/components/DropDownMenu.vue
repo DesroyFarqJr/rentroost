@@ -30,7 +30,7 @@
     <span class="desc">Upload your Roost.</span>
   </section>
   <section class="option">
-    <router-link to="/AddProperty">Contact Us</router-link>
+    <router-link to="/contactus">Contact Us</router-link>
     <span class="desc">Get to know the team!</span>
   </section>
 
