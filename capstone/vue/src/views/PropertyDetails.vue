@@ -30,7 +30,6 @@
         </div>
       </div>
     </nav>
-
     <div class="container">
       <div class="left-side">
         <img :src="property.imageUrl" alt="Main Image" />
@@ -121,10 +120,9 @@
       </form>
       </div>
     </div>
-
+    <center>
+    <h2>Similar Properties</h2>
     <div class="container-similar">
-      <h2>Similar Properties</h2>
-
       <div class="property-cards">
         <div v-for="prop in similarProperties" :key="prop.id">
           <img :src="prop.imageUrl" />
@@ -138,11 +136,11 @@
         </div>
       </div>
     </div>
+  </center>
 
     <properties-list-2 />
   </div>
 </template>
-
 
 
 <script>
@@ -211,19 +209,26 @@ export default {
 
 
 <style scoped>
+.left-side img {
+  scale: 100%;
+}
 div {
   border-radius: 3px;
 }
 .container {
   display: flex;
+  widows: 100%;
   padding-top: 50px;
+  justify-content: center;
+  align-content: center;
 }
 .container-similar {
   display: flex;
+  max-width: 1500px;
 }
 
 .left-side {
-  width: 70%;
+  min-width: 400px;
 }
 
 .application-form {
@@ -241,7 +246,7 @@ div {
 }
 
 .right-side {
-  width: 100%;
+  min-width: 600px;
   padding: 20px;
   background-color: #fafafa;
 }
