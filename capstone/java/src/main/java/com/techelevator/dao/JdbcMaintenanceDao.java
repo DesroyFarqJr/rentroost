@@ -22,24 +22,19 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
     }
 
     @Override
-    public void createMaintenanceRequest(Principal principal, Maintenance maintenance) {
-        String principalName = principal.getName();
-        System.out.println(principalName);
+    public void createMaintenanceRequest(int tenantId, Maintenance maintenance) {
 
-        String sql ="INSERT INTO maintenance (property_id, request, assigned_to, repair_status, username) VALUES " +
-                "(SELECT property_id FROM tenant_unit WHERE tenant_id = (SELECT tenant_id FROM tenant WHERE tenant_name = ? ),?,null,'incomplete',?)";
-        int newMain_id;
-        try {
-            jdbcTemplate.update(sql,principalName,maintenance.getMaintenanceRequest(), principalName);
-        } catch(DataAccessException e ){
-            System.out.println("Error inserting maintenance");
-        }
+        String sql ="INSERT INTO maintenance (user_id, property_id, request, assigned_to, repair_status) " +
+                "VALUES (?, (SELECT property_id FROM tenant_unit " +
+                "INNER JOIN tenant ON tenant_unit.tenant_id = tenant.tenant_id " +
+                "WHERE tenant_user_id = ?),?,null,'incomplete')";
+        jdbcTemplate.update(sql,tenantId, tenantId,maintenance.getMaintenanceRequest());
     }
 
     @Override
     public List<Maintenance> getAllMaintenanceReqs() {
         List<Maintenance> outputList = new ArrayList<>();
-        String sql = "SELECT maintenance_id, property_id, request, assigned_to, repair_status " +
+        String sql = "SELECT * " +
                 "FROM maintenance";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -75,6 +70,44 @@ public class JdbcMaintenanceDao implements MaintenanceDao {
     @Override
     public List<Maintenance> searchTickets(int propertyId, String maintenanceRequest, int assignedTo, String repairStatus) {
         return null;
+    }
+
+    @Override
+    public List<Maintenance> maintenanceRequestByLandlord(int landlordId) {
+        ArrayList<Maintenance> requests = new ArrayList<>();
+        String sql = "SELECT * FROM maintenance m " +
+                "LEFT JOIN property p ON m.property_id = p.property_id " +
+                "LEFT JOIN property_landlord pl ON m.property_id = pl.property_id " +
+                "LEFT JOIN tenant t ON m.user_id = t.tenant_user_id " +
+                "LEFT JOIN landlord l ON pl.landlord_id = l.landlord_id " +
+                "WHERE l.landlord_user_id = ?";
+        SqlRowSet returnedRequests = jdbcTemplate.queryForRowSet(sql, landlordId);
+        while(returnedRequests.next()) {
+            requests.add(mapRowToMaintenanceWithName(returnedRequests));
+        }
+        return requests;
+    }
+
+    @Override
+    public boolean assignEmployeeToRequest(int employeeId, int maintenanceId) {
+        String sql = "UPDATE maintenance " +
+                "SET assigned_to = ?" +
+                "WHERE maintenance_id = ?;";
+        jdbcTemplate.update(sql, employeeId, maintenanceId);
+        return true;
+    }
+
+    private Maintenance mapRowToMaintenanceWithName(SqlRowSet rowSet) {
+        Maintenance maintenance = new Maintenance();
+        maintenance.setMaintenanceId(rowSet.getInt("maintenance_id"));
+        maintenance.setPropertyId(rowSet.getInt("property_id"));
+        maintenance.setMaintenanceRequest(rowSet.getString("request"));
+        maintenance.setAssignedTo(rowSet.getInt("assigned_to"));
+        maintenance.setRepairStatus(rowSet.getString("repair_status"));
+        maintenance.setTenantName(rowSet.getString("tenant_name"));
+        maintenance.setPropertyAddress(rowSet.getString("prop_address"));
+
+        return maintenance;
     }
 
     private Maintenance mapRowToMaintenance(SqlRowSet rowSet) {

@@ -2,7 +2,7 @@
   <div class="container">
      <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
-        <a href="#" class="navbar-brand"
+        <a href="http://localhost:8080/" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
         /></a>
         <button
@@ -161,6 +161,8 @@ template {
 .card-title {
   text-align: center;
 }
+
+.col-3 {}
 
 /* .btn-primary {
   text-align: center;

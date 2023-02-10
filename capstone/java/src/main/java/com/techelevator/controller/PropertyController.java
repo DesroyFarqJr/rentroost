@@ -100,13 +100,17 @@ public class PropertyController {
     @RequestMapping(path = "/landlordstenants", method = RequestMethod.GET)
     public List<Tenant> getLandlordsTenants(Principal principal) {
         System.out.println("Search Performed On: " + principal.getName());
-        return landlordDao.listOfLandlordsTenants(principal);
+        User user = userDao.findByUsername(principal.getName());
+        Landlord landlord = landlordDao.getLandlord(user.getId());
+        return landlordDao.listOfLandlordsTenants(landlord.getLandlordId());
     }
 
     @RequestMapping(path = "/landlordsproperties", method = RequestMethod.GET)
     public List<Property> getLandlordsProperties(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        Landlord landlord = landlordDao.getLandlord(user.getId());
         System.out.println("Search Performed On: " + principal.getName());
-        return landlordDao.getLandlordsProperties(principal);
+        return landlordDao.getLandlordsProperties(landlord.getLandlordId());
     }
 
 
