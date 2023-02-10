@@ -2,18 +2,18 @@
   <div class="home">
     <!-- <input type="text" v-model="searchQuery">
     <button @click="search">Search</button> -->
-    <form id=search-form>
+    <!-- <form id=search-form>
       <div class="wrapper">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
           <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
         </svg>
-      <input class="nav-search-bar" type="text" placeholder="Find your Coup" v-model="searchQuery" />
+      <input class="nav-search-bar" type="text" placeholder="Find your Coop" v-model="searchQuery" />
       
       </div>
-    </form>
+    </form> -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
-        <a href="#" class="navbar-brand"
+        <a href="http://localhost:8080/" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
         /></a>
         <button
@@ -22,18 +22,22 @@
           data-bs-toggle="collapse"
           data-bs-target="navbarsExampleDefault"
           label="Toggle navigation"
+          href
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        
+        
         <div class="_collapse _navbar-collapse">
-          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
+            <li><drop-down-menu /></li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Account</router-link>
+              <router-link class="nav-link" to="/register">Register</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout"> Log out</router-link>
+              <router-link class="nav-link" to="/login"> Log in</router-link>
             </li>
+            
           </ul>
         </div>
       </div>
@@ -46,8 +50,7 @@
         <map-with-pins id="map"> </map-with-pins>
       </div>
     </div>
-
- 
+    
     <div class="footer-dark">
       <footer>
         <div class="footer-container">
@@ -100,6 +103,7 @@
 </template>
 
 <script>
+import DropDownMenu from '../components/DropDownMenu.vue';
 import MapFilter from "../components/MapFilter.vue";
 import MapWithPins from "../components/MapWithPins.vue";
 
@@ -108,6 +112,7 @@ export default {
   components: {
     MapWithPins,
     MapFilter,
+    DropDownMenu,
   },
 };
 </script>
@@ -125,6 +130,12 @@ export default {
   max-width: 100%;
   margin: 0 auto;
   padding-top: 5px;
+}
+
+.nav-item {
+ 
+  
+
 }
 
 .footer-container-bottom {
@@ -381,23 +392,7 @@ p {
   }
 }
 
-/* .nav-search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  flex-direction: column;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 128, 0, 0);
-  padding: 10px 20px;
-  outline-style: ;
-  background-color: red;
-  width: 30%;
-  margin: 0.4rem 0;
-  box-shadow:  0.3px 0.5px 0.6px lightgray) / 0.39),
-    0.9px 1.9px 2.1px -1.7px lightgray) / 0.32),
-    4px 8px 8.8px -3.4px black) / 0.25);
 
-} */
 
 input[type="text"] {
   outline-color: tomato;
@@ -410,6 +405,7 @@ input::placeholder {
 }
 
 .search-btn{
+  
   display: flex;
   max-width: 15px;
   justify-content: center;
@@ -423,6 +419,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 25px;
 }
 input {
   

@@ -46,6 +46,11 @@ public class PropertyController {
 
     @RequestMapping(path = "/{propertyId}", method = RequestMethod.PUT)
     public boolean updateProperty(@PathVariable int propertyId, @RequestBody Property property) {
+        System.out.println("Updating property: " + property.toString());
+        Map <String,Double> newMap = restGeocodingService.getGeocode(property.getPropertyAddress());
+        System.out.println(newMap.toString());
+        property.setPropertyLat(newMap.get("lat"));
+        property.setPropertyLng(newMap.get("lng"));
         return propertyDao.updateProperty(property);
     }
 
@@ -56,9 +61,9 @@ public class PropertyController {
     @RequestMapping(path = "/landlord/myproperties", method = RequestMethod.GET)
     public List<Property> getMyProperties(Principal principal) {
         String principalName = principal.getName();
-        System.out.println(principalName);
         // get landlord id from principalName
         User authenticatedUser = userDao.findByUsername(principalName);
+        Landlord landlord = landlordDao.getLandlordByUserId(authenticatedUser.getId());
         return propertyDao.getPropertiesByLandlord(authenticatedUser.getId());
     }
     @RequestMapping(path ="/addproperty", method = RequestMethod.POST)
@@ -79,7 +84,6 @@ public class PropertyController {
     @RequestMapping(path="/search")
     public List<Property> searchProperties(@RequestParam(defaultValue = "0") int bedrooms, @RequestParam(defaultValue = "0") int bathrooms, @RequestParam(defaultValue = "0.00") double minrent, @RequestParam(defaultValue = "99999.00") double maxrent) {
         List<Property> newList = propertyDao.searchProperties(bedrooms, bathrooms, minrent, maxrent);
-        System.out.println("SIZE OF RETURNING SEARCH LIST: " + newList.size());
         return newList;
     }
     @RequestMapping(path="/geocode", method = RequestMethod.GET)
@@ -92,7 +96,6 @@ public class PropertyController {
 
         return landlordDao.changeTenantAddress(propertyName, tenantId);
     }
-
 
     @RequestMapping(path = "/landlordstenants", method = RequestMethod.GET)
     public List<Tenant> getLandlordsTenants(Principal principal) {

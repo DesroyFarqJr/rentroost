@@ -1,15 +1,15 @@
  <template>
     <div>
-      <property-card  v-bind:property="property" v-for="property in $store.state.myPropertiesList" v-bind:key="property.id" />
+      <property-card-2  v-bind:property="property" v-for="property in $store.state.myPropertiesList" v-bind:key="property.id" />
     </div>
 </template>
 
 <script>
-import PropertyCard from './PropertyCard.vue';
+import PropertyCard2 from './PropertyCard2.vue';
 import propertyService from "../services/PropertyService";
 
 export default {
-  components: {PropertyCard},
+  components: {PropertyCard2},
   name: "propertyList",
   created() {
     propertyService.getMyProperties().then((response) => {

@@ -50,7 +50,7 @@ export default {
         return axios.post('maintenance/newticket', request)
     },
     getPrincipalTenantsList() {
-        return axios.get('property/landlordstenants')
+        return axios.get('property/landlordstenants');
     },
     getPrincipalPropertyList() {
         return axios.get('property/landlordsproperties')
@@ -63,5 +63,8 @@ export default {
     },
     assignEmployeeToRequest(maintenanceId, employeeId) {
         return axios.put(`maintenance/updateEmployee/${maintenanceId}/${employeeId}`)
+    },
+    updateProperty(propertyId, property) {
+        return axios.put(`property/${propertyId}`, property);
     }
 }

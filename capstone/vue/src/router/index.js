@@ -14,6 +14,10 @@ import Employee from '../views/Employee.vue'
 import CloudinaryComp from "../components/CloudinaryComp.vue"
 import AddPropertyFormPage from "../views/AddPropertyFormPage.vue"
 import PropertyDetails from "../views/PropertyDetails.vue"
+import AboutUs from "../views/AboutUs.vue"
+import ContactUs from "../views/ContactUs.vue"
+
+
 
 Vue.use(Router)
 
@@ -100,7 +104,7 @@ const router = new Router({
         name: "user",
         component: User,
         meta: {
-          requiresAuth: false, //Change this after complete
+          requiresAuth: true, //Change this after complete
         }
       },
       {
@@ -119,6 +123,22 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/aboutus",
+      name: "aboutus",
+      component: AboutUs,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/contactus",
+      name: "contactus",
+      component: ContactUs,
+      meta: {
+        requiresAuth: false
+      }
+    },
       {
         path: "/cloudinary",
         name: "cloudinary",
@@ -127,6 +147,8 @@ const router = new Router({
           requiresAuth: false
         }
       },
+
+    
       {
         path: "/PropertyDetails/:id",
         name: "PropertyDetails",

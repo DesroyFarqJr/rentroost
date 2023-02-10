@@ -1,8 +1,8 @@
 <template>
   <div id="add-property">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+   <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
-        <a href="#" class="navbar-brand"
+        <a href="http://localhost:8080/" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
         /></a>
         <button
@@ -14,15 +14,18 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        
+        
         <div class="_collapse _navbar-collapse">
-          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
+            <li><drop-down-menu /></li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Username</router-link>
+              <router-link class="nav-link" to="/account">Account</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
+            
           </ul>
         </div>
       </div>
@@ -32,16 +35,53 @@
 
         <h1>Your Properties</h1>
       <div>
-              <button >Add Property</button>
+        <CloudinaryComp />
+            
+              <add-property-form-page />
       </div>
     <properties-list />  </div>
 </template>
 
 <script>
 import PropertiesList from "../components/PropertiesList.vue";
+import AddPropertyFormPage from '../views/AddPropertyFormPage.vue';
+
 export default {
-  components: { PropertiesList },
+  components: { PropertiesList, AddPropertyFormPage },
   name: "addproperty",
+
+  // Needs Methods for Adding properties
+
+data(){
+  return{
+    newProp: {
+      title: "",
+      body: "",
+      img_url: ""
+    },
+    
+  }
+},
+
+
+methods: {
+  uploadImage() {
+    this.imageWidget.open()
+  },
+
+// submitPost() {
+//   PostsService.createPost(this.newPost).then(response) => {
+//     if (response.status === 201) {
+//       this.$router.push{
+
+//       }
+//     }
+//   }
+// }
+
+
+},
+
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
         <a href="#" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
@@ -17,18 +17,20 @@
         <div class="_collapse _navbar-collapse">
           <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link class="nav-link" to="/user">Acocunt</router-link>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <router-link class="nav-link" to="/logout"> Log out</router-link>
+              <router-link class="nav-link" to="/login"> Log in</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  <!-- Nav bar -->
-  <!-- Registration  -->
+
+    <!-- Nav bar -->
+    <!-- Registraition  -->
+
     <div class="auth-wrapper">
       <div class="auth-inner">
         <div id="register" class="text-center">
@@ -46,7 +48,7 @@
               type="text"
               id="firstname"
               class="form-control"
-              placeholder="Firstname"
+              placeholder="First Name"
               v-model="user.firstname"
               required
               style="margin-bottom: 10px"
@@ -57,7 +59,7 @@
               type="text"
               id="lastname"
               class="form-control"
-              placeholder="Lastname"
+              placeholder="Last Name"
               v-model="user.lastname"
               required
               style="margin-bottom: 10px"
@@ -87,7 +89,6 @@
               autofocus
             />
 
-
             <label for="username" class="sr-only">Username</label>
             <input
               type="text"
@@ -100,14 +101,16 @@
               autofocus
             />
 
-            <p> Select roles:  </p>
-          
-          <div class="role-checkboxes" v-for="(role, key) in selectedRoles" :key="key">
-           <label :for="key" type="checkbox">{{ role }}</label> 
-            <input 
-            type="checkbox"  @change="updateUser(role)" />
-            </div>
+            <p>Select roles:</p>
 
+            <div
+              class="role-checkboxes"
+              v-for="(role, key) in selectedRoles"
+              :key="key"
+            >
+              <label :for="key" type="checkbox">{{ role }}</label>
+              <input type="checkbox" @change="updateUser(role)" />
+            </div>
 
             <label for="password" class="sr-only">Password</label>
             <input
@@ -134,10 +137,24 @@
             </button>
           </form>
         </div>
+        <!-- <div class="center">
+      <h1 id="captchaHeading">
+        Captcha Validator Using HTML, CSS and JavaScript
+      </h1>
+      <div id="captchaBackground">
+        <canvas id="captcha">captcha text</canvas>
+        <input id="textBox" type="text" name="text" />
+        <div id="buttons">
+          <input id="submitButton" type="submit" />
+          <button id="refreshButton" type="submit">Refresh</button>
+        </div>
+        <span id="output"></span>
+      </div>
+    </div> -->
       </div>
     </div>
+    
   </div>
-  
 </template>
 
 <script>
@@ -155,9 +172,9 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role: ""
+        role: "",
       },
-      selectedRoles: ["Landlord", "Tenant", "ADMIN"],
+      selectedRoles: ["Landlord", "Tenant", "Employee"],
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this user.",
     };
@@ -181,8 +198,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: "/login",
-                query: { registration: "success" },
+                path: "/login"
               });
             }
           })
@@ -206,6 +222,70 @@ export default {
 
 <style>
 @import url("https://fonts.googleleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+  background-color: #232331;
+  font-family: "Roboto", sans-serif;
+}
+
+#captchaBackground {
+  height: 220px;
+  width: 250px;
+  background-color: #2d3748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#captchaHeading {
+  color: white;
+}
+
+#captcha {
+  height: 80%;
+  width: 80%;
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin: auto;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#submitButton {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background-color: #08e5ff;
+  border: 0px;
+  font-weight: bold;
+}
+
+#refreshButton {
+  background-color: #08e5ff;
+ border: 0px;
+  font-weight: bold;
+}
+
+#textBox {
+  height: 25px;
+}
+
+.incorrectCaptcha {
+  color: #ff0000;
+}
+
+.correctCaptcha {
+  color: #7fff00;
+}
 
 * {
   box-sizing: border-box;

@@ -1,8 +1,8 @@
 <template>
   <div class="user">
-     <nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <div class="container-fluid">
-        <a href="#" class="navbar-brand"
+        <a href="http://localhost:8080/" class="navbar-brand"
           ><img alt="logo" src="../../public/images/logo.png"
         /></a>
         <button
@@ -14,15 +14,18 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        
+        
         <div class="_collapse _navbar-collapse">
-          <!-- ^^ class name changed...rename if needed -->
           <ul class="navbar-nav mr-auto">
+            <li><drop-down-menu /></li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/user">Acocunt</router-link>
+              <router-link class="nav-link" to="/account">Account</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
+            
           </ul>
         </div>
       </div>
@@ -37,7 +40,7 @@
         <div class="Four">
           <div class="rec-container1">
             <div class="rec-container2">
-              <a href="../myProfile">
+              <a href="../tenant">
                 <div class="flex-div">
                   <div display="flex" class="Profile-box">
                     <div display="flex" class="inner-probox">
@@ -137,7 +140,7 @@
           </div>
         </div>
         <!--  -->
-        <div class="gQu" id="Fifth">
+        <!-- <div class="gQu" id="Fifth">
           <div class="Four">
             <div class="rec-container1">
               <div class="rec-container2">
@@ -187,7 +190,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- <div> 
         <h4>Your Current Balance</h4>

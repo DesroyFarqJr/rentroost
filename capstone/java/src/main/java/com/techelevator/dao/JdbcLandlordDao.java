@@ -37,18 +37,24 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
 
+
     @Override
     public boolean addLandlord(String firstname, String lastname, String email, String phone, int userId) {
         String insertUserSql = "INSERT INTO landlord (landlord_name, landlord_email, landlord_phone, landlord_user_id) values (?,?,?,?)";
         return jdbcTemplate.update(insertUserSql, "" + firstname + " " + lastname, email, phone, userId) == 1;
     }
 
-    public Landlord getLandlordByName(String principalName) {
-        // TODO implement get landlord from name after models have been updated
-        return null;
+    @Override
+    public Landlord getLandlordByUserId(int landlordUserId) {
+        Landlord landlord = null;
+        String sql = "SELECT * FROM landlord WHERE landlord_user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordUserId);
+        if (results.next()) {
+            landlord = mapRowToLandlord(results);
+        }
+        return landlord;
+
     }
-
-
 
 
     @Override
@@ -76,6 +82,7 @@ public class JdbcLandlordDao implements LandlordDao {
         return true;
     }
 
+
     @Override
     public ArrayList<Property> getLandlordsProperties(int landlordId) {
         ArrayList<Property> properties = new ArrayList<>();
@@ -89,6 +96,8 @@ public class JdbcLandlordDao implements LandlordDao {
         }
         return properties;
     }
+
+
 
 
     private Tenant mapRowToTenantWithAddress(SqlRowSet rowSet) {
@@ -125,4 +134,6 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return landlord;
     }
+
     }
+

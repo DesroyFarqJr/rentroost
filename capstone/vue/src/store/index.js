@@ -22,6 +22,8 @@ export default new Vuex.Store({
     user: currentUser || {},
     propertiesList: null,
     myPropertiesList: null,
+    imgUrl: "",
+    
     properties: [
       {
         id: 10,
@@ -97,6 +99,13 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    SET_PHOTO_URL(state,URL){
+      state.imgUrl = URL;
+    },
+    CLEAR_PHOTO_URL(state){
+      state.imgUrl = "";
+    },
+
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -116,9 +125,9 @@ export default new Vuex.Store({
     SET_PROPERTIES(state, propertiesList) {
       state.propertiesList = propertiesList;
     },
-    // SET_MY_PROPERTIES(state, propertiesList) {
-    //   // state.myPropertiesList = propertiesList;
-    // }
+    SET_MY_PROPERTIES(state, propertiesList) {
+      state.myPropertiesList = propertiesList;
+    }
   }
 
 })

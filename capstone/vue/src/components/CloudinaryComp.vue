@@ -98,11 +98,11 @@ export default {
           // alert("Image upload was succesful !!");
           console.log("Here is the image info: ", result.info);
           console.log("Image URL: " + result.info.url);
-          
+          this.$store.commit("SET_PHOTO_URL", result.info.url);
           //                             ^^ THIS IS THE URL,
           // WHICH NEEDS TO BE PUSHED TO THE PROPERTY SPREADSHEET WITH FORM DATA FROM LANDLORD
           this.message = "Image upload successful !!";
-          this.newPost.img_url = result.info.url
+          // this.newPost.img_url = result.info.url
         }
       }
     );

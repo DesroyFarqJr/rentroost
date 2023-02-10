@@ -1,15 +1,15 @@
  <template>
     <div>
-      <property-card  v-bind:property="property" v-for="property in $store.state.myPropertiesList" v-bind:key="property.id" />
+      <mini-property-card  v-bind:property="property" v-for="property in $store.state.propertiesList" v-bind:key="property.id" />
     </div>
 </template>
 
 <script>
-import PropertyCard from './PropertyCard.vue';
+import MiniPropertyCard from './MiniPropertyCard.vue';
 import propertyService from "../services/PropertyService";
 
 export default {
-  components: {PropertyCard},
+  components: {MiniPropertyCard},
   name: "propertyList",
   created() {
     propertyService.getMyProperties().then((response) => {
@@ -29,9 +29,9 @@ export default {
 <style scoped>
 div {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  gap: 2em;
-  justify-content: center;
+  justify-content: flex-start;
 }
 </style>
  
