@@ -14,8 +14,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-        
+                
         <div class="_collapse _navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li><drop-down-menu /></li>
@@ -25,12 +24,11 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/logout"> Log out</router-link>
             </li>
-            
-          </ul>
+                      </ul>
         </div>
       </div>
     </nav>
-    <!--  -->
+   
     <div class="row">
       <div class="col-3">
         <div class="about-card-col">
@@ -148,7 +146,8 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+
 template {
   background-image: url("../../public/images/Red_circle.png");
 }
@@ -162,6 +161,8 @@ template {
 .card-title {
   text-align: center;
 }
+
+
 
 /* .btn-primary {
   text-align: center;

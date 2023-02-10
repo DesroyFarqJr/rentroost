@@ -10,10 +10,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="tenant in tenants.slice(0, 5)" v-bind:key="tenant.id">
-          <td>{{ tenant.name }}</td>
-          <td>{{ tenant.description }}</td>
-          <td>{{ tenant.address }}</td>
+        <tr v-for="request in requests.slice(0, 5)" v-bind:key="request.id">
+          <td>{{ requests.name }}</td>
+          <td>{{ requests.description }}</td>
+          <td>{{ requests.address }}</td>
           <td>
             <button
               v-if="!tenant.assignedEmployee"
@@ -24,9 +24,9 @@
             <span v-if="tenant.assignedEmployee">{{
               tenant.assignedEmployee.name
             }}</span>
-            <span v-if="tenant.isAssigning">
+            <span v-if="requests.isAssigning">
               <select
-                v-model="tenant.assignedEmployee"
+                v-model="requests.assignedEmployee"
                 @change="onSelectionChange(tenant)"
               >
                 <option
@@ -45,26 +45,12 @@
   </div>
 </template>
 <script>
+import propertyService from "../services/PropertyService";
 export default {
   data() {
     return {
-      tenants: [
-        {
-          id: 1,
-          name: "John Doe",
-          description: "Change light bulb",
-          address: "123 Main Street",
-          isAssigning: false,
-          assignedEmployee: "",
-        },
-        {
-          id: 2,
-          name: "Jane Doe",
-          description: "Repair toilet",
-          address: "456 Main Street",
-          isAssigning: false,
-          assignedEmployee: "",
-        },
+      requests: [
+       
       ],
       employees: [
         { id: 10, name: "Bob Smith" },
@@ -79,6 +65,12 @@ export default {
     onSelectionChange(tenant) {
       tenant.isAssigning = false;
     },
+    fillMaintenanceRequestList() {
+      propertyService.getPrincipalMaintenanceList().then((response) => (this.requests = response.data))
+    }
+  },
+  created() {
+    this.fillMaintenanceRequestList()
   }
 };
 
