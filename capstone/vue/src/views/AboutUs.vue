@@ -150,10 +150,27 @@ export default {};
 
 template {
   background-image: url("../../public/images/Red_circle.png");
+  
+}
+
+.container {
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  
+}
+
+
+.row {
+  width: 1000px;
+  position: center;
 }
 
 .about-card-col {
   /* padding: 0 8px; */
+  /* display:flex; */
+  /* align-items: space-between; */
+  
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -162,10 +179,12 @@ template {
   text-align: center;
 }
 
-/* .col-3 {} */
+.card{
+  width: 250px;
+  padding: 10px 0px;
 
-/* .btn-primary {
-  text-align: center;
-} */
+
+}
+
 </style>
 
