@@ -29,6 +29,10 @@
     <router-link to="/AddProperty">Add a Property</router-link>
     <span class="desc">Upload your Roost.</span>
   </section>
+  <section class="option">
+    <router-link to="/AddProperty">Contact Us</router-link>
+    <span class="desc">Get to know the team!</span>
+  </section>
 
 </dropdown-menu>
     </section>
@@ -81,7 +85,7 @@ export default {
 <style scoped>
 .dropDownMenuWrapper {
   position: relative;
-  width: 90px;
+  width: 70px;
   height: 30px;
   border-radius: 8px;
   background: rgba(216, 216, 216, 0);
@@ -124,11 +128,11 @@ export default {
   }
 
   .iconWrapper {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    right: 30px;
-    top: 50%;
+    right: 5px;
+    top: 55%;
     transform: translate(0,-50%);
     z-index: 1;
   }
@@ -152,8 +156,9 @@ export default {
 
     .bar1--open {
       transform: translate(-50%, -50%) rotate(45deg);
-      margin-top: 0;
+      margin-top: 10;
       background: rgb(255, 0, 0);
+      padding-right: 30px;
     }
 
     .bar2 {
@@ -199,6 +204,7 @@ export default {
 
     .bar3--open {
       top: 50%;
+      padding-right: 30px;
       transform: translate(-50%, -50% ) rotate(-45deg);
       background: rgb(255, 0, 0);
     }
@@ -298,7 +304,7 @@ export default {
 
   @keyframes menu {
     from { transform: translate3d( 0, 30px ,0 ) }
-    to { transform: translate3d( 0, 20px ,0 ) }
+    to { transform: translate3d( 0, 25px ,0 ) }
   }
 
 

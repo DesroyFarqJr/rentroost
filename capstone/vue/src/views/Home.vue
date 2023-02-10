@@ -182,10 +182,11 @@ export default {
   display: flex;
   justify-content: flex-start;
   height: 50px;
-  width: 200px;
+  width: 180px;
   padding-left: 0;
   margin: 0;
   left: 0;
+  
 }
 .navbar-brand {
   text-transform: uppercase;

@@ -131,7 +131,7 @@ a {
 .upload{
   display: flex;
   justify-content: center;
-  padding-top: 100px
+  padding-top: 100px;
   
 }
 </style>
