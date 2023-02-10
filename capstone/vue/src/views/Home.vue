@@ -138,6 +138,8 @@ export default {
 
 }
 
+
+
 .footer-container-bottom {
   flex-direction: column;
   text-align: center;
@@ -156,13 +158,14 @@ export default {
   margin: 10px 0;
 }
 #spacer {
-  padding-top: 0px;
+  margin-top: 20px;
 }
 
 .home {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+  background-color: #f5f5f5;
 }
 
 .navbar navbar-expand-md navbar-light fixed-top {

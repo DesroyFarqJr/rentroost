@@ -14,7 +14,7 @@
     <div class="filters" id="filters">
       <form v-on:change.prevent="submitSearch">
         <div class="select-group">
-          <label class="btn" for="bedrooms">Bedrooms: </label>
+          <label class="btn" for="bedrooms">Bedrooms </label>
           <select id="bedrooms" v-model="searchForm.bedrooms">
             <option value="0" selected>Studio</option>
             <option value="1">1+</option>
@@ -22,7 +22,7 @@
             <option value="3">3+</option>
           </select>
           <br />
-          <label class="btn" for="bathrooms">Bathrooms: </label>
+          <label class="btn" for="bathrooms">Bathrooms </label>
           <select id="bathrooms" v-model="searchForm.bathrooms">
             <option value="1" selected>1+</option>
             <option value="2">2+</option>
@@ -34,7 +34,7 @@
               <div class="value-container">
                 <span id="demo">{{ sliderValue }}</span>
               </div>
-            <label for="rent-range">Rent Maximum: </label>
+            <label for="rent-range">Rent Maximum </label>
             <input
               type="range"
               min="500"
@@ -147,11 +147,11 @@ export default {
 form {
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 100%;
 }
 
 .select-group {
-  width: 300%px;
+  width: 400%;
 }
 
 select {
@@ -159,9 +159,10 @@ select {
   width: 100%;
   height: 34px;
   border-radius: 6px;
-  background-color: #f00;
+  background-color: white;
   font-weight: 600;
-  color: rgb(255, 255, 255);
+  color: black;
+  border-color: #ff0000;
 }
 
 body {
@@ -226,7 +227,8 @@ body {
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(black, 0.1);
   box-sizing: border-box;
-  padding: 15px 20px;
+  padding: 10px 0px;
+    padding-bottom: 2px;
   color: rgb(0, 0, 0);
   font-size: 12px;
   font-weight: bold;
@@ -301,6 +303,7 @@ input {
 
 input:focus {
   outline: none;
+  border-color: red
 }
 
 .wrapper {
@@ -324,8 +327,10 @@ input:focus {
 }
 
 input.nav-search-bar {
-  width: 100%;
-  margin-right:10px;
+  width: 110%;
+  margin-right:0px;
+  border-color: red;
+    outline-color: red
 
 }
 button.search-btn {

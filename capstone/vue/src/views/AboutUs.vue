@@ -117,21 +117,10 @@
             <div class="card-body">
               <h5 class="card-title">NICHOLAS TSILIKOS</h5>
               <p class="card-text">
-                I am a full-stack java developer that comes from a background in
-                business, specifically marketing. What excites me about the
-                software development field is the endless possibilities and
-                creative problem solving it requires. There is nothing like
-                building a new piece of software that just works, or opening up
-                an old project and expanding it with new knowledge inherited.
-                <br /><br />
-                I've always appreciated coming up with original answers to
-                issues, and working in the software industry allows me to always
-                seek out fresh approaches to problem-solving. I have knowledge
-                in technologies like Java, Spring Boot, Javascript, PostgreSQL,
-                and web application frameworks like Vue.js thanks to my
-                educational background. With the help of these abilities, I can
-                approach each project with a fresh perspective and a wealth of
-                information that can be used to create and enhance systems.
+                I am a full-stack Java developer with a background in business, specifically marketing. I enjoy software development 
+                for its creative problem-solving and endless possibilities. My skills in Java, Spring Boot, Javascript, 
+                PostgreSQL, and Vue.js allow me to approach projects with a fresh perspective and valuable knowledge 
+                to create and improve systems.
               </p>
               <a href="#" class="btn btn-primary">LinkedIn</a>
             </div>
@@ -152,10 +141,33 @@ template {
   background-image: url("../../public/images/Red_circle.png");
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text {
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.container {
+  margin-top: 70px;
+  max-width: 1500px;
+}
+
 .about-card-col {
   /* padding: 0 8px; */
+  display: flex;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 900px;
 }
 
 .card-title {

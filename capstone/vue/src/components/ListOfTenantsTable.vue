@@ -62,7 +62,7 @@ export default {
 </script>
 <style scoped>
 table {
-  width: 70%;
+  width: 100%;
   text-align: left;
   border-collapse: collapse;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 3px 0px,
