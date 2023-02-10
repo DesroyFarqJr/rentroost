@@ -48,7 +48,7 @@
               type="text"
               id="firstname"
               class="form-control"
-              placeholder="Firstname"
+              placeholder="First Name"
               v-model="user.firstname"
               required
               style="margin-bottom: 10px"
@@ -59,7 +59,7 @@
               type="text"
               id="lastname"
               class="form-control"
-              placeholder="Lastname"
+              placeholder="Last Name"
               v-model="user.lastname"
               required
               style="margin-bottom: 10px"
