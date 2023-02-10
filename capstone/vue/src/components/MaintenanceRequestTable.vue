@@ -7,90 +7,78 @@
           <th>Description</th>
           <th>Address</th>
           <th>Status</th>
+          <th>Assigned To</th>
           <th>Assign</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="tenant in tenants" v-bind:key="tenant.id">
-          <td>{{ tenant.name }}</td>
-          <td>{{ tenant.description }}</td>
-          <td>{{ tenant.address }}</td>
-          <td>{{ tenant.status }}</td>
+        <tr v-for="request in showAllRequests ? requests : requests.slice(0, 5)" v-bind:key="request.id">
+          <td>{{ request.tenantName }}</td>
+          <td>{{ request.maintenanceRequest }}</td>
+          <td>{{ request.propertyAddress }}</td>
+          <td>{{ request.repairStatus }}</td>
+          <td>{{ request.assignedEmployee }}</td>
           <td>
-            <button
-              v-if="!tenant.assignedEmployee && !tenant.isAssigning"
-              @click="assign(tenant)"
+            <select
+              v-model="request.assignedEmployee"
+              @change="onSelectionChange(request)"
             >
-              Assign
-            </button>
-            <span v-if="tenant.assignedEmployee">
-                {{ tenant.assignedEmployee.id }} - {{ tenant.assignedEmployee.name }}
-                </span>
-            <span v-if="tenant.isAssigning">
-              <select
-                v-model="tenant.assignedEmployee"
-                @change="onSelectionChange(tenant)"
+              <option
+                v-for="employee in employees"
+                :value="employee"
+                v-bind:key="employee.employeeId"
               >
-                <option
-                  v-for="employee in employees"
-                  :value="employee"
-                  v-bind:key="employee.id"
-                >
-                  {{ employee.id }} - {{employee.name}}
-                </option>
-              </select>
+                {{ employee.employeeId }} - {{employee.employeeName}}
+              </option>
+            </select>
+            <span v-if="request.assignedEmployee">
+              {{ request.assignedEmployee.employeeId }} - {{ request.assignedEmployee.employeeName }}
             </span>
           </td>
         </tr>
       </tbody>
     </table>
+    <button @click="showAllRequests = !showAllRequests">{{ showAllRequests ? 'Close Table' : 'Open Table' }}</button>
   </div>
 </template>
-
 <script>
+import propertyService from "../services/PropertyService";
 export default {
   data() {
     return {
-      tenants: [
-        {
-          id: 1,
-          name: "John Doe",
-          description: "Change light bulb",
-          address: "123 Main Street",
-          isAssigning: false,
-          assignedEmployee: "",
-          status: "In Progress",
-        },
-        {
-          id: 2,
-          name: "Jane Doe",
-          description: "Repair toilet",
-          address: "456 Main Street",
-          isAssigning: false,
-          assignedEmployee: "",
-          status: "In Progress",
-        },
-      ],
+      requests: [],
       employees: [
-        { id: 10, name: "Bob" },
-        { id: 20, name: "James" },
       ],
+      showAllRequests: false,
     };
   },
   methods: {
-    assign(tenant) {
-      tenant.isAssigning = true;
+    onSelectionChange(request) {
+      request.isAssigning = false;
+      let maintenanceId = request.maintenanceId;
+      let employeeId = request.assignedEmployee.employeeId;
+      propertyService.assignEmployeeToRequest(maintenanceId, employeeId).then((response) => {
+        console.log(response);
+      });
     },
-    onSelectionChange(tenant) {
-      tenant.isAssigning = false;
+    fillMaintenanceRequestList() {
+      propertyService.getPrincipalMaintenanceList().then((response) => (this.requests = response.data))
     },
+    getAllEmployees() {
+      propertyService.getAllEmployees().then((response) => (this.employees = response.data))
+    }
   },
+  created() {
+    this.fillMaintenanceRequestList()
+    this.getAllEmployees()
+  }
 };
 </script>
 
 <style scoped>
+
 table {
-  width: 70%;
+  width: 100%;
   text-align: left;
   border-collapse: collapse;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

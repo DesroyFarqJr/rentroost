@@ -37,10 +37,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public ArrayList<Employee> listOfEmployeees() {
+    public ArrayList<Employee> listOfEmployees() {
         ArrayList<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM employee";
-        return null;
+        SqlRowSet returnedEmployees = jdbcTemplate.queryForRowSet(sql);
+        while (returnedEmployees.next()) {
+            employees.add(mapRowToEmployee(returnedEmployees));
+        }
+        return employees;
     }
 
 

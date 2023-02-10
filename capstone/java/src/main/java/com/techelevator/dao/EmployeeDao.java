@@ -9,7 +9,7 @@ public interface EmployeeDao {
 
 
 
-        ArrayList<Employee> listOfEmployeees();
+        ArrayList<Employee> listOfEmployees();
 
 //    MORE STUFF SOON!
 

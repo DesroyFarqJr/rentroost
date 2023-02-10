@@ -52,17 +52,16 @@ public class JdbcLandlordDao implements LandlordDao {
 
 
     @Override
-    public ArrayList<Tenant> listOfLandlordsTenants(Principal principal) {
+    public ArrayList<Tenant> listOfLandlordsTenants(int landlordId) {
         ArrayList<Tenant> tenants = new ArrayList<>();
-        String landlordName = principal.getName();
         String sql = "SELECT * FROM tenant t " +
                 "LEFT JOIN tenant_unit tu ON t.tenant_id = tu.tenant_id " +
                 "LEFT JOIN property_landlord pl ON tu.property_id = pl.property_id " +
                 "LEFT JOIN landlord l ON pl.landlord_id = l.landlord_id " +
-                "LEFT JOIN property ON pl.property_id = property.property_id " +
-                "WHERE l.landlord_name = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordName);
-        if (results.next()) {
+                "LEFT JOIN property p ON pl.property_id = p.property_id " +
+                "WHERE landlord_user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordId);
+        while (results.next()) {
             tenants.add(mapRowToTenantWithAddress(results));
         }
         return tenants;
@@ -78,15 +77,14 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
     @Override
-    public ArrayList<Property> getLandlordsProperties(Principal principal) {
-        String landlordName = principal.getName();
+    public ArrayList<Property> getLandlordsProperties(int landlordId) {
         ArrayList<Property> properties = new ArrayList<>();
         String sql = "SELECT * FROM property p " +
                 "LEFT JOIN property_landlord pl ON p.property_id = pl.property_id " +
                 "LEFT JOIN landlord l ON pl.landlord_id = l.landlord_id " +
-                "WHERE landlord_name = ?";
-        SqlRowSet returnedProperties = jdbcTemplate.queryForRowSet(sql, landlordName);
-        if(returnedProperties.next()) {
+                "WHERE landlord_user_id = ?";
+        SqlRowSet returnedProperties = jdbcTemplate.queryForRowSet(sql, landlordId);
+        while (returnedProperties.next()) {
             properties.add(mapLandlordToProperty(returnedProperties));
         }
         return properties;

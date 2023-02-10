@@ -4,7 +4,7 @@
       <h4>Maintenance Request</h4>
       <form id="maintenance-request-form" @submit.prevent="requestFormSubmit">
         <textarea
-          v-model="formEntry.request"
+          v-model="formEntry.maintenanceRequest"
           id="maintenance-form-text-area"
           name="form-text-area"
           rows="4"
@@ -26,15 +26,16 @@ export default {
       message: "Hello from Vue component",
       name: "maintenanceRequestForm",
       formEntry: {
-        request: null,
+        maintenanceRequest: "Test"
       },
     };
   },
   methods: {
     requestFormSubmit() {
       const newRequest = {
-        request: this.formEntry.request,
+        maintenanceRequest: this.formEntry.maintenanceRequest
       };
+      console.log(newRequest)
       propertyService
         .addMaintenanceRequest(newRequest)
         .then((response) => {

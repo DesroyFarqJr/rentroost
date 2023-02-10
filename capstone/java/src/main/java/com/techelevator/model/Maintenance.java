@@ -4,14 +4,31 @@ import javax.validation.constraints.NotBlank;
 public class Maintenance {
 
     private int maintenanceId;
-    @NotBlank(message = "Field cannot be empty")
+
     private int propertyId;
     @NotBlank(message = "Field cannot be empty")
     private String maintenanceRequest;
-    @NotBlank(message = "Field cannot be empty")
     private int assignedTo;
-    @NotBlank(message = "Field cannot be empty")
     private String repairStatus;
+    private String tenantName;
+
+    public String getTenantName() {
+        return tenantName;
+    }
+
+    public void setTenantName(String tenantName) {
+        this.tenantName = tenantName;
+    }
+
+    public String getPropertyAddress() {
+        return propertyAddress;
+    }
+
+    public void setPropertyAddress(String propertyAddress) {
+        this.propertyAddress = propertyAddress;
+    }
+
+    private String propertyAddress;
 
     public int getMaintenanceId() {
         return maintenanceId;

@@ -47,12 +47,21 @@ export default {
         return axios.get('/property/' + id);
     },
     addMaintenanceRequest(request) {
-        return axios.post('/newticket', request)
+        return axios.post('maintenance/newticket', request)
     },
     getPrincipalTenantsList() {
         return axios.get('property/landlordstenants')
     },
     getPrincipalPropertyList() {
         return axios.get('property/landlordsproperties')
+    },
+    getPrincipalMaintenanceList() {
+        return axios.get('maintenance/listOfMaintenanceRequests')
+    },
+    getAllEmployees() {
+        return axios.get('maintenance/allEmployees')
+    },
+    assignEmployeeToRequest(maintenanceId, employeeId) {
+        return axios.put(`maintenance/updateEmployee/${maintenanceId}/${employeeId}`)
     }
 }
