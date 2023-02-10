@@ -163,6 +163,8 @@ template {
   text-align: center;
 }
 
+.col-3 {}
+
 /* .btn-primary {
   text-align: center;
 } */
