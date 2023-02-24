@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/Thomas-Fitz/RentRoost"><img src="https://raw.githubusercontent.com/Thomas-Fitz/RentRoost/main/vue/public/images/logo.png" alt="RentRoost" width="350"></a>
+  <a href="https://github.com/DesroyFarqJr/rentroost"><img src="https://raw.githubusercontent.com/DesroyFarqJr/rentroost/main/vue/public/images/logo.png" alt="RentRoost" width="350"></a>
 </h1>
 
 <h4 align="center">A minimum-viable real estate web application built with Vue.js and Java Spring Boot.</h4>
@@ -26,7 +26,7 @@ Step One: Clone this repository
 
 ```bash
 # Clone this repo
-$ git clone https://github.com/Thomas-Fitz/RentRoost.git
+$ git clone https://github.com/DesroyFarqJr/rentroost.git
 ```
 
 Step Two: Setup the Database
@@ -42,7 +42,7 @@ Step Three: Setup and run the frontend / backend servers
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/Thomas-Fitz/RentRoost.git
+$ git clone https://github.com/DesroyFarqJr/rentroost.git
 
 # Go into the Vue directory
 $ cd Vue
