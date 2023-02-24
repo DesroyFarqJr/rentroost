@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/DesroyFarqJr/rentroost"><img src="https://raw.githubusercontent.com/DesroyFarqJr/rentroost/main/vue/public/images/logo.png" alt="RentRoost" width="350"></a>
+  <a href="https://github.com/DesroyFarqJr/rentroost"><img src="https://raw.githubusercontent.com/Thomas-Fitz/RentRoost/main/vue/public/images/logo.png" alt="RentRoost" width="350"></a>
 </h1>
 
 <h4 align="center">A minimum-viable real estate web application built with Vue.js and Java Spring Boot.</h4>
