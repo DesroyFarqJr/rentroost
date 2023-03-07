@@ -60,16 +60,23 @@ $ cd ../java/src/main/java/com/techelevator/
 ```
 
 ## Screenshots
+
+
+Login page:
+![Screenshot 2023-03-07 115214](https://user-images.githubusercontent.com/110345269/223492693-10346461-66fe-4707-a0c9-d1630cc3bb39.png)
+
+Registration page: 
+![Screenshot 2023-03-07 115250](https://user-images.githubusercontent.com/110345269/223492728-279073ca-1cc9-4a0a-9672-7e017d65dbe0.png)
+
 Home page for anonymous user: 
-(https://res.cloudinary.com/dzm5ior6h/image/upload/v1678206759/Screen_Shot_2023-02-28_at_3.48.24_PM_1_ypgjhs.png)
-![Screen Shot 2023-02-28 at 3 48 48 PM (1)](https://user-images.githubusercontent.com/110345269/223490537-87c5948f-067f-48fd-b6f2-8aaf27eb28d2.png)
+![Screen Shot 2023-02-28 at 3 48 24 PM (1)](https://user-images.githubusercontent.com/110345269/223490548-7c1cb80b-a6d8-4f5d-aa49-39dc60c9b058.png)
 
 View Selected property on map:
 (https://res.cloudinary.com/dzm5ior6h/image/upload/v1678206758/Screen_Shot_2023-02-28_at_3.48.48_PM_1_ho90ww.png)
 ![Screen Shot 2023-02-28 at 3 48 38 PM (1)](https://user-images.githubusercontent.com/110345269/223490541-bed8263d-0e3d-41c1-b927-ab06d1b2b84f.png)
 
 View property page with similar propertes:
-![Screen Shot 2023-02-28 at 3 48 24 PM (1)](https://user-images.githubusercontent.com/110345269/223490548-7c1cb80b-a6d8-4f5d-aa49-39dc60c9b058.png)
+![Screen Shot 2023-02-28 at 3 48 48 PM (1)](https://user-images.githubusercontent.com/110345269/223490537-87c5948f-067f-48fd-b6f2-8aaf27eb28d2.png)
 
 
 ## Credits
