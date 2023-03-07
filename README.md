@@ -72,11 +72,16 @@ Home page for anonymous user:
 ![Screen Shot 2023-02-28 at 3 48 24 PM (1)](https://user-images.githubusercontent.com/110345269/223490548-7c1cb80b-a6d8-4f5d-aa49-39dc60c9b058.png)
 
 View Selected property on map:
-(https://res.cloudinary.com/dzm5ior6h/image/upload/v1678206758/Screen_Shot_2023-02-28_at_3.48.48_PM_1_ho90ww.png)
 ![Screen Shot 2023-02-28 at 3 48 38 PM (1)](https://user-images.githubusercontent.com/110345269/223490541-bed8263d-0e3d-41c1-b927-ab06d1b2b84f.png)
 
-View property page with similar propertes:
+View selected property with similar propertes below:
 ![Screen Shot 2023-02-28 at 3 48 48 PM (1)](https://user-images.githubusercontent.com/110345269/223490537-87c5948f-067f-48fd-b6f2-8aaf27eb28d2.png)
+
+Tenants page to make maintainence requests or pay rent:
+![Screenshot 2023-03-07 120049](https://user-images.githubusercontent.com/110345269/223494816-c06688c0-cf26-435c-97e0-c888f1d52f33.png)
+
+Contact Us page:
+![Screenshot 2023-03-07 115817](https://user-images.githubusercontent.com/110345269/223495076-d38b96bc-7bd1-46c7-8fd9-db2fe91a3d22.png)
 
 
 ## Credits
