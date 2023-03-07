@@ -59,8 +59,15 @@ $ cd ../java/src/main/java/com/techelevator/
 # Run the backend server
 ```
 
-## Credits
+## Screenshots
+Home page for anonymous user: 
+(https://res.cloudinary.com/dzm5ior6h/image/upload/v1678206759/Screen_Shot_2023-02-28_at_3.48.24_PM_1_ypgjhs.png)
 
+
+View Selected property:
+(https://res.cloudinary.com/dzm5ior6h/image/upload/v1678206758/Screen_Shot_2023-02-28_at_3.48.48_PM_1_ho90ww.png)
+
+## Credits
 This software uses the following open source packages:
 
 - [Vue.js](https://vuejs.org/)
